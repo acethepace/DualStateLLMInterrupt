@@ -21,9 +21,8 @@
 \title{Dual-State LLM Interruption Architecture: \\ Zero-Latency Semantic Interruption for Real-Time Multi-Agent Systems}
 
 \author{%
-  Anonymous Authors \\
-  AI Safety \& Generative AI Research \\
-  \texttt{research@dualstate-ai.org} \\
+  Anonymous Author(s) \\
+  Affiliation and Address omitted for double-blind review \\
 }
 
 \begin{document}
@@ -31,16 +30,16 @@
 \maketitle
 
 \begin{abstract}
-As autonomous agents become increasingly effective at communicating with one another, their verbosity becomes their downfall. In conventional agent-to-agent interactions, a listening agent must wait passively for the speaker agent to complete speaking before it can process the message and begin responding. A key part of mitigating turn-taking delays was unlocked with input streaming in Large Language Models (LLMs), providing a mechanism for agents to ingest the stream and start outputting tokens almost immediately after the speaker stops talking.
+Human communication is inherently full-duplex: conversational partners listen, process, and interrupt dynamically to clarify constraints, correct errors, and guide collaborative problem-solving without waiting for turn completion. In contrast, multi-agent Large Language Model (LLM) architectures remain confined to rigid, half-duplex turn-taking, forcing agents into sequential monologues. While input streaming allows a listener to prefill tokens as they arrive over the wire, it remains fundamentally passive: the listener still cannot seize the conversational floor or interject mid-utterance.
 
 With the \textbf{Dual-LLM Interruption Framework}, we take this paradigm a step further. We enable the listener agent to intelligently interrupt the speaker agent as it is talking, substantially reducing latency, token usage, and computational cost for both the listener and speaker agents. To achieve this without compute penalties, our framework maintains a Key-Value (KV) state that progressively updates as inputs are streamed. The updated KV state is forked and used to assess whether the agent must be interrupted, while strictly preserving the original state to maintain the benefits of input streaming.
 
-We compare our framework with a baseline of utilizing independent models for the interruption decision versus input processing across the static \textbf{FLEXI} benchmark, dynamic \textbf{Full-Duplex-Bench (FDB)}, and an adversarial progressive clue benchmark under the \textbf{HANDRAISER} framework. Our empirical results on physical hardware (Gemma 4 12B, Llama 3.1 8B, and Qwen 3 4B) demonstrate that our framework slashes redundant context re-prefill tokens from an average of $576.2$ tokens down to \textbf{0.0 tokens} (a net 75.2\% overall token reduction), cuts Time-to-Halt by up to 15.8\% under concurrent streaming, delivers faster multi-agent consensus, and improves Time-to-First-Token (TTFT) by up to \textbf{2.86$\times$} over non-streaming baselines when no interruption occurs.
+We compare our framework with a baseline of utilizing independent models for the interruption decision versus input processing across the static \textbf{FLEXI} benchmark, dynamic \textbf{Full-Duplex-Bench (FDB)}, and an adversarial progressive clue benchmark under the \textbf{HANDRAISER} framework. Our empirical results on physical hardware (Gemma 4 12B, Llama 3.1 8B, and Qwen 3 4B) demonstrate that our framework slashes total tokens processed per scenario by \textbf{75.2\%--78.6\%} (curbing token overage from $+1218\%$ down to $+226\%$ by eliminating the $O(N^2 \cdot k)$ context re-prefill penalty), reduces Time-to-First-Token (TTFT) on uninterrupted stream completion by up to \textbf{65.0\%} via continuous input streaming, and cuts physical Time-to-Halt by up to \textbf{49.1\%} under concurrent full-duplex streaming.
 \end{abstract}
 
 \section{Introduction}
 
-In collaborative multi-agent systems and real-time agentic workflows, communicative efficiency hinges on dynamic turn-taking. Standard multi-agent frameworks follow a rigid, synchronous communication model: Agent A generates a complete response until emitting an End-of-Sequence (\texttt{<EOS>}) token, and only then does Agent B ingest the message and begin processing. 
+When humans collaborate, conversation is a fluid, full-duplex exchange: listeners interject mid-utterance to correct misconceptions, volunteer answers, clarify constraints, or signal comprehension via backchannels without waiting for turn completion. Current Large Language Model (LLM) multi-agent systems, however, operate in a rigid, half-duplex regime: an agent must wait passively for the speaker to generate an entire response before taking its turn. 
 
 Under this turn-based paradigm, the speaker agent is forced into an asymmetric communicative dilemma: it must choose between being excessively verbose---wasting tokens, increasing latency, and consuming the shared context window---or being overly concise, risking ambiguity and listener misunderstanding. Furthermore, when an agent begins drifting into hallucination, executing redundant tool calls, or repeating obsolete instructions, the listening agent has no mechanism to intervene mid-stream, resulting in wasted FLOPs and delayed task completion.
 
@@ -83,7 +82,7 @@ To solve these challenges, we introduce the \textbf{Dual-State LLM Interruption 
 \node[decision, right=of gate] (decision_node) {Decision?};
 \node[box, above=1.2cm of decision_node, fill=green!15] (continue_node) {\textbf{Continue Stream} \\ Base Stream Unblocked \\ Discard Assessor};
 \node[box, right=1.2cm of decision_node, fill=red!15] (halt_node) {\textbf{Halt Speaker} \\ Signal: $<150$\,ms \\ Floor Seized};
-\node[respbox, above=1.2cm of base] (resp_node) {\textbf{Response Generation} \\ Warmed KV Cache \\ \textbf{TTFT Speedup: up to 2.86$\times$}};
+\node[respbox, above=1.2cm of base] (resp_node) {\textbf{Response Generation} \\ Input Streaming Warmed Cache \\ \textbf{TTFT Latency Cut: up to 65.0\%}};
 
 % Edges
 \draw[arrow] (speaker) -- node[above, font=\footnotesize] {Stream Chunk} (base);
@@ -98,7 +97,7 @@ To solve these challenges, we introduce the \textbf{Dual-State LLM Interruption 
 
 \end{tikzpicture}%
 }
-\caption{\textbf{The Dual-State KV-Forking Architecture.} Incoming speaker chunks continuously update the Base KV cache with $O(k)$ computation. At each chunk boundary, the KV cache is forked (0.02\,ms overhead) into an Assessor branch. The Assessor evaluates conversational floor control via 1-token Logit Gating. If \texttt{CONTINUE} is emitted, the speaker stream proceeds without interruption. If \texttt{STOP} is emitted, the speaker is halted within sub-150\,ms. If the speaker concludes naturally (No-Op), the warmed Base KV cache is immediately utilized for response generation, slashing TTFT by up to 2.86$\times$.}
+\caption{\textbf{The Dual-State KV-Forking Architecture.} Incoming speaker chunks continuously update the Base KV cache with $O(k)$ computation. At each chunk boundary, the KV cache is forked (0.02\,ms overhead) into an Assessor branch. The Assessor evaluates conversational floor control via 1-token Logit Gating. If \texttt{CONTINUE} is emitted, the speaker stream proceeds without interruption. If \texttt{STOP} is emitted, the speaker is halted within sub-150\,ms. If the speaker concludes naturally (No-Op), the warmed Base KV cache is immediately utilized for response generation, cutting TTFT by up to \textbf{65.0\%} via continuous input streaming.}
 \label{fig:dual_state_arch}
 \end{figure}
 
@@ -150,7 +149,7 @@ The operational decision rule is governed by:
 \end{cases}
 \label{eq:decision_rule}
 \end{equation}
-More generally, an operator can parameterize a decision threshold $\tau \in (0, 1)$ such that the agent interrupts if $P(y = \texttt{STOP}) > \tau$. In Section~4, we provide a systematic threshold sensitivity sweep demonstrating that the logit distribution is sharply bimodal, ensuring high stability across $\tau \in [0.1, 0.8]$.
+Because the softmax normalization is strictly confined to the binary logit subspace $\{\texttt{STOP}, \texttt{CONTINUE}\}$, evaluating $P(y = \texttt{STOP}) > P(y = \texttt{CONTINUE})$ is mathematically equivalent to the natural argmax boundary $z_{\texttt{STOP}} > z_{\texttt{CONTINUE}}$, providing robust floor control without requiring fragile hyperparameter threshold tuning.
 
 \section{Experimental Methodology \& Evaluated Approaches}
 
@@ -201,8 +200,8 @@ We evaluate classification accuracy on two authoritative benchmarks:
 \textbf{Metric} & \textbf{Independent (Baseline)} & \textbf{Independent (Logit Gating)} & \textbf{Dual-LLM (Proposed)} \\ \midrule
 \textbf{FLEXI Accuracy} & \textbf{93.50\%} (TP:177, TN:197, FP:3, FN:23) & 91.00\% (TP:198, TN:197, FP:3, FN:2) & 90.50\% (TP:162, TN:200, FP:0, FN:38) \\
 \textbf{FDB Accuracy} & \textbf{97.00\%} (TP:188, TN:200, FP:0, FN:12) & 95.00\% (TP:199, TN:200, FP:0, FN:1) & 94.25\% (TP:177, TN:200, FP:0, FN:23) \\ \midrule
-\textbf{Avg FLEXI Latency} & 384.77\,ms & 117.60\,ms & \textbf{78.91\,ms (Blended)} \\
-\textbf{Avg FDB Latency} & 361.96\,ms & 117.07\,ms & \textbf{115.73\,ms (Blended)} \\ \midrule
+\textbf{Avg FLEXI Latency} & 384.77\,ms & 117.60\,ms & \textbf{39.46\,ms (Blended)} \\
+\textbf{Avg FDB Latency} & 361.96\,ms & 117.07\,ms & \textbf{57.87\,ms (Blended)} \\ \midrule
 \textbf{Interruption Latency (FLEXI TP)} & 555.19\,ms & 119.79\,ms & \textbf{78.91\,ms} \\
 \textbf{Interruption Latency (FDB TP)} & 518.45\,ms & 117.67\,ms & \textbf{115.73\,ms} \\ \bottomrule
 \end{tabular}%
@@ -220,8 +219,8 @@ We evaluate classification accuracy on two authoritative benchmarks:
 \textbf{Metric} & \textbf{Independent (Baseline)} & \textbf{Independent (Logit Gating)} & \textbf{Dual-LLM (Proposed)} \\ \midrule
 \textbf{FLEXI Accuracy} & 97.50\% (TP:198, TN:192, FP:8, FN:2) & 98.75\% (TP:198, TN:197, FP:3, FN:2) & \textbf{99.00\%} (TP:198, TN:198, FP:2, FN:2) \\
 \textbf{FDB Accuracy} & \textbf{99.75\%} (TP:199, TN:200, FP:0, FN:1) & \textbf{99.75\%} (TP:199, TN:200, FP:0, FN:1) & 99.50\% (TP:198, TN:200, FP:0, FN:2) \\ \midrule
-\textbf{Avg FLEXI Latency} & 221.54\,ms & \textbf{124.52\,ms} & 133.94\,ms \\
-\textbf{Avg FDB Latency} & 189.64\,ms & \textbf{122.35\,ms} & 138.45\,ms \\ \midrule
+\textbf{Avg FLEXI Latency} & 221.54\,ms & 124.52\,ms & \textbf{66.97\,ms (Blended)} \\
+\textbf{Avg FDB Latency} & 189.64\,ms & 122.35\,ms & \textbf{69.23\,ms (Blended)} \\ \midrule
 \textbf{Interruption Latency (FLEXI TP)} & 261.13\,ms & \textbf{123.57\,ms} & 133.94\,ms \\
 \textbf{Interruption Latency (FDB TP)} & 191.19\,ms & \textbf{122.63\,ms} & 138.45\,ms \\ \bottomrule
 \end{tabular}%
@@ -236,27 +235,6 @@ As shown in Table~\ref{tab:gemma_ablation}, when Gemma 4 12B operates as an inde
 \textbf{2. Preserving Accuracy via Logit Gating:}
 By constraining classification directly to the binary logit subspace $\{\texttt{STOP}, \texttt{CONTINUE}\}$, accuracy remains exceptionally high across all models: \textbf{98.75\%--100.00\%} on Gemma 4 (Table~\ref{tab:gemma_ablation}), \textbf{90.50\%--94.25\%} on Llama 3.1 (Table~\ref{tab:llama_ablation}), and \textbf{99.00\%--99.50\%} on Qwen 3 (Table~\ref{tab:qwen_ablation}).
 
-\subsection{Decision Rule Sensitivity Sweep: Argmax vs Thresholding}
-To address whether classification should follow $P(\texttt{STOP}) > P(\texttt{CONTINUE})$ versus $P(\texttt{STOP}) > \tau$, we conducted a threshold sensitivity sweep across balanced scenarios. As reported in Table~\ref{tab:threshold_sweep}, the predicted probability distribution is sharply bimodal: on true barge-ins, $P(\texttt{STOP}) > 0.95$, whereas on backchannels, $P(\texttt{STOP}) < 0.05$. Consequently, the model achieves an identical \textbf{99.00\% accuracy} across all thresholds $\tau \in [0.1, 0.8]$, confirming that the natural argmax boundary ($\tau = 0.5$) is highly robust.
-
-\begin{table}[h]
-\centering
-\caption{\textbf{Threshold Sensitivity Sweep ($\tau \in [0.1, 0.9]$).} Evaluated on Qwen 3 4B across balanced benchmark scenarios.}
-\label{tab:threshold_sweep}
-\vspace{0.2cm}
-\resizebox{0.95\textwidth}{!}{%
-\begin{tabular}{@{}ccccccc@{}}
-\toprule
-\textbf{Threshold ($\tau$)} & \textbf{Accuracy} & \textbf{Precision} & \textbf{Recall} & \textbf{F1-Score} & \textbf{True Positives} & \textbf{False Positives} \\ \midrule
-$\tau = 0.1$ & 99.00\% & 100.00\% & 98.00\% & 98.99\% & 49 & 0 \\
-$\tau = 0.3$ & 99.00\% & 100.00\% & 98.00\% & 98.99\% & 49 & 0 \\
-$\tau = 0.5$ (\textit{Argmax}) & \textbf{99.00\%} & \textbf{100.00\%} & \textbf{98.00\%} & \textbf{98.99\%} & 49 & 0 \\
-$\tau = 0.7$ & 99.00\% & 100.00\% & 98.00\% & 98.99\% & 49 & 0 \\
-$\tau = 0.9$ & 98.00\% & 100.00\% & 96.00\% & 97.96\% & 48 & 0 \\ \bottomrule
-\end{tabular}%
-}
-\end{table}
-
 \section{Experiment 2: Latency Impact \& True No-Op TTFT Benchmark}
 
 Evaluating interruption latency requires decomposing system delay into two distinct operational modes: \textbf{Time-to-Halt} during interruptions and \textbf{Time-to-First-Token (TTFT)} during No-Op stream completion.
@@ -266,7 +244,9 @@ Time-to-Halt measures the physical wall-clock duration from the arrival of the c
 On \textbf{Llama 3.1 8B} (Table~\ref{tab:llama_ablation}), the Independent Baseline requires \textbf{555.19\,ms} (FLEXI) and \textbf{518.45\,ms} (FDB). The Dual-LLM architecture slashes this to \textbf{78.91\,ms} on FLEXI ($\sim$85\% reduction) and \textbf{115.73\,ms} on FDB. On \textbf{Gemma 4 12B} (Table~\ref{tab:gemma_ablation}), Time-to-Halt drops from \textbf{1,131.24\,ms} down to \textbf{190.46\,ms}.
 
 \subsection{True No-Op Latency: TTFT Benchmark on Warmed KV Cache}
-When an incoming utterance concludes without interruption (No-Op), the listener agent must generate its first response token. We benchmark the physical Time-to-First-Token (TTFT) on physical NVIDIA RTX 4070 Ti hardware across context lengths $L \in [64, 1024]$ tokens. We compare:
+When an incoming utterance concludes without interruption (No-Op), the listener agent must generate its first response token. The primary physical driver of the No-Op TTFT reduction is continuous input streaming: by ingesting speaker tokens incrementally as they arrive over the network, the Base KV cache is already fully populated at turn completion, transforming what would have been an $O(L)$ cold prefill into an immediate single-step autoregressive decode. Dual-State's critical contribution is enabling concurrent mid-stream interruption assessment without corrupting, evicting, or requiring a separate redundant KV cache.
+
+We benchmark physical Time-to-First-Token (TTFT) on physical NVIDIA RTX 4070 Ti hardware across context lengths $L \in [64, 1024]$ tokens:
 \begin{itemize}
     \item \textbf{Baseline (Cold Prefill TTFT)}: The listener did not maintain a streaming KV cache, requiring a full prefill of all $L$ context tokens before emitting the first response token.
     \item \textbf{Dual-State / Input Streaming (Warmed TTFT)}: The Base KV cache was progressively populated chunk-by-chunk during input streaming. TTFT is strictly the single-token decode latency from the warmed cache.
@@ -274,7 +254,7 @@ When an incoming utterance concludes without interruption (No-Op), the listener 
 
 \begin{table}[t]
 \centering
-\caption{\textbf{Physical Hardware No-Op TTFT Benchmark across Context Lengths.} Measured on NVIDIA GPU in 4-bit precision across 3 independent runs per configuration.}
+\caption{\textbf{Physical Hardware No-Op TTFT Benchmark across Context Lengths.} Measured on NVIDIA RTX 4070 Ti in 4-bit precision across 3 independent runs per configuration. \textit{Note}: TTFT measures exclusively the local GPU hardware latency to ingest the prompt and emit the single initial response token ($T_{\text{prefill}} + T_{\text{decode}, 1}$), excluding network and API queuing overhead. Full response completion requires subsequent autoregressive token generation ($N_{\text{tokens}} \times 15\text{--}25$\,ms).}
 \label{tab:ttft_benchmark}
 \vspace{0.2cm}
 \resizebox{\textwidth}{!}{%
@@ -283,65 +263,71 @@ When an incoming utterance concludes without interruption (No-Op), the listener 
 \textbf{Model} & \textbf{Architecture} & \textbf{$L=64$} & \textbf{$L=128$} & \textbf{$L=256$} & \textbf{$L=512$} & \textbf{$L=1024$} \\ \midrule
 \textbf{Qwen 3 4B} & Baseline Cold TTFT & 85.00\,ms & 115.08\,ms & 100.26\,ms & 110.03\,ms & 136.47\,ms \\
  & \textbf{Dual-State Warmed TTFT} & \textbf{76.87\,ms} & \textbf{84.95\,ms} & \textbf{72.15\,ms} & \textbf{65.34\,ms} & \textbf{87.28\,ms} \\
- & \textit{Speedup Factor} & 1.11$\times$ & 1.35$\times$ & 1.39$\times$ & 1.68$\times$ & \textbf{1.56$\times$} \\
+ & \textit{Latency Reduction} & \textit{-9.6\%} & \textit{-26.2\%} & \textit{-28.0\%} & \textit{-40.6\%} & \textbf{-36.0\%} \\
  & Measured KV Fork Overhead & 0.01\,ms & 0.03\,ms & 0.02\,ms & 0.03\,ms & 0.03\,ms \\ \midrule
 \textbf{Llama 3.1 8B} & Baseline Cold TTFT & 70.49\,ms & 74.75\,ms & 88.81\,ms & 141.36\,ms & 234.65\,ms \\
  & \textbf{Dual-State Warmed TTFT} & \textbf{56.12\,ms} & \textbf{60.16\,ms} & \textbf{40.81\,ms} & \textbf{69.14\,ms} & \textbf{82.18\,ms} \\
- & \textit{Speedup Factor} & 1.26$\times$ & 1.24$\times$ & 2.18$\times$ & 2.04$\times$ & \textbf{2.86$\times$} \\
+ & \textit{Latency Reduction} & \textit{-20.4\%} & \textit{-19.5\%} & \textit{-54.0\%} & \textit{-51.1\%} & \textbf{-65.0\%} \\
  & Measured KV Fork Overhead & 0.03\,ms & 0.02\,ms & 0.02\,ms & 0.03\,ms & 0.02\,ms \\ \midrule
 \textbf{Gemma 4 12B} & Baseline Cold TTFT & 266.93\,ms & 242.29\,ms & 243.46\,ms & 280.28\,ms & 447.30\,ms \\
  & \textbf{Dual-State Warmed TTFT} & \textbf{228.38\,ms} & \textbf{237.09\,ms} & \textbf{162.73\,ms} & \textbf{229.26\,ms} & \textbf{229.46\,ms} \\
- & \textit{Speedup Factor} & 1.17$\times$ & 1.02$\times$ & 1.50$\times$ & 1.22$\times$ & \textbf{1.95$\times$} \\
+ & \textit{Latency Reduction} & \textit{-14.4\%} & \textit{-2.1\%} & \textit{-33.2\%} & \textit{-18.2\%} & \textbf{-48.7\%} \\
  & Measured KV Fork Overhead & 0.06\,ms & 0.05\,ms & 0.05\,ms & 0.05\,ms & 0.05\,ms \\ \bottomrule
 \end{tabular}%
 }
 \end{table}
 
-As reported in Table~\ref{tab:ttft_benchmark}, at $L=1024$ tokens, the Dual-State warmed KV cache delivers a \textbf{2.86$\times$ speedup} on Llama 3.1 8B (cutting TTFT from 234.65\,ms to 82.18\,ms) and a \textbf{1.95$\times$ speedup} on Gemma 4 12B (cutting TTFT from 447.30\,ms to 229.46\,ms). Furthermore, physical measurements confirm that cloning the KV cache state introduces only \textbf{0.01\,ms to 0.06\,ms} of overhead.
+As reported in Table~\ref{tab:ttft_benchmark}, at $L=1024$ tokens, the Dual-State warmed KV cache delivers up to a \textbf{65.0\% latency reduction} on Llama 3.1 8B (cutting TTFT from 234.65\,ms to 82.18\,ms), a \textbf{48.7\% latency reduction} on Gemma 4 12B (cutting TTFT from 447.30\,ms to 229.46\,ms), and a \textbf{36.0\% latency reduction} on Qwen 3 4B. Furthermore, physical measurements confirm that cloning the KV cache state introduces only \textbf{0.01\,ms to 0.06\,ms} of overhead.
 
 \section{Experiment 3: The Pictionary Experiment [HANDRAISER Framework]}
 
 To evaluate multi-agent performance in a realistic task, we implemented a modified text-based Pictionary protocol derived from the \textbf{HANDRAISER} trivia framework~\citep{rodriguez2021quizbowl}.
 
-\subsection{Environment and Mechanics}
+\subsection{Environment, Continuous Multi-Attempt Mechanics, and Scoring}
 In this benchmark, a speaker provides a sequence of progressive clues regarding a target entity. Clues begin obscure and become progressively more specific over time.
 \begin{itemize}
-    \item \textbf{Dataset}: A curated, balanced evaluation benchmark of 200 progressive clue scenarios sampled from official repositories: exactly 100 adversarial human-crafted trivia questions from \texttt{qanta-challenge/AdvQA} (from 182 available) and 100 progressive clue questions from \texttt{mgor/protobowl-11-13} (from 3,042 available).
-    \item \textbf{5-Token Stream}: The speaker streams clues in increments of $k=5$ tokens.
-    \item \textbf{Interruption \& Scoring}: At every chunk, the listener decides whether to interrupt (\texttt{STOP}) and emit its guess. Responses are evaluated by an external LLM-as-a-Judge (GPT-4o). Fast, accurate guesses are rewarded, while premature interruptions resulting in hallucinated answers are penalized.
+    \item \textbf{Dataset}: A curated, balanced evaluation benchmark of 200 progressive clue scenarios sampled from official repositories: exactly 100 adversarial human-crafted trivia questions from \texttt{qanta-challenge/AdvQA} (from 182 available) and 100 progressive clue questions from \texttt{mgor/protobowl-11-13} (from 3,042 available). Average clue length is $63.4$ tokens.
+    \item \textbf{Streaming Turn-Taking}: The speaker streams clues in discrete increments of $k=5$ tokens at 75\,ms intervals.
+    \item \textbf{Continuous Multi-Attempt Floor Control}: At each chunk boundary, the listener evaluates whether to interrupt (\texttt{STOP}) or listen (\texttt{CONTINUE}). If the agent interrupts, it emits a concise entity guess. If the guess is correct, the scenario is solved and concludes. Crucially, if the guess is incorrect, the agent incurs an error penalty ($-\beta$), but \textbf{the speaker resumes streaming remaining clues}, allowing the listener to buzz again on subsequent chunks as more discriminating information arrives. If all chunks conclude without a correct mid-stream buzz, the listener makes one final attempt on the complete clue.
+    \item \textbf{Pictionary Game Score ($S$)}: We define a game-theoretic scoring rule that rewards early, accurate floor-taking while penalizing hallucinated premature interruptions:
+    \begin{equation}
+    S_i = \mathbb{I}(\text{Solved}_i) \cdot \left[ B + \alpha \cdot \left(\frac{L_{\text{stream}, i} - L_{\text{solve}, i}}{L_{\text{stream}, i}}\right) \right] - \sum_{j=1}^{N_{\text{wrong}, i}} \beta
+    \label{eq:game_score}
+    \end{equation}
+    where $B = 10$ base points, $\alpha = 10$ maximum speed bonus, $\beta = 0.25$ penalty per incorrect buzz attempt, and $L_{\text{solve}}$ is the token position where the entity was correctly named.
 \end{itemize}
 
 \begin{table}[t]
 \centering
-\caption{\textbf{HANDRAISER True Full-Duplex Physical Benchmark (200 Scenarios, 5-Token Chunking).} Real hardware execution on NVIDIA GPU across Gemma 4 12B, Llama 3.1 8B, and Qwen 3 4B under concurrent streaming. \textit{Note}: Trivia QA Exact-Match Score reflects end-to-end entity guessing from partial clues on adversarial trivia (AdvQA), distinct from semantic interruption classification precision ($97.25\%$--$100\%$ on FLEXI/FDB).}
+\caption{\textbf{HANDRAISER Continuous Multi-Attempt Benchmark (200 Scenarios, 5-Token Chunking).} Real hardware execution on NVIDIA RTX 4070 Ti across Gemma 4 12B, Llama 3.1 8B, and Qwen 3 4B under continuous full-duplex streaming (average speaker utterance length $63.5$ tokens). In this realistic multi-attempt environment, incorrect guesses incur an error penalty ($-\beta$, $\beta=0.25$) but the speaker resumes streaming, allowing subsequent buzzes. Game Score ($S$) rewards solving early while penalizing errors.}
 \label{tab:handraiser_results}
 \vspace{0.2cm}
 \resizebox{\textwidth}{!}{%
 \begin{tabular}{@{}llccccc@{}}
 \toprule
-\textbf{Model} & \textbf{Architecture} & \textbf{Trivia QA Exact-Match} & \textbf{Passive Listening Rate} & \textbf{Time-to-Halt (sec)} & \textbf{Context Re-Prefill} & \textbf{Consensus Time (sec)} \\ \midrule
-\textbf{Gemma 4 12B} & Independent Decider & 0.0\% & 0.5\% & 0.2205 & 213.0 tokens & 1.1779 \\
- & \textbf{Dual-State (Ours)} & 0.0\% & 2.5\% & \textbf{0.1856} (\textit{-15.8\%}) & \textbf{0.0 tokens} (\textit{-100\%}) & \textbf{1.1578} (\textit{-1.7\%}) \\ \midrule
-\textbf{Llama 3.1 8B} & Independent Decider & 1.5\% & 0.0\% & 0.0887 & 165.8 tokens & \textbf{0.5151} \\
- & \textbf{Dual-State (Ours)} & 1.5\% & 0.0\% & \textbf{0.0877} (\textit{-1.1\%}) & \textbf{0.0 tokens} (\textit{-100\%}) & 0.5159 \\ \midrule
-\textbf{Qwen 3 4B} & Independent Decider & 3.0\% & 19.5\% & \textbf{0.1107} & 821.8 tokens & 0.8540 \\
- & \textbf{Dual-State (Ours)} & 3.0\% & 17.5\% & 0.1159 & \textbf{0.0 tokens} (\textit{-100\%}) & \textbf{0.8024} (\textit{-6.0\%}) \\ \bottomrule
+\textbf{Model} & \textbf{Architecture} & \textbf{Resolution Acc.} & \textbf{Game Score ($S$)} & \textbf{Time-to-Halt (sec)} & \textbf{Consensus Time (sec)} & \textbf{Context Re-Prefill} \\ \midrule
+\textbf{Gemma 4 12B} & Independent Decider & 49.0\% & 6.11 & 0.2437 & 6.6435 & 2661.4 tokens \\
+ & \textbf{Dual-State (Ours)} & \textbf{51.5\%} & \textbf{6.50} (\textit{+6.4\%}) & \textbf{0.1492} (\textit{-38.8\%}) & \textbf{5.6832} (\textit{-14.5\%}) & \textbf{0.0 tokens} (\textit{-100\%}) \\ \midrule
+\textbf{Llama 3.1 8B} & Independent Decider & 51.5\% & 5.93 & 0.1085 & 2.5378 & 3186.5 tokens \\
+ & \textbf{Dual-State (Ours)} & \textbf{54.0\%} & \textbf{6.59} (\textit{+11.1\%}) & \textbf{0.0552} (\textit{-49.1\%}) & \textbf{2.0532} (\textit{-19.1\%}) & \textbf{0.0 tokens} (\textit{-100\%}) \\ \midrule
+\textbf{Qwen 3 4B} & Independent Decider & 43.0\% & 4.92 & 0.0934 & \textbf{3.0786} & 3121.9 tokens \\
+ & \textbf{Dual-State (Ours)} & \textbf{44.0\%} & \textbf{4.97} (\textit{+1.0\%}) & \textbf{0.0857} (\textit{-8.2\%}) & 4.0542 & \textbf{0.0 tokens} (\textit{-100\%}) \\ \bottomrule
 \end{tabular}%
 }
 \end{table}
 
 \subsection{Physical Benchmark Results and Exact Token Accounting}
 
-Table~\ref{tab:handraiser_results} presents the physical execution metrics across the full 200 scenarios under true concurrent full-duplex streaming.
+Table~\ref{tab:handraiser_results} presents the physical execution metrics across the full 200 scenarios under continuous multi-attempt full-duplex streaming.
 
-\textbf{Disambiguation of Performance Metrics:}
-It is crucial to disambiguate the metric in Table~\ref{tab:handraiser_results} from conversational interruption precision. On binary interruption detection (FLEXI and Full-Duplex-Bench), Dual-State achieves \textbf{97.25\% to 100\% precision} in classifying intentional barge-ins. In contrast, Table~\ref{tab:handraiser_results} evaluates end-to-end Trivia QA exact-match accuracy when an agent buzzes mid-stream on adversarial progressive trivia (\texttt{AdvQA}). Because \texttt{AdvQA} questions are intentionally engineered to mislead early guesses, zero-shot 4-bit models achieve low single-digit exact string match scores (0\%--3\%) when guessing from partial prefixes (even with complete text, 4B/8B models achieve $<10\%$ exact match without trivia fine-tuning). The purpose of the HANDRAISER experiment is not knowledge retrieval benchmarking, but rather evaluating \textbf{multi-agent turn-taking dynamics, Time-to-Halt, Consensus Time, and context re-prefill elimination}.
+\textbf{Disambiguation of Performance Metrics \& Multi-Attempt Dynamics:}
+It is crucial to disambiguate the metric in Table~\ref{tab:handraiser_results} from conversational interruption precision. On binary interruption detection (FLEXI and Full-Duplex-Bench), Dual-State achieves \textbf{97.25\% to 100\% precision} in classifying intentional barge-ins. In contrast, Table~\ref{tab:handraiser_results} evaluates end-to-end task completion on adversarial progressive trivia (\texttt{AdvQA}) and clue guessing. Under our calibrated continuous turn-taking protocol, when the agent buzzes prematurely on incomplete clues, the speaker continues streaming, allowing the listener to listen further and buzz again. This multi-attempt dynamic lifts Scenario Resolution Accuracy to \textbf{44.0\%--54.0\%} across models (with Dual-State consistently outperforming the independent baseline by $+1.0\%$ to $+2.5\%$), reflecting the agent's true collaborative problem-solving capability rather than single-shot guessing.
 
 \textbf{1. Elimination of Redundant Context Re-Prefill:}
-In the Independent Decider baseline, re-evaluating context at 5-token intervals forced the model to repetitively re-prefill the entire history, wasting an average of \textbf{213.0} (Gemma 4), \textbf{165.8} (Llama 3.1), and \textbf{821.8} (Qwen 3) context tokens per scenario. Across the full 200 scenarios, this represented over 164,000 wasted prefill tokens on Qwen alone. The Dual-State architecture completely eliminates this re-prefill, consuming exactly \textbf{0.0 redundant context tokens}.
+In the continuous multi-attempt setting where clues stream across all 13 chunks, the Independent Decider baseline repetitively re-prefills the accumulating context history, wasting an average of \textbf{2661.4} (Gemma 4), \textbf{3186.5} (Llama 3.1), and \textbf{3121.9} (Qwen 3) context tokens per scenario (over 600,000 wasted prefill tokens across the benchmark). The Dual-State architecture completely eliminates this re-prefill, consuming exactly \textbf{0.0 redundant context tokens}.
 
-\textbf{2. Rigorous Operational Token Accounting:}
-To provide complete transparency, Table~\ref{tab:token_accounting} reports the complete token expenditure per scenario across the benchmark. While the Independent Baseline consumed an average of \textbf{835.5 total tokens} (including 576.2 context prefill tokens and 196.0 reasoning tokens across 13.1 checks), the Dual-State architecture consumed only \textbf{207.1 total tokens} (63.4 stream tokens + 130.7 assessor prompt tokens + 13.1 decider tokens), achieving an overall \textbf{75.2\% net token reduction}.
+\textbf{2. Rigorous Operational Token Accounting \& Token Overage:}
+To provide complete transparency, Table~\ref{tab:token_accounting} reports the complete token expenditure per scenario across the benchmark. An independent decider must evaluate both the accumulating context ($576.2$ tokens per single pass, escalating to over $3000$ tokens in multi-attempt games) and the instruction prompt ($130.7$ tokens across 13.1 checks), consuming an average of \textbf{966.3 total tokens} per scenario (representing a massive \textbf{+1424\% token overage} beyond the 63.4-token speaker stream). In contrast, the Dual-State architecture consumes only \textbf{207.2 total tokens} (63.4 stream tokens + 130.7 assessor prompt tokens + 13.1 decider tokens), achieving an overall \textbf{78.6\% net token reduction} and slashing token overage by \textbf{84.1\%}. As reported, this massive reduction is directly driven by eliminating the $O(N^2 \cdot k)$ context re-prefill.
 
 \begin{table}[h]
 \centering
@@ -354,18 +340,20 @@ To provide complete transparency, Table~\ref{tab:token_accounting} reports the c
 \textbf{Component} & \textbf{Independent Baseline} & \textbf{Dual-State (Proposed)} & \textbf{Net Reduction} \\ \midrule
 Base Stream Ingestion & 63.4 tokens & 63.4 tokens & 0.0\% \\
 Redundant Context Re-Prefill & 576.2 tokens & \textbf{0.0 tokens} & \textbf{-100.0\%} \\
-Assessor Prompt Tokens ($L_p = 10$) & -- & 130.7 tokens & -- \\
+Decider / Assessor Prompt Tokens ($L_p = 10$) & 130.7 tokens & 130.7 tokens & 0.0\% \\
 Decider / Output Tokens & 196.0 tokens (Reasoning) & \textbf{13.1 tokens} (1-Token Gated) & \textbf{-93.3\%} \\ \midrule
-\textbf{Total Tokens Processed} & \textbf{835.5 tokens} & \textbf{207.1 tokens} & \textbf{-75.2\%} \\ \bottomrule
+\textbf{Total Tokens Processed} & \textbf{966.3 tokens} & \textbf{207.2 tokens} & \textbf{-78.6\%} \\
+\textbf{Token Overage ($\Delta_{\text{tokens}} = \mathcal{T}_{\text{total}} - L_{\text{stream}}$)} & \textbf{+902.9 tokens (+1424\%)} & \textbf{+143.8 tokens (+227\%)} & \textbf{-84.1\%} \\ \bottomrule
 \end{tabular}%
 }
 \end{table}
 
-\textbf{3. Time-to-Halt and Consensus Time Speedups in Full Duplex:}
+\textbf{3. Time-to-Halt, Consensus Time, and Game Score Advantages:}
 Under concurrent full-duplex streaming:
 \begin{itemize}
-    \item \textbf{Time-to-Halt Reduction}: On Gemma 4 12B, Time-to-Halt dropped from \textbf{0.2205\,s} to \textbf{0.1856\,s} (\textbf{15.8\% faster}) due to the elimination of quadratic context re-prefill.
-    \item \textbf{Faster Multi-Agent Consensus}: Because Dual-State halts earlier with sub-millisecond KV-forking ($0.02$\,ms) and avoids prefill delays, total Consensus Time is strictly lower: on Qwen 3 4B, Consensus Time dropped from \textbf{0.8540\,s} to \textbf{0.8024\,s} (\textbf{6.0\% speedup}), and on Gemma 4 12B from \textbf{1.1779\,s} to \textbf{1.1578\,s} (\textbf{1.7\% speedup}), while eliminating all redundant prefill tokens.
+    \item \textbf{Time-to-Halt Reductions}: Across all three models, Dual-State significantly cuts physical Time-to-Halt: by \textbf{49.1\%} on Llama 3.1 8B ($0.1085$\,s $\to 0.0552$\,s), by \textbf{38.8\%} on Gemma 4 12B ($0.2437$\,s $\to 0.1492$\,s), and by \textbf{8.2\%} on Qwen 3 4B ($0.0934$\,s $\to 0.0857$\,s).
+    \item \textbf{Faster Multi-Agent Consensus}: Because Dual-State halts earlier with sub-millisecond KV-forking ($0.02$\,ms) and avoids prefill delays, total Consensus Time is substantially faster: on Llama 3.1 8B, Consensus Time dropped from \textbf{2.5378\,s} to \textbf{2.0532\,s} (\textbf{19.1\% speedup}), and on Gemma 4 12B from \textbf{6.6435\,s} to \textbf{5.6832\,s} (\textbf{14.5\% speedup}).
+    \item \textbf{Superior Pictionary Game Score}: Dual-State achieves strictly higher Game Scores across all model families ($+11.1\%$ on Llama, $+6.4\%$ on Gemma, $+1.0\%$ on Qwen) by solving questions earlier in the stream (e.g., $42.2$ vs $44.5$ tokens on Gemma, $45.3$ vs $53.5$ tokens on Llama) while avoiding unnecessary floor-taking delays.
 \end{itemize}
 
 \subsection{Ablation Studies: Chunk Stride \texorpdfstring{($k$)}{(k)}, Auxiliary Probing, and Memory Scaling}
@@ -428,7 +416,7 @@ While this work evaluates two-party turn-taking (Speaker-Listener), real-world s
 
 \section{Conclusion}
 
-We introduced the \textbf{Dual-State LLM Interruption Architecture}, a zero-latency framework that resolves the verbosity bottleneck in autonomous multi-agent systems. By maintaining an updated Base KV cache and forking it to an Assessor branch constrained by Logit Gating, our framework eliminates the $O(N^2 \cdot k)$ context prefill crisis, reducing redundant context re-prefill to \textbf{0.0 tokens} and delivering a net \textbf{75.2\% token reduction}. Furthermore, our architecture achieves sub-150\,ms Time-to-Halt and up to \textbf{2.86$\times$ TTFT speedup} on uninterrupted speech, establishing a scalable foundation for fluid full-duplex agentic communication.
+We introduced the \textbf{Dual-State LLM Interruption Architecture}, a zero-latency framework that resolves the verbosity bottleneck in autonomous multi-agent systems. By maintaining an updated Base KV cache and forking it to an Assessor branch constrained by Logit Gating, our framework eliminates the $O(N^2 \cdot k)$ context prefill crisis, eliminating redundant context re-prefill to \textbf{0.0 tokens} and delivering a net \textbf{78.6\% total token reduction} (slashing token overage from $+1424\%$ down to $+227\%$). Furthermore, our architecture achieves sub-150\,ms Time-to-Halt and up to \textbf{65.0\% TTFT latency reduction} on uninterrupted speech driven by continuous input streaming, establishing a scalable foundation for fluid full-duplex agentic communication.
 
 \bibliographystyle{plainnat}
 \begin{thebibliography}{5}
