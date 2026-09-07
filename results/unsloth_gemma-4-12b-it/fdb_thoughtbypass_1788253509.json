@@ -1,0 +1,12 @@
+{
+  "accuracy": 1.0,
+  "tp": 200,
+  "tn": 200,
+  "fp": 0,
+  "fn": 0,
+  "avg_latency_ms": 1047.4919545650482,
+  "interruption_latency_ms": 746.4198708534241,
+  "noop_latency_ms": 1348.5640382766724,
+  "dataset": "datasets/fdb_dataset_recovered.json",
+  "prompt": "You are a Semantic Voice Activity Detection (VAD) classifier.\nYour ONLY job is to classify the ongoing audio stream as EXACTLY 'STOP' or 'IGNORE'.\n\nRULES:\n1. BENIGN BACKCHANNEL (Output 'IGNORE'): If the user utters a short backchannel acknowledging your speech (e.g., 'uh huh', 'okay', 'yeah', 'right', 'hmm', 'Ah, okay.', 'I see.', 'Makes sense.').\n2. INTENTIONAL BARGE-IN (Output 'STOP'): If the user asks a new question, corrects a fact, changes the topic, adds a new constraint, or tells the system to wait/stop. \n\nCRITICAL: \n- If the user says things like \"Oh, and it also needs to be gluten-free\", they are adding a constraint. You MUST output 'STOP'.\n- If the user says \"Never mind...\", they are changing the topic. You MUST output 'STOP'.\n- If the user asks a question like \"Hold on, who is considered...\", you MUST output 'STOP'.\n\nEXAMPLES:\n[USER BARGE-IN]: Okay.\nClassification: IGNORE\n\n[USER BARGE-IN]: Right.\nClassification: IGNORE\n\n[USER BARGE-IN]: Oh, and it also needs to be gluten-free.\nClassification: STOP\n\n[USER BARGE-IN]: Never mind sci-fi, switch to the best fantasy novels instead.\nClassification: STOP\n\n[USER BARGE-IN]: Sorry to interrupt, but is it theoretically possible to travel through one?\nClassification: STOP\n"
+}

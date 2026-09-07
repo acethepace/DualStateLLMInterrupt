@@ -1,0 +1,56 @@
+{
+  "Qwen3-4B": {
+    "indep": {
+      "interruption_accuracy": 3.0,
+      "passive_listening_rate": 19.5,
+      "time_to_halt_s": 0.1107,
+      "context_reprefill_tokens": 821.8,
+      "consensus_time_s": 0.854,
+      "avg_tokens_read": 24.6
+    },
+    "dual": {
+      "interruption_accuracy": 3.0,
+      "passive_listening_rate": 17.5,
+      "time_to_halt_s": 0.1159,
+      "context_reprefill_tokens": 0.0,
+      "consensus_time_s": 0.8024,
+      "avg_tokens_read": 20.2
+    }
+  },
+  "Llama-3.1-8B": {
+    "indep": {
+      "interruption_accuracy": 1.5,
+      "passive_listening_rate": 0.0,
+      "time_to_halt_s": 0.0887,
+      "context_reprefill_tokens": 165.8,
+      "consensus_time_s": 0.5151,
+      "avg_tokens_read": 5.5
+    },
+    "dual": {
+      "interruption_accuracy": 1.5,
+      "passive_listening_rate": 0.0,
+      "time_to_halt_s": 0.0877,
+      "context_reprefill_tokens": 0.0,
+      "consensus_time_s": 0.5159,
+      "avg_tokens_read": 6.0
+    }
+  },
+  "Gemma-4-12B": {
+    "indep": {
+      "interruption_accuracy": 0.0,
+      "passive_listening_rate": 0.5,
+      "time_to_halt_s": 0.2205,
+      "context_reprefill_tokens": 213.0,
+      "consensus_time_s": 1.1779,
+      "avg_tokens_read": 6.9
+    },
+    "dual": {
+      "interruption_accuracy": 0.0,
+      "passive_listening_rate": 2.5,
+      "time_to_halt_s": 0.1856,
+      "context_reprefill_tokens": 0.0,
+      "consensus_time_s": 1.1578,
+      "avg_tokens_read": 7.8
+    }
+  }
+}

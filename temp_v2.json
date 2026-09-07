@@ -1,0 +1,338 @@
+{
+    "metadata": {
+        "model_name": "unsloth/Meta-Llama-3.1-8B-Instruct",
+        "version": "v2",
+        "benchmark": "FLEXI"
+    },
+    "scenarios": [
+        {
+            "id": "real_flexi_interrupt_0",
+            "expected_action": "STOP",
+            "events": [
+                {
+                    "chunk_index": 0,
+                    "input_chunk": "You asked: Can you give me a detailed explanation of the process of photosynthesis?. ",
+                    "assessor_latency_ms": 1808.5765838623047,
+                    "assessor_output": " CONTINUE",
+                    "triggered_stop": false
+                },
+                {
+                    "chunk_index": 1,
+                    "input_chunk": "Let me explain this in detail. \n</INPUT>\n[USER BARGE-IN]: Actually, just give me a simple, one-sentence definition.",
+                    "assessor_latency_ms": 945.6050395965576,
+                    "assessor_output": " STOP",
+                    "triggered_stop": true
+                }
+            ],
+            "success": true
+        },
+        {
+            "id": "real_flexi_interrupt_1",
+            "expected_action": "STOP",
+            "events": [
+                {
+                    "chunk_index": 0,
+                    "input_chunk": "You asked: Help me plan a seven-day vacation to Italy, covering Rome, Florence, and Venice.. ",
+                    "assessor_latency_ms": 1443.7365531921387,
+                    "assessor_output": " CONTINUE",
+                    "triggered_stop": false
+                },
+                {
+                    "chunk_index": 1,
+                    "input_chunk": "Let me explain this in detail. \n</INPUT>\n[USER BARGE-IN]: Wait, what's the weather like in Rome this time of year?",
+                    "assessor_latency_ms": 919.1958904266357,
+                    "assessor_output": " STOP",
+                    "triggered_stop": true
+                }
+            ],
+            "success": true
+        },
+        {
+            "id": "real_flexi_interrupt_2",
+            "expected_action": "STOP",
+            "events": [
+                {
+                    "chunk_index": 0,
+                    "input_chunk": "You asked: List the top 10 best-selling science fiction novels of the 21st century.. ",
+                    "assessor_latency_ms": 1118.7798976898193,
+                    "assessor_output": " CONTINUE",
+                    "triggered_stop": false
+                },
+                {
+                    "chunk_index": 1,
+                    "input_chunk": "Let me explain this in detail. \n</INPUT>\n[USER BARGE-IN]: Never mind sci-fi, switch to the best fantasy novels instead.",
+                    "assessor_latency_ms": 795.4397201538086,
+                    "assessor_output": " STOP",
+                    "triggered_stop": true
+                }
+            ],
+            "success": true
+        },
+        {
+            "id": "real_flexi_interrupt_3",
+            "expected_action": "STOP",
+            "events": [
+                {
+                    "chunk_index": 0,
+                    "input_chunk": "You asked: I need a healthy recipe for chicken breast that's low in calories.. ",
+                    "assessor_latency_ms": 1218.76859664917,
+                    "assessor_output": " CONTINUE",
+                    "triggered_stop": false
+                },
+                {
+                    "chunk_index": 1,
+                    "input_chunk": "Let me explain this in detail. \n</INPUT>\n[USER BARGE-IN]: Oh, and it also needs to be gluten-free.",
+                    "assessor_latency_ms": 815.7899379730225,
+                    "assessor_output": " STOP",
+                    "triggered_stop": true
+                }
+            ],
+            "success": true
+        },
+        {
+            "id": "real_flexi_interrupt_4",
+            "expected_action": "STOP",
+            "events": [
+                {
+                    "chunk_index": 0,
+                    "input_chunk": "You asked: Tell me about the history of the internet, starting from ARPANET.. ",
+                    "assessor_latency_ms": 1499.948263168335,
+                    "assessor_output": " CONTINUE",
+                    "triggered_stop": false
+                },
+                {
+                    "chunk_index": 1,
+                    "input_chunk": "Let me explain this in detail. \n</INPUT>\n[USER BARGE-IN]: Hold on, who is considered the single most important person in its invention?",
+                    "assessor_latency_ms": 972.35107421875,
+                    "assessor_output": " STOP",
+                    "triggered_stop": true
+                }
+            ],
+            "success": true
+        },
+        {
+            "id": "real_flexi_interrupt_5",
+            "expected_action": "STOP",
+            "events": [
+                {
+                    "chunk_index": 0,
+                    "input_chunk": "You asked: What are the main differences between Python and JavaScript for web development?. ",
+                    "assessor_latency_ms": 1520.2131271362305,
+                    "assessor_output": " CONTINUE",
+                    "triggered_stop": false
+                },
+                {
+                    "chunk_index": 1,
+                    "input_chunk": "Let me explain this in detail. \n</INPUT>\n[USER BARGE-IN]: You know what, forget web development. Which one is better for data analysis?",
+                    "assessor_latency_ms": 1164.964199066162,
+                    "assessor_output": " STOP",
+                    "triggered_stop": true
+                }
+            ],
+            "success": true
+        },
+        {
+            "id": "real_flexi_interrupt_6",
+            "expected_action": "STOP",
+            "events": [
+                {
+                    "chunk_index": 0,
+                    "input_chunk": "You asked: Please draft a professional email to my boss asking for a raise.. ",
+                    "assessor_latency_ms": 1439.3894672393799,
+                    "assessor_output": " CONTINUE",
+                    "triggered_stop": false
+                },
+                {
+                    "chunk_index": 1,
+                    "input_chunk": "Let me explain this in detail. \n</INPUT>\n[USER BARGE-IN]: Actually, before you do that, what are some key achievements I should mention?",
+                    "assessor_latency_ms": 1006.7341327667236,
+                    "assessor_output": " STOP",
+                    "triggered_stop": true
+                }
+            ],
+            "success": true
+        },
+        {
+            "id": "real_flexi_interrupt_7",
+            "expected_action": "STOP",
+            "events": [
+                {
+                    "chunk_index": 0,
+                    "input_chunk": "You asked: Explain the concept of black holes in simple terms.. ",
+                    "assessor_latency_ms": 1515.002965927124,
+                    "assessor_output": " CONTINUE",
+                    "triggered_stop": false
+                },
+                {
+                    "chunk_index": 1,
+                    "input_chunk": "Let me explain this in detail. \n</INPUT>\n[USER BARGE-IN]: Sorry to interrupt, but is it theoretically possible to travel through one?",
+                    "assessor_latency_ms": 1014.467716217041,
+                    "assessor_output": " STOP",
+                    "triggered_stop": true
+                }
+            ],
+            "success": true
+        },
+        {
+            "id": "real_flexi_interrupt_8",
+            "expected_action": "STOP",
+            "events": [
+                {
+                    "chunk_index": 0,
+                    "input_chunk": "You asked: Give me a workout plan for building muscle at home with just dumbbells.. ",
+                    "assessor_latency_ms": 1452.7828693389893,
+                    "assessor_output": " CONTINUE",
+                    "triggered_stop": false
+                },
+                {
+                    "chunk_index": 1,
+                    "input_chunk": "Let me explain this in detail. \n</INPUT>\n[USER BARGE-IN]: Wait, focus only on the upper body for now.",
+                    "assessor_latency_ms": 983.3955764770508,
+                    "assessor_output": " STOP",
+                    "triggered_stop": true
+                }
+            ],
+            "success": true
+        },
+        {
+            "id": "real_flexi_interrupt_9",
+            "expected_action": "STOP",
+            "events": [
+                {
+                    "chunk_index": 0,
+                    "input_chunk": "You asked: How do I properly repot a monstera plant?. ",
+                    "assessor_latency_ms": 1195.5816745758057,
+                    "assessor_output": " CONTINUE",
+                    "triggered_stop": false
+                },
+                {
+                    "chunk_index": 1,
+                    "input_chunk": "Let me explain this in detail. \n</INPUT>\n[USER BARGE-IN]: Actually, what kind of soil is best for them?",
+                    "assessor_latency_ms": 856.9915294647217,
+                    "assessor_output": " STOP",
+                    "triggered_stop": true
+                }
+            ],
+            "success": true
+        },
+        {
+            "id": "real_flexi_backchannel_190",
+            "expected_action": "CONTINUE",
+            "events": [
+                {
+                    "chunk_index": 0,
+                    "input_chunk": "Regarding your question about Can you explain how the human respiratory system exchanges gases?, ",
+                    "assessor_latency_ms": 1285.449743270874,
+                    "assessor_output": " CONTINUE",
+                    "triggered_stop": false
+                },
+                {
+                    "chunk_index": 1,
+                    "input_chunk": "there are several important details to note. \n</INPUT>\n[USER BARGE-IN]: Yes, exactly.",
+                    "assessor_latency_ms": 951.5120983123779,
+                    "assessor_output": " STOP",
+                    "triggered_stop": true
+                }
+            ],
+            "success": false
+        },
+        {
+            "id": "real_flexi_backchannel_191",
+            "expected_action": "CONTINUE",
+            "events": [
+                {
+                    "chunk_index": 0,
+                    "input_chunk": "Regarding your question about How does a toaster convert electrical energy into heat?, ",
+                    "assessor_latency_ms": 1658.066987991333,
+                    "assessor_output": " CONTINUE",
+                    "triggered_stop": false
+                },
+                {
+                    "chunk_index": 1,
+                    "input_chunk": "there are several important details to note. \n</INPUT>\n[USER BARGE-IN]: Oh, right.",
+                    "assessor_latency_ms": 1510.5843544006348,
+                    "assessor_output": " CONTINUE",
+                    "triggered_stop": false
+                },
+                {
+                    "chunk_index": 2,
+                    "input_chunk": "Let's go over them step by step.",
+                    "assessor_latency_ms": 918.1349277496338,
+                    "assessor_output": " STOP",
+                    "triggered_stop": true
+                }
+            ],
+            "success": false
+        },
+        {
+            "id": "real_flexi_backchannel_192",
+            "expected_action": "CONTINUE",
+            "events": [
+                {
+                    "chunk_index": 0,
+                    "input_chunk": "Regarding your question about What causes the colors in a sunset?, ",
+                    "assessor_latency_ms": 1404.205322265625,
+                    "assessor_output": " CONTINUE",
+                    "triggered_stop": false
+                },
+                {
+                    "chunk_index": 1,
+                    "input_chunk": "there are several important details to note. \n</INPUT>\n[USER BARGE-IN]: Of course!",
+                    "assessor_latency_ms": 958.2293033599854,
+                    "assessor_output": " STOP",
+                    "triggered_stop": true
+                }
+            ],
+            "success": false
+        },
+        {
+            "id": "real_flexi_backchannel_193",
+            "expected_action": "CONTINUE",
+            "events": [
+                {
+                    "chunk_index": 0,
+                    "input_chunk": "Regarding your question about Could you describe how a computer mouse detects movement?, ",
+                    "assessor_latency_ms": 1421.6089248657227,
+                    "assessor_output": " CONTINUE",
+                    "triggered_stop": false
+                },
+                {
+                    "chunk_index": 1,
+                    "input_chunk": "there are several important details to note. \n</INPUT>\n[USER BARGE-IN]: No way!",
+                    "assessor_latency_ms": 995.7520961761475,
+                    "assessor_output": " STOP",
+                    "triggered_stop": true
+                }
+            ],
+            "success": false
+        },
+        {
+            "id": "real_flexi_backchannel_194",
+            "expected_action": "CONTINUE",
+            "events": [
+                {
+                    "chunk_index": 0,
+                    "input_chunk": "Regarding your question about How does a refrigerator's compressor function?, ",
+                    "assessor_latency_ms": 1414.4980907440186,
+                    "assessor_output": " CONTINUE",
+                    "triggered_stop": false
+                },
+                {
+                    "chunk_index": 1,
+                    "input_chunk": "there are several important details to note. \n</INPUT>\n[USER BARGE-IN]: Really?",
+                    "assessor_latency_ms": 1398.0705738067627,
+                    "assessor_output": " CONTINUE",
+                    "triggered_stop": false
+                },
+                {
+                    "chunk_index": 2,
+                    "input_chunk": "Let's go over them step by step.",
+                    "assessor_latency_ms": 1498.981237411499,
+                    "assessor_output": " CONT<|eot_id|>",
+                    "triggered_stop": false
+                }
+            ],
+            "success": true
+        }
+    ]
+}

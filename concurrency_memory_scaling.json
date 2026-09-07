@@ -1,0 +1,56 @@
+{
+  "1": {
+    "concurrent_streams_B": 1,
+    "base_kv_cache_mb": 45.0,
+    "dual_state_assessor_overhead_mb": 0.88,
+    "dual_state_total_kv_mb": 45.88,
+    "indep_baseline_total_kv_mb": 90.88,
+    "memory_saved_mb": 45.0,
+    "memory_saving_percent": 49.5
+  },
+  "4": {
+    "concurrent_streams_B": 4,
+    "base_kv_cache_mb": 180.0,
+    "dual_state_assessor_overhead_mb": 3.52,
+    "dual_state_total_kv_mb": 183.52,
+    "indep_baseline_total_kv_mb": 363.52,
+    "memory_saved_mb": 180.0,
+    "memory_saving_percent": 49.5
+  },
+  "8": {
+    "concurrent_streams_B": 8,
+    "base_kv_cache_mb": 360.0,
+    "dual_state_assessor_overhead_mb": 7.03,
+    "dual_state_total_kv_mb": 367.03,
+    "indep_baseline_total_kv_mb": 727.03,
+    "memory_saved_mb": 360.0,
+    "memory_saving_percent": 49.5
+  },
+  "16": {
+    "concurrent_streams_B": 16,
+    "base_kv_cache_mb": 720.0,
+    "dual_state_assessor_overhead_mb": 14.06,
+    "dual_state_total_kv_mb": 734.06,
+    "indep_baseline_total_kv_mb": 1454.06,
+    "memory_saved_mb": 720.0,
+    "memory_saving_percent": 49.5
+  },
+  "32": {
+    "concurrent_streams_B": 32,
+    "base_kv_cache_mb": 1440.0,
+    "dual_state_assessor_overhead_mb": 28.12,
+    "dual_state_total_kv_mb": 1468.12,
+    "indep_baseline_total_kv_mb": 2908.12,
+    "memory_saved_mb": 1440.0,
+    "memory_saving_percent": 49.5
+  },
+  "64": {
+    "concurrent_streams_B": 64,
+    "base_kv_cache_mb": 2880.0,
+    "dual_state_assessor_overhead_mb": 56.25,
+    "dual_state_total_kv_mb": 2936.25,
+    "indep_baseline_total_kv_mb": 5816.25,
+    "memory_saved_mb": 2880.0,
+    "memory_saving_percent": 49.5
+  }
+}

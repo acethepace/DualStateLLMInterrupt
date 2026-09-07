@@ -1,0 +1,97 @@
+{
+    "metadata": {
+        "model_name": "unsloth/gemma-4-12b-it",
+        "version": "v1",
+        "config": {
+            "stop_word": "<|Start-Listening|>",
+            "max_new_tokens": 15,
+            "assessor_prompt": "<turn|>\n<|turn>model\n",
+            "base_instructions": "[INST] You are a Semantic VAD dialogue manager. Analyze the user's overlapping speech. If the user is making an intentional barge-in (e.g., a correction, contradiction, or new query), output exactly '<|Start-Listening|>'. If the user is making an unintentional barge-in (e.g., a backchannel acknowledgment or ambient noise), output exactly '<|Continue-Speaking|>'. [/INST]",
+            "user_turn_start": "<bos><|turn>user\n"
+        },
+        "max_seq_length": 4096
+    },
+    "scenarios": [
+        {
+            "id": "flexi_emerg_001",
+            "expected_action": "STOP",
+            "events": [
+                {
+                    "chunk_index": 0,
+                    "input_chunk": "To perform CPR, first place the heel of your hand ",
+                    "assessor_latency_ms": 6535.679340362549,
+                    "assessor_output": "<|channel>thought\n<channel|><|Continue-Speaking|><turn|><turn|>thought\n<channel|>",
+                    "triggered_stop": false
+                },
+                {
+                    "chunk_index": 1,
+                    "input_chunk": "in the center of the patient's chest. ",
+                    "assessor_latency_ms": 3476.60231590271,
+                    "assessor_output": "<|channel>thought\n<channel|><|channel>thought\n<channel|><|Continue-Speaking|><turn|>",
+                    "triggered_stop": false
+                },
+                {
+                    "chunk_index": 2,
+                    "input_chunk": "Then, push hard and fast at a rate of 100 beats per minute.\n</INPUT>\n[USER BARGE-IN]: Wait! Stop! They are breathing again!",
+                    "assessor_latency_ms": 1847.4490642547607,
+                    "assessor_output": "<|channel>thought\n<channel|><|Start-Listening|>",
+                    "triggered_stop": true
+                }
+            ],
+            "success": true
+        },
+        {
+            "id": "flexi_emerg_002",
+            "expected_action": "STOP",
+            "events": [
+                {
+                    "chunk_index": 0,
+                    "input_chunk": "Please remain calm. I am contacting the local ",
+                    "assessor_latency_ms": 2890.2599811553955,
+                    "assessor_output": "<|channel>thought\n<channel|><|Continue-Speaking|><turn|><turn|><turn|>thought\n",
+                    "triggered_stop": false
+                },
+                {
+                    "chunk_index": 1,
+                    "input_chunk": "authorities to report the incident. Please stay on the line \n</INPUT>\n[USER BARGE-IN]: No, cancel it, it was just a candle! We put it out!",
+                    "assessor_latency_ms": 1898.4363079071045,
+                    "assessor_output": "<|channel>thought\n<channel|><|Start-Listening|>",
+                    "triggered_stop": true
+                }
+            ],
+            "success": true
+        },
+        {
+            "id": "flexi_benign_003",
+            "expected_action": "CONTINUE",
+            "events": [
+                {
+                    "chunk_index": 0,
+                    "input_chunk": "Please remain calm. I am contacting the local ",
+                    "assessor_latency_ms": 3268.8345909118652,
+                    "assessor_output": "<|channel>thought\n<channel|><|Continue-Speaking|><turn|><turn|><turn|>thought\n",
+                    "triggered_stop": false
+                },
+                {
+                    "chunk_index": 1,
+                    "input_chunk": "authorities to report the incident. Please stay on the line \n</INPUT>\n[USER BARGE-IN]: Okay, yeah, okay I'm listening.",
+                    "assessor_latency_ms": 2637.061834335327,
+                    "assessor_output": "<|channel>thought\n<channel|><|Continue-Speaking|><turn|><turn|><turn|>thought\n",
+                    "triggered_stop": false
+                },
+                {
+                    "chunk_index": 2,
+                    "input_chunk": "Do not attempt to gather your belongings.",
+                    "assessor_latency_ms": 2649.1856575012207,
+                    "assessor_output": "<|channel>thought\n<channel|><|Continue-Speaking|><turn|><|channel>thought\n<|channel>",
+                    "triggered_stop": false
+                }
+            ],
+            "success": true
+        }
+    ],
+    "summary": {
+        "accuracy": "3/3",
+        "average_latency_ms": 3150.4386365413666
+    }
+}

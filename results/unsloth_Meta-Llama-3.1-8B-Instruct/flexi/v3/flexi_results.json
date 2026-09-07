@@ -1,0 +1,561 @@
+{
+    "metadata": {
+        "model_name": "unsloth/Meta-Llama-3.1-8B-Instruct",
+        "version": "v3",
+        "benchmark": "FLEXI"
+    },
+    "scenarios": [
+        {
+            "id": "real_flexi_interrupt_0",
+            "expected_action": "STOP",
+            "events": [
+                {
+                    "chunk_index": 0,
+                    "input_chunk": "You asked: Can you give me a detailed explanation of the process of photosynthesis?. ",
+                    "assessor_latency_ms": 1465.4884338378906,
+                    "assessor_output": "CONTINUE",
+                    "triggered_stop": false,
+                    "confidence": 0.014054536819458008
+                },
+                {
+                    "chunk_index": 1,
+                    "input_chunk": "Let me explain this in detail. \n</INPUT>\n[USER BARGE-IN]: Actually, just give me a simple, one-sentence definition.",
+                    "assessor_latency_ms": 238.7692928314209,
+                    "assessor_output": "STOP",
+                    "triggered_stop": true,
+                    "confidence": 0.977569580078125
+                }
+            ],
+            "success": true
+        },
+        {
+            "id": "real_flexi_interrupt_1",
+            "expected_action": "STOP",
+            "events": [
+                {
+                    "chunk_index": 0,
+                    "input_chunk": "You asked: Help me plan a seven-day vacation to Italy, covering Rome, Florence, and Venice.. ",
+                    "assessor_latency_ms": 1013.7932300567627,
+                    "assessor_output": "CONTINUE",
+                    "triggered_stop": false,
+                    "confidence": 0.015885591506958008
+                },
+                {
+                    "chunk_index": 1,
+                    "input_chunk": "Let me explain this in detail. \n</INPUT>\n[USER BARGE-IN]: Wait, what's the weather like in Rome this time of year?",
+                    "assessor_latency_ms": 998.767614364624,
+                    "assessor_output": "STOP",
+                    "triggered_stop": true,
+                    "confidence": 0.9968948364257812
+                }
+            ],
+            "success": true
+        },
+        {
+            "id": "real_flexi_interrupt_2",
+            "expected_action": "STOP",
+            "events": [
+                {
+                    "chunk_index": 0,
+                    "input_chunk": "You asked: List the top 10 best-selling science fiction novels of the 21st century.. ",
+                    "assessor_latency_ms": 942.9855346679688,
+                    "assessor_output": "CONTINUE",
+                    "triggered_stop": false,
+                    "confidence": 0.03739452362060547
+                },
+                {
+                    "chunk_index": 1,
+                    "input_chunk": "Let me explain this in detail. \n</INPUT>\n[USER BARGE-IN]: Never mind sci-fi, switch to the best fantasy novels instead.",
+                    "assessor_latency_ms": 960.9897136688232,
+                    "assessor_output": "STOP",
+                    "triggered_stop": true,
+                    "confidence": 1.0013275146484375
+                }
+            ],
+            "success": true
+        },
+        {
+            "id": "real_flexi_interrupt_3",
+            "expected_action": "STOP",
+            "events": [
+                {
+                    "chunk_index": 0,
+                    "input_chunk": "You asked: I need a healthy recipe for chicken breast that's low in calories.. ",
+                    "assessor_latency_ms": 925.3413677215576,
+                    "assessor_output": "CONTINUE",
+                    "triggered_stop": false,
+                    "confidence": 0.017960786819458008
+                },
+                {
+                    "chunk_index": 1,
+                    "input_chunk": "Let me explain this in detail. \n</INPUT>\n[USER BARGE-IN]: Oh, and it also needs to be gluten-free.",
+                    "assessor_latency_ms": 995.5599308013916,
+                    "assessor_output": "CONTINUE",
+                    "triggered_stop": false,
+                    "confidence": 0.37815093994140625
+                },
+                {
+                    "chunk_index": 2,
+                    "input_chunk": "First, we must consider the primary factors involved.",
+                    "assessor_latency_ms": 1002.1944046020508,
+                    "assessor_output": "CONTINUE",
+                    "triggered_stop": false,
+                    "confidence": 0.269622802734375
+                }
+            ],
+            "success": false
+        },
+        {
+            "id": "real_flexi_interrupt_4",
+            "expected_action": "STOP",
+            "events": [
+                {
+                    "chunk_index": 0,
+                    "input_chunk": "You asked: Tell me about the history of the internet, starting from ARPANET.. ",
+                    "assessor_latency_ms": 968.3594703674316,
+                    "assessor_output": "CONTINUE",
+                    "triggered_stop": false,
+                    "confidence": 0.008557796478271484
+                },
+                {
+                    "chunk_index": 1,
+                    "input_chunk": "Let me explain this in detail. \n</INPUT>\n[USER BARGE-IN]: Hold on, who is considered the single most important person in its invention?",
+                    "assessor_latency_ms": 969.3865776062012,
+                    "assessor_output": "STOP",
+                    "triggered_stop": true,
+                    "confidence": 0.9931526184082031
+                }
+            ],
+            "success": true
+        },
+        {
+            "id": "real_flexi_interrupt_5",
+            "expected_action": "STOP",
+            "events": [
+                {
+                    "chunk_index": 0,
+                    "input_chunk": "You asked: What are the main differences between Python and JavaScript for web development?. ",
+                    "assessor_latency_ms": 884.5899105072021,
+                    "assessor_output": "CONTINUE",
+                    "triggered_stop": false,
+                    "confidence": 0.07577800750732422
+                },
+                {
+                    "chunk_index": 1,
+                    "input_chunk": "Let me explain this in detail. \n</INPUT>\n[USER BARGE-IN]: You know what, forget web development. Which one is better for data analysis?",
+                    "assessor_latency_ms": 745.6719875335693,
+                    "assessor_output": "STOP",
+                    "triggered_stop": true,
+                    "confidence": 0.9936752319335938
+                }
+            ],
+            "success": true
+        },
+        {
+            "id": "real_flexi_interrupt_6",
+            "expected_action": "STOP",
+            "events": [
+                {
+                    "chunk_index": 0,
+                    "input_chunk": "You asked: Please draft a professional email to my boss asking for a raise.. ",
+                    "assessor_latency_ms": 861.6158962249756,
+                    "assessor_output": "CONTINUE",
+                    "triggered_stop": false,
+                    "confidence": 0.10653114318847656
+                },
+                {
+                    "chunk_index": 1,
+                    "input_chunk": "Let me explain this in detail. \n</INPUT>\n[USER BARGE-IN]: Actually, before you do that, what are some key achievements I should mention?",
+                    "assessor_latency_ms": 751.889705657959,
+                    "assessor_output": "STOP",
+                    "triggered_stop": true,
+                    "confidence": 0.9970626831054688
+                }
+            ],
+            "success": true
+        },
+        {
+            "id": "real_flexi_interrupt_7",
+            "expected_action": "STOP",
+            "events": [
+                {
+                    "chunk_index": 0,
+                    "input_chunk": "You asked: Explain the concept of black holes in simple terms.. ",
+                    "assessor_latency_ms": 876.5890598297119,
+                    "assessor_output": "CONTINUE",
+                    "triggered_stop": false,
+                    "confidence": 0.010327816009521484
+                },
+                {
+                    "chunk_index": 1,
+                    "input_chunk": "Let me explain this in detail. \n</INPUT>\n[USER BARGE-IN]: Sorry to interrupt, but is it theoretically possible to travel through one?",
+                    "assessor_latency_ms": 1061.622142791748,
+                    "assessor_output": "STOP",
+                    "triggered_stop": true,
+                    "confidence": 0.9861602783203125
+                }
+            ],
+            "success": true
+        },
+        {
+            "id": "real_flexi_interrupt_8",
+            "expected_action": "STOP",
+            "events": [
+                {
+                    "chunk_index": 0,
+                    "input_chunk": "You asked: Give me a workout plan for building muscle at home with just dumbbells.. ",
+                    "assessor_latency_ms": 968.2860374450684,
+                    "assessor_output": "CONTINUE",
+                    "triggered_stop": false,
+                    "confidence": 0.03738975524902344
+                },
+                {
+                    "chunk_index": 1,
+                    "input_chunk": "Let me explain this in detail. \n</INPUT>\n[USER BARGE-IN]: Wait, focus only on the upper body for now.",
+                    "assessor_latency_ms": 938.6477470397949,
+                    "assessor_output": "STOP",
+                    "triggered_stop": true,
+                    "confidence": 0.9975051879882812
+                }
+            ],
+            "success": true
+        },
+        {
+            "id": "real_flexi_interrupt_9",
+            "expected_action": "STOP",
+            "events": [
+                {
+                    "chunk_index": 0,
+                    "input_chunk": "You asked: How do I properly repot a monstera plant?. ",
+                    "assessor_latency_ms": 941.3223266601562,
+                    "assessor_output": "CONTINUE",
+                    "triggered_stop": false,
+                    "confidence": 0.022970199584960938
+                },
+                {
+                    "chunk_index": 1,
+                    "input_chunk": "Let me explain this in detail. \n</INPUT>\n[USER BARGE-IN]: Actually, what kind of soil is best for them?",
+                    "assessor_latency_ms": 975.7788181304932,
+                    "assessor_output": "STOP",
+                    "triggered_stop": true,
+                    "confidence": 0.9749298095703125
+                }
+            ],
+            "success": true
+        },
+        {
+            "id": "real_flexi_backchannel_190",
+            "expected_action": "CONTINUE",
+            "events": [
+                {
+                    "chunk_index": 0,
+                    "input_chunk": "Regarding your question about Can you explain how the human respiratory system exchanges gases?, ",
+                    "assessor_latency_ms": 985.0103855133057,
+                    "assessor_output": "CONTINUE",
+                    "triggered_stop": false,
+                    "confidence": 0.1641864776611328
+                },
+                {
+                    "chunk_index": 1,
+                    "input_chunk": "there are several important details to note. \n</INPUT>\n[USER BARGE-IN]: Yes, exactly.",
+                    "assessor_latency_ms": 966.7515754699707,
+                    "assessor_output": "CONTINUE",
+                    "triggered_stop": false,
+                    "confidence": 0.00013184547424316406
+                },
+                {
+                    "chunk_index": 2,
+                    "input_chunk": "Let's go over them step by step.",
+                    "assessor_latency_ms": 947.8600025177002,
+                    "assessor_output": "CONTINUE",
+                    "triggered_stop": false,
+                    "confidence": 0.0216522216796875
+                }
+            ],
+            "success": true
+        },
+        {
+            "id": "real_flexi_backchannel_191",
+            "expected_action": "CONTINUE",
+            "events": [
+                {
+                    "chunk_index": 0,
+                    "input_chunk": "Regarding your question about How does a toaster convert electrical energy into heat?, ",
+                    "assessor_latency_ms": 954.8001289367676,
+                    "assessor_output": "CONTINUE",
+                    "triggered_stop": false,
+                    "confidence": 0.022966623306274414
+                },
+                {
+                    "chunk_index": 1,
+                    "input_chunk": "there are several important details to note. \n</INPUT>\n[USER BARGE-IN]: Oh, right.",
+                    "assessor_latency_ms": 933.8967800140381,
+                    "assessor_output": "CONTINUE",
+                    "triggered_stop": false,
+                    "confidence": 5.495641380548477e-05
+                },
+                {
+                    "chunk_index": 2,
+                    "input_chunk": "Let's go over them step by step.",
+                    "assessor_latency_ms": 902.0369052886963,
+                    "assessor_output": "CONTINUE",
+                    "triggered_stop": false,
+                    "confidence": 0.009135246276855469
+                }
+            ],
+            "success": true
+        },
+        {
+            "id": "real_flexi_backchannel_192",
+            "expected_action": "CONTINUE",
+            "events": [
+                {
+                    "chunk_index": 0,
+                    "input_chunk": "Regarding your question about What causes the colors in a sunset?, ",
+                    "assessor_latency_ms": 907.7212810516357,
+                    "assessor_output": "CONTINUE",
+                    "triggered_stop": false,
+                    "confidence": 0.06011009216308594
+                },
+                {
+                    "chunk_index": 1,
+                    "input_chunk": "there are several important details to note. \n</INPUT>\n[USER BARGE-IN]: Of course!",
+                    "assessor_latency_ms": 906.752347946167,
+                    "assessor_output": "CONTINUE",
+                    "triggered_stop": false,
+                    "confidence": 8.960836566984653e-06
+                },
+                {
+                    "chunk_index": 2,
+                    "input_chunk": "Let's go over them step by step.",
+                    "assessor_latency_ms": 147.6883888244629,
+                    "assessor_output": "CONTINUE",
+                    "triggered_stop": false,
+                    "confidence": 0.0021924376487731934
+                }
+            ],
+            "success": true
+        },
+        {
+            "id": "real_flexi_backchannel_193",
+            "expected_action": "CONTINUE",
+            "events": [
+                {
+                    "chunk_index": 0,
+                    "input_chunk": "Regarding your question about Could you describe how a computer mouse detects movement?, ",
+                    "assessor_latency_ms": 741.9540882110596,
+                    "assessor_output": "CONTINUE",
+                    "triggered_stop": false,
+                    "confidence": 0.1827554702758789
+                },
+                {
+                    "chunk_index": 1,
+                    "input_chunk": "there are several important details to note. \n</INPUT>\n[USER BARGE-IN]: No way!",
+                    "assessor_latency_ms": 811.2180233001709,
+                    "assessor_output": "CONTINUE",
+                    "triggered_stop": false,
+                    "confidence": 0.0043413639068603516
+                },
+                {
+                    "chunk_index": 2,
+                    "input_chunk": "Let's go over them step by step.",
+                    "assessor_latency_ms": 745.1684474945068,
+                    "assessor_output": "CONTINUE",
+                    "triggered_stop": false,
+                    "confidence": 0.08523178100585938
+                }
+            ],
+            "success": true
+        },
+        {
+            "id": "real_flexi_backchannel_194",
+            "expected_action": "CONTINUE",
+            "events": [
+                {
+                    "chunk_index": 0,
+                    "input_chunk": "Regarding your question about How does a refrigerator's compressor function?, ",
+                    "assessor_latency_ms": 697.0882415771484,
+                    "assessor_output": "CONTINUE",
+                    "triggered_stop": false,
+                    "confidence": 0.032984018325805664
+                },
+                {
+                    "chunk_index": 1,
+                    "input_chunk": "there are several important details to note. \n</INPUT>\n[USER BARGE-IN]: Really?",
+                    "assessor_latency_ms": 774.5611667633057,
+                    "assessor_output": "CONTINUE",
+                    "triggered_stop": false,
+                    "confidence": 1.2242584489285946e-05
+                },
+                {
+                    "chunk_index": 2,
+                    "input_chunk": "Let's go over them step by step.",
+                    "assessor_latency_ms": 790.5004024505615,
+                    "assessor_output": "CONTINUE",
+                    "triggered_stop": false,
+                    "confidence": 0.023013591766357422
+                }
+            ],
+            "success": true
+        },
+        {
+            "id": "real_flexi_backchannel_195",
+            "expected_action": "CONTINUE",
+            "events": [
+                {
+                    "chunk_index": 0,
+                    "input_chunk": "Regarding your question about Why do some animals have camouflage patterns?, ",
+                    "assessor_latency_ms": 904.3340682983398,
+                    "assessor_output": "CONTINUE",
+                    "triggered_stop": false,
+                    "confidence": 0.047403812408447266
+                },
+                {
+                    "chunk_index": 1,
+                    "input_chunk": "there are several important details to note. \n</INPUT>\n[USER BARGE-IN]: Oh, interesting!",
+                    "assessor_latency_ms": 912.8296375274658,
+                    "assessor_output": "CONTINUE",
+                    "triggered_stop": false,
+                    "confidence": 4.513596650213003e-06
+                },
+                {
+                    "chunk_index": 2,
+                    "input_chunk": "Let's go over them step by step.",
+                    "assessor_latency_ms": 880.6297779083252,
+                    "assessor_output": "CONTINUE",
+                    "triggered_stop": false,
+                    "confidence": 0.0029906034469604492
+                }
+            ],
+            "success": true
+        },
+        {
+            "id": "real_flexi_backchannel_196",
+            "expected_action": "CONTINUE",
+            "events": [
+                {
+                    "chunk_index": 0,
+                    "input_chunk": "Regarding your question about Can you explain how plants adapt to different climates?, ",
+                    "assessor_latency_ms": 920.0186729431152,
+                    "assessor_output": "CONTINUE",
+                    "triggered_stop": false,
+                    "confidence": 0.26972198486328125
+                },
+                {
+                    "chunk_index": 1,
+                    "input_chunk": "there are several important details to note. \n</INPUT>\n[USER BARGE-IN]: Ah, okay.",
+                    "assessor_latency_ms": 930.7899475097656,
+                    "assessor_output": "CONTINUE",
+                    "triggered_stop": false,
+                    "confidence": 1.465261448174715e-06
+                },
+                {
+                    "chunk_index": 2,
+                    "input_chunk": "Let's go over them step by step.",
+                    "assessor_latency_ms": 1002.3219585418701,
+                    "assessor_output": "CONTINUE",
+                    "triggered_stop": false,
+                    "confidence": 0.006316661834716797
+                }
+            ],
+            "success": true
+        },
+        {
+            "id": "real_flexi_backchannel_197",
+            "expected_action": "CONTINUE",
+            "events": [
+                {
+                    "chunk_index": 0,
+                    "input_chunk": "Regarding your question about How does a bicycle's chain transfer energy from pedals to wheels?, ",
+                    "assessor_latency_ms": 980.7837009429932,
+                    "assessor_output": "CONTINUE",
+                    "triggered_stop": false,
+                    "confidence": 0.033229708671569824
+                },
+                {
+                    "chunk_index": 1,
+                    "input_chunk": "there are several important details to note. \n</INPUT>\n[USER BARGE-IN]: Right on!",
+                    "assessor_latency_ms": 923.7122535705566,
+                    "assessor_output": "CONTINUE",
+                    "triggered_stop": false,
+                    "confidence": 4.273350350558758e-05
+                },
+                {
+                    "chunk_index": 2,
+                    "input_chunk": "Let's go over them step by step.",
+                    "assessor_latency_ms": 893.7311172485352,
+                    "assessor_output": "CONTINUE",
+                    "triggered_stop": false,
+                    "confidence": 0.0021938085556030273
+                }
+            ],
+            "success": true
+        },
+        {
+            "id": "real_flexi_backchannel_198",
+            "expected_action": "CONTINUE",
+            "events": [
+                {
+                    "chunk_index": 0,
+                    "input_chunk": "Regarding your question about What happens during the process of evaporation and condensation?, ",
+                    "assessor_latency_ms": 1071.2194442749023,
+                    "assessor_output": "CONTINUE",
+                    "triggered_stop": false,
+                    "confidence": 0.16419506072998047
+                },
+                {
+                    "chunk_index": 1,
+                    "input_chunk": "there are several important details to note. \n</INPUT>\n[USER BARGE-IN]: Cool!",
+                    "assessor_latency_ms": 1212.5365734100342,
+                    "assessor_output": "CONTINUE",
+                    "triggered_stop": false,
+                    "confidence": 9.648967534303665e-05
+                },
+                {
+                    "chunk_index": 2,
+                    "input_chunk": "Let's go over them step by step.",
+                    "assessor_latency_ms": 955.2056789398193,
+                    "assessor_output": "CONTINUE",
+                    "triggered_stop": false,
+                    "confidence": 0.015928268432617188
+                }
+            ],
+            "success": true
+        },
+        {
+            "id": "real_flexi_backchannel_199",
+            "expected_action": "CONTINUE",
+            "events": [
+                {
+                    "chunk_index": 0,
+                    "input_chunk": "Regarding your question about Could you describe how a smartphone's camera autofocus works?, ",
+                    "assessor_latency_ms": 944.64111328125,
+                    "assessor_output": "CONTINUE",
+                    "triggered_stop": false,
+                    "confidence": 0.032984018325805664
+                },
+                {
+                    "chunk_index": 1,
+                    "input_chunk": "there are several important details to note. \n</INPUT>\n[USER BARGE-IN]: I understand.",
+                    "assessor_latency_ms": 866.4922714233398,
+                    "assessor_output": "CONTINUE",
+                    "triggered_stop": false,
+                    "confidence": 1.8987571820616722e-05
+                },
+                {
+                    "chunk_index": 2,
+                    "input_chunk": "Let's go over them step by step.",
+                    "assessor_latency_ms": 826.9810676574707,
+                    "assessor_output": "CONTINUE",
+                    "triggered_stop": false,
+                    "confidence": 0.006311535835266113
+                }
+            ],
+            "success": true
+        }
+    ],
+    "summary": {
+        "accuracy": "19/20",
+        "average_latency_ms": 900.5271500232172
+    }
+}

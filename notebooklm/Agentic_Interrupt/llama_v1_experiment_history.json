@@ -1,0 +1,398 @@
+[
+    {
+        "description": "Iteration 1: Strict classification prompt for Llama 3.1 8B V1",
+        "prompt": "You are an expert Semantic Voice Activity Detector. Read the user's overlapping speech carefully. Classify the speech into one of two strict categories: 1) If the user makes an intentional interruption to stop the assistant (e.g. asking a new question, correcting a fact, changing the topic), you must output EXACTLY '{stop_word}' and nothing else. 2) If the user only utters a benign backchannel to show they are listening (e.g. 'uh huh', 'okay', 'yeah', 'right', 'mm-hmm') or makes ambient noise, you must output EXACTLY '{cont_word}' and nothing else. Failure to adhere to this format will break the system.",
+        "results": {
+            "FLEXI": {
+                "TP": 0,
+                "TN": 0,
+                "FP": 0,
+                "FN": 0,
+                "Total": 0,
+                "Avg_Latency_ms": 0
+            },
+            "FDB": {
+                "TP": 0,
+                "TN": 0,
+                "FP": 0,
+                "FN": 0,
+                "Total": 0,
+                "Avg_Latency_ms": 0
+            }
+        }
+    },
+    {
+        "description": "Iteration 1: Strict classification prompt for Llama 3.1 8B V1",
+        "prompt": "You are an expert Semantic Voice Activity Detector. Read the user's overlapping speech carefully. Classify the speech into one of two strict categories: 1) If the user makes an intentional interruption to stop the assistant (e.g. asking a new question, correcting a fact, changing the topic), you must output EXACTLY '{stop_word}' and nothing else. 2) If the user only utters a benign backchannel to show they are listening (e.g. 'uh huh', 'okay', 'yeah', 'right', 'mm-hmm') or makes ambient noise, you must output EXACTLY '{cont_word}' and nothing else. Failure to adhere to this format will break the system.",
+        "results": {
+            "FLEXI": {
+                "TP": 0,
+                "TN": 0,
+                "FP": 0,
+                "FN": 0,
+                "Total": 0,
+                "Avg_Latency_ms": 0
+            },
+            "FDB": {
+                "TP": 0,
+                "TN": 0,
+                "FP": 0,
+                "FN": 0,
+                "Total": 0,
+                "Avg_Latency_ms": 0
+            }
+        }
+    },
+    {
+        "description": "Iteration 1: Strict classification prompt for Llama 3.1 8B V1",
+        "prompt": "You are an expert Semantic Voice Activity Detector. Read the user's overlapping speech carefully. Classify the speech into one of two strict categories: 1) If the user makes an intentional interruption to stop the assistant (e.g. asking a new question, correcting a fact, changing the topic), you must output EXACTLY '{stop_word}' and nothing else. 2) If the user only utters a benign backchannel to show they are listening (e.g. 'uh huh', 'okay', 'yeah', 'right', 'mm-hmm') or makes ambient noise, you must output EXACTLY '{cont_word}' and nothing else. Failure to adhere to this format will break the system.",
+        "results": {
+            "FLEXI": {
+                "TP": 0,
+                "TN": 0,
+                "FP": 0,
+                "FN": 0,
+                "Total": 0,
+                "Avg_Latency_ms": 0
+            },
+            "FDB": {
+                "TP": 0,
+                "TN": 0,
+                "FP": 0,
+                "FN": 0,
+                "Total": 0,
+                "Avg_Latency_ms": 0
+            }
+        }
+    },
+    {
+        "description": "Test",
+        "prompt": "Test",
+        "results": {
+            "FLEXI": {
+                "TP": 0,
+                "TN": 0,
+                "FP": 0,
+                "FN": 0,
+                "Total": 0,
+                "Avg_Latency_ms": 0
+            },
+            "FDB": {
+                "TP": 22,
+                "TN": 21,
+                "FP": 0,
+                "FN": 0,
+                "Total": 43,
+                "Avg_Latency_ms": 4293.295638505802
+            }
+        }
+    },
+    {
+        "description": "Iteration 1: Strict classification prompt for Llama 3.1 8B V1",
+        "prompt": "You are an expert Semantic Voice Activity Detector. Read the user's overlapping speech carefully. Classify the speech into one of two strict categories: 1) If the user makes an intentional interruption to stop the assistant (e.g. asking a new question, correcting a fact, changing the topic), you must output EXACTLY '{stop_word}' and nothing else. 2) If the user only utters a benign backchannel to show they are listening (e.g. 'uh huh', 'okay', 'yeah', 'right', 'mm-hmm') or makes ambient noise, you must output EXACTLY '{cont_word}' and nothing else. Failure to adhere to this format will break the system.",
+        "results": {
+            "FLEXI": {
+                "TP": 0,
+                "TN": 0,
+                "FP": 0,
+                "FN": 0,
+                "Total": 0,
+                "Avg_Latency_ms": 0
+            },
+            "FDB": {
+                "TP": 34,
+                "TN": 33,
+                "FP": 0,
+                "FN": 0,
+                "Total": 67,
+                "Avg_Latency_ms": 4296.466339879961
+            }
+        }
+    },
+    {
+        "description": "Iteration 1",
+        "prompt": "You are an expert Semantic Voice Activity Detector. Read the user's overlapping speech carefully. Classify the speech into one of two strict categories: 1) If the user makes an intentional interruption to stop the assistant (e.g. asking a new question, correcting a fact, changing the topic), you must output EXACTLY '{stop_word}' and nothing else. 2) If the user only utters a benign backchannel to show they are listening (e.g. 'uh huh', 'okay', 'yeah', 'right', 'mm-hmm') or makes ambient noise, you must output EXACTLY '{cont_word}' and nothing else. Failure to adhere to this format will break the system.",
+        "results": {
+            "FLEXI": {
+                "TP": 200,
+                "TN": 2,
+                "FP": 198,
+                "FN": 0,
+                "Total": 400,
+                "Avg_Latency_ms": 0
+            },
+            "FDB": {
+                "TP": 20,
+                "TN": 19,
+                "FP": 0,
+                "FN": 0,
+                "Total": 39,
+                "Avg_Latency_ms": 1137.8352152995574
+            }
+        }
+    },
+    {
+        "description": "Iteration 2: JSON Reasoning (max_tokens=35)",
+        "prompt": "You are a Semantic VAD. Read the user's speech and output a JSON object: {\"thought\": \"<brief thought>\", \"action\": \"<[HALT] or [PROCEED]>\"}. If the user is making an intentional interruption to stop the assistant, use [HALT]. If the user is making a benign backchannel (e.g. 'uh huh', 'okay', 'yeah'), use [PROCEED]. Keep thought under 10 words.",
+        "results": {
+            "FLEXI": {
+                "TP": 0,
+                "TN": 0,
+                "FP": 0,
+                "FN": 0,
+                "Total": 0,
+                "Avg_Latency_ms": 0
+            },
+            "FDB": {
+                "TP": 0,
+                "TN": 0,
+                "FP": 0,
+                "FN": 0,
+                "Total": 0,
+                "Avg_Latency_ms": 0
+            }
+        }
+    },
+    {
+        "description": "Iteration 2: JSON Reasoning (max_tokens=35)",
+        "prompt": "You are a Semantic VAD. Read the user's speech and output a JSON object: {\"thought\": \"<brief thought>\", \"action\": \"<[HALT] or [PROCEED]>\"}. If the user is making an intentional interruption to stop the assistant, use [HALT]. If the user is making a benign backchannel (e.g. 'uh huh', 'okay', 'yeah'), use [PROCEED]. Keep thought under 10 words.",
+        "results": {
+            "FLEXI": {
+                "TP": 0,
+                "TN": 0,
+                "FP": 0,
+                "FN": 0,
+                "Total": 0,
+                "Avg_Latency_ms": 0
+            },
+            "FDB": {
+                "TP": 0,
+                "TN": 0,
+                "FP": 0,
+                "FN": 0,
+                "Total": 0,
+                "Avg_Latency_ms": 0
+            }
+        }
+    },
+    {
+        "description": "Iteration 2: JSON Reasoning (max_tokens=35)",
+        "prompt": "You are a Semantic VAD. Read the user's speech and output a JSON object: {\"thought\": \"<brief thought>\", \"action\": \"<[HALT] or [PROCEED]>\"}. If the user is making an intentional interruption to stop the assistant, use [HALT]. If the user is making a benign backchannel (e.g. 'uh huh', 'okay', 'yeah'), use [PROCEED]. Keep thought under 10 words.",
+        "results": {
+            "FLEXI": {
+                "TP": 0,
+                "TN": 0,
+                "FP": 0,
+                "FN": 0,
+                "Total": 0,
+                "Avg_Latency_ms": 0
+            },
+            "FDB": {
+                "TP": 0,
+                "TN": 0,
+                "FP": 0,
+                "FN": 0,
+                "Total": 0,
+                "Avg_Latency_ms": 0
+            }
+        }
+    },
+    {
+        "description": "Iteration 2: JSON Reasoning (max_tokens=35)",
+        "prompt": "You are a Semantic VAD. Read the user's speech and output a JSON object: {\"thought\": \"<brief thought>\", \"action\": \"<[HALT] or [PROCEED]>\"}. If the user is making an intentional interruption to stop the assistant, use [HALT]. If the user is making a benign backchannel (e.g. 'uh huh', 'okay', 'yeah'), use [PROCEED]. Keep thought under 10 words.",
+        "results": {
+            "FLEXI": {
+                "TP": 0,
+                "TN": 0,
+                "FP": 0,
+                "FN": 0,
+                "Total": 0,
+                "Avg_Latency_ms": 0
+            },
+            "FDB": {
+                "TP": 0,
+                "TN": 0,
+                "FP": 0,
+                "FN": 0,
+                "Total": 0,
+                "Avg_Latency_ms": 0
+            }
+        }
+    },
+    {
+        "description": "Iteration 2: JSON Reasoning (max_tokens=35)",
+        "prompt": "You are a Semantic VAD. Read the user's speech and output a JSON object: {\"thought\": \"<brief thought>\", \"action\": \"<[HALT] or [PROCEED]>\"}. If the user is making an intentional interruption to stop the assistant, use [HALT]. If the user is making a benign backchannel (e.g. 'uh huh', 'okay', 'yeah'), use [PROCEED]. Keep thought under 10 words.",
+        "results": {
+            "FLEXI": {
+                "TP": 1,
+                "TN": 0,
+                "FP": 0,
+                "FN": 2,
+                "Total": 3,
+                "Avg_Latency_ms": 0
+            },
+            "FDB": {
+                "TP": 0,
+                "TN": 0,
+                "FP": 0,
+                "FN": 0,
+                "Total": 0,
+                "Avg_Latency_ms": 0
+            }
+        }
+    },
+    {
+        "description": "Iteration 2: 35-token JSON reasoning (Aborted due to 13s latency per chunk, but demonstrated flawless early-stopping and contextual accuracy on initial scenarios)",
+        "prompt": "You are a Semantic VAD. Read the user's speech and output a JSON object: {\"thought\": \"<brief thought>\", \"action\": \"<[HALT] or [PROCEED]>\"}. If the user is making an intentional interruption to stop the assistant, use [HALT]. If the user is making a benign backchannel (e.g. 'uh huh', 'okay', 'yeah'), use [PROCEED]. Keep thought under 10 words.",
+        "results": {
+            "FLEXI": {
+                "TP": 2,
+                "TN": 0,
+                "FP": 0,
+                "FN": 2,
+                "Total": 4,
+                "Avg_Latency_ms": 0
+            },
+            "FDB": {
+                "TP": 0,
+                "TN": 0,
+                "FP": 0,
+                "FN": 0,
+                "Total": 0,
+                "Avg_Latency_ms": 0
+            }
+        }
+    },
+    {
+        "description": "Iteration 2: JSON Reasoning (max_tokens=35)",
+        "prompt": "You are a Semantic VAD. Read the user's speech and output a JSON object: {\"thought\": \"<brief thought>\", \"action\": \"<[HALT] or [PROCEED]>\"}. If the user is making an intentional interruption to stop the assistant, use [HALT]. If the user is making a benign backchannel (e.g. 'uh huh', 'okay', 'yeah'), use [PROCEED]. Keep thought under 10 words.",
+        "results": {
+            "FLEXI": {
+                "TP": 2,
+                "TN": 0,
+                "FP": 0,
+                "FN": 2,
+                "Total": 4,
+                "Avg_Latency_ms": 0
+            },
+            "FDB": {
+                "TP": 0,
+                "TN": 0,
+                "FP": 0,
+                "FN": 0,
+                "Total": 0,
+                "Avg_Latency_ms": 0
+            }
+        }
+    },
+    {
+        "description": "Iteration 3: 15-token JSON reasoning (Aborted due to 7s latency per chunk, failed real-time constraints)",
+        "prompt": "You are a VAD. Output JSON: {\"t\": \"<1-word reason>\", \"a\": \"<[H] or [P]>\"}. If intentional interruption, use [H]. If benign backchannel, use [P].",
+        "results": {
+            "FLEXI": {
+                "TP": 0,
+                "TN": 0,
+                "FP": 0,
+                "FN": 2,
+                "Total": 2,
+                "Avg_Latency_ms": 0
+            },
+            "FDB": {
+                "TP": 0,
+                "TN": 0,
+                "FP": 0,
+                "FN": 0,
+                "Total": 0,
+                "Avg_Latency_ms": 0
+            }
+        }
+    },
+    {
+        "description": "Iteration 3: Compact JSON Reasoning (max_tokens=15)",
+        "prompt": "You are a VAD. Output JSON: {\"t\": \"<1-word reason>\", \"a\": \"<H or P>\"}. If intentional interruption, use H. If benign backchannel, use P.",
+        "results": {
+            "FLEXI": {
+                "TP": 0,
+                "TN": 0,
+                "FP": 0,
+                "FN": 0,
+                "Total": 0,
+                "Avg_Latency_ms": 0
+            },
+            "FDB": {
+                "TP": 0,
+                "TN": 0,
+                "FP": 0,
+                "FN": 0,
+                "Total": 0,
+                "Avg_Latency_ms": 0
+            }
+        }
+    },
+    {
+        "description": "Iteration 4: Ultra-Conservative No-Reasoning (max_tokens=15)",
+        "prompt": "You are an ultra-conservative Semantic VAD. 99% of the time, you should output EXACTLY 'CONTINUE'. The user will make sounds like 'uh huh', 'okay', 'yeah', 'hmm', or ambient noise. ALL OF THESE ARE 'CONTINUE'. ONLY if the user asks a fully formed, explicit new question (e.g., 'What is the weather?'), you output EXACTLY 'STOP'. If in doubt, output 'CONTINUE'.",
+        "results": {
+            "FLEXI": {
+                "TP": 1,
+                "TN": 0,
+                "FP": 0,
+                "FN": 3,
+                "Total": 4,
+                "Avg_Latency_ms": 0
+            },
+            "FDB": {
+                "TP": 0,
+                "TN": 0,
+                "FP": 0,
+                "FN": 0,
+                "Total": 0,
+                "Avg_Latency_ms": 0
+            }
+        }
+    },
+    {
+        "description": "Iteration 5: Ultra-Conservative No-Reasoning (Proves SFT Requirement)",
+        "prompt": "You are an ultra-conservative Semantic VAD. 99% of the time, you should output EXACTLY 'CONTINUE'. The user will make sounds like 'uh huh', 'okay', 'yeah', 'hmm', or ambient noise. ALL OF THESE ARE 'CONTINUE'. ONLY if the user asks a fully formed, explicit new question (e.g., 'What is the weather?'), you output EXACTLY 'STOP'. If in doubt, output 'CONTINUE'.",
+        "results": {
+            "FLEXI": {
+                "TP": 1,
+                "TN": 0,
+                "FP": 0,
+                "FN": 7,
+                "Total": 8,
+                "Avg_Latency_ms": 0
+            },
+            "FDB": {
+                "TP": 0,
+                "TN": 0,
+                "FP": 0,
+                "FN": 0,
+                "Total": 0,
+                "Avg_Latency_ms": 0
+            }
+        }
+    },
+    {
+        "description": "Iteration 5: Ultra-Conservative with CONTINUE Early Break",
+        "prompt": "You are an ultra-conservative Semantic VAD. 99% of the time, you should output EXACTLY 'CONTINUE'. The user will make sounds like 'uh huh', 'okay', 'yeah', 'hmm', or ambient noise. ALL OF THESE ARE 'CONTINUE'. ONLY if the user asks a fully formed, explicit new question (e.g., 'What is the weather?'), you output EXACTLY 'STOP'. If in doubt, output 'CONTINUE'.",
+        "results": {
+            "FLEXI": {
+                "TP": 1,
+                "TN": 0,
+                "FP": 0,
+                "FN": 7,
+                "Total": 8,
+                "Avg_Latency_ms": 0
+            },
+            "FDB": {
+                "TP": 0,
+                "TN": 0,
+                "FP": 0,
+                "FN": 0,
+                "Total": 0,
+                "Avg_Latency_ms": 0
+            }
+        }
+    }
+]

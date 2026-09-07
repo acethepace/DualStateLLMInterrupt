@@ -1,0 +1,62 @@
+{
+    "metadata": {
+        "model_name": "unsloth/llama-3-8b-Instruct-bnb-4bit",
+        "version": "v2",
+        "config": {
+            "stop_word": "STOP",
+            "max_new_tokens": 1,
+            "assessor_prompt": "<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n\n",
+            "base_instructions": " You are a Semantic VAD dialogue manager. Analyze the user's overlapping speech. If the user is making an intentional barge-in, you must output 'STOP' as your VERY FIRST token. Otherwise, respond normally. ",
+            "user_turn_start": "<|begin_of_text|><|start_header_id|>user<|end_header_id|>\n\n"
+        },
+        "max_seq_length": 4096
+    },
+    "scenarios": [
+        {
+            "id": "flexi_emerg_001",
+            "expected_action": "STOP",
+            "events": [
+                {
+                    "chunk_index": 0,
+                    "input_chunk": "To perform CPR, first place the heel of your hand ",
+                    "assessor_latency_ms": 380.8901309967041,
+                    "assessor_output": "STOP",
+                    "triggered_stop": true
+                }
+            ],
+            "success": true
+        },
+        {
+            "id": "flexi_emerg_002",
+            "expected_action": "STOP",
+            "events": [
+                {
+                    "chunk_index": 0,
+                    "input_chunk": "Please remain calm. I am contacting the local ",
+                    "assessor_latency_ms": 85.42442321777344,
+                    "assessor_output": "STOP",
+                    "triggered_stop": true
+                }
+            ],
+            "success": true
+        },
+        {
+            "id": "flexi_benign_003",
+            "expected_action": "CONTINUE",
+            "events": [
+                {
+                    "chunk_index": 0,
+                    "input_chunk": "Please remain calm. I am contacting the local ",
+                    "assessor_latency_ms": 169.23117637634277,
+                    "assessor_output": "STOP",
+                    "triggered_stop": true
+                }
+            ],
+            "success": false
+        }
+    ],
+    "summary": {
+        "accuracy": "2/3",
+        "average_latency_ms": 211.84857686360678
+    }
+}

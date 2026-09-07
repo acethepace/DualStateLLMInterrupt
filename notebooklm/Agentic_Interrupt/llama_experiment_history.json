@@ -1,0 +1,24 @@
+[
+    {
+        "description": "Iteration 1: Baseline Llama thinking with <think> tags, 1 sentence limit (Terminated Early due to 18s latency and prompt-ignoring)",
+        "prompt": "You are a Semantic Voice Activity Detector. Analyze the user's overlapping speech. If the user makes an intentional barge-in (e.g. asking a new question, correcting a fact, or adding new information), you must output 'STOP'. If the user only utters a benign backchannel to show they are listening (e.g. 'uh huh', 'okay', 'yeah', 'right') or makes ambient noise, you must output 'CONTINUE'. Before answering, think internally by wrapping your reasoning in <think> and </think> tags. Keep your reasoning to exactly ONE short sentence. Then output your final answer on a new line.",
+        "results": {
+            "FLEXI": {
+                "TP": 0,
+                "TN": 0,
+                "FP": 0,
+                "FN": 114,
+                "Total": 114,
+                "Avg_Latency_ms": 0
+            },
+            "FDB": {
+                "TP": 0,
+                "TN": 0,
+                "FP": 0,
+                "FN": 0,
+                "Total": 0,
+                "Avg_Latency_ms": 0
+            }
+        }
+    }
+]

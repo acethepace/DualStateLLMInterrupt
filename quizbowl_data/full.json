@@ -1,0 +1,1002 @@
+[
+  {
+    "id": "advqa_0",
+    "question": "How many non-pet characters live in SpongeBob's neighborhood?",
+    "answer": "3"
+  },
+  {
+    "id": "advqa_1",
+    "question": "Which political party governs the country directly south of Botswana?",
+    "answer": "African National Congress"
+  },
+  {
+    "id": "advqa_2",
+    "question": "In the 1920s, a tiger, a kangaroo, a donkey, a pig, and a bear were bought from Harrods in London. Who was this buyer?",
+    "answer": "AA Milne"
+  },
+  {
+    "id": "advqa_3",
+    "question": "What company launched their first advertisement campaign during the 1984 Super Bowl that was inspired by George Orwell's dystopian novel \"1984\"?",
+    "answer": "Apple"
+  },
+  {
+    "id": "advqa_4",
+    "question": "What soldiers would bite during surgical procedures lacking anesthetics is also the name of what extinct NBA team?",
+    "answer": "Bullets"
+  },
+  {
+    "id": "advqa_5",
+    "question": "What vegetable did Julio Cortazar compare to \"the eye of an insect magnified a thousand times\" and the \"vegetable brain\" in his literary works?.",
+    "answer": "Cauliflower"
+  },
+  {
+    "id": "advqa_6",
+    "question": "A play by Arthur Miller accounts what series of legal proceedings that accused over 200 individuals of consorting with the Devil in late 17th century New England?",
+    "answer": "Salem Witch Trials"
+  },
+  {
+    "id": "advqa_7",
+    "question": "Suppose you have the series 4/1, minus 4/3, plus 4/5, minus 4/7 and so on (4 over odd numbers with alternating sign). What is the sum of this series?",
+    "answer": "pi (this is the Taylor expansion for arctangent multiplied by four)"
+  },
+  {
+    "id": "advqa_8",
+    "question": "Who did not win the 1969 prize for an experiment that confirmed that DNA carried genetic information?",
+    "answer": "Martha Chase (her boss, Alfred Hershey did)"
+  },
+  {
+    "id": "advqa_9",
+    "question": "Suppose you are in the Spanish town of Llivia and you start walking until you reach another country. What country would you enter?",
+    "answer": "France (Llivia is an exclave surrounded by France)"
+  },
+  {
+    "id": "advqa_10",
+    "question": "Despite a childhood accident that left his shoulders permanently crooked, what Lebanese-American author of a work that entered the public domain in 2019 became famous for his poetry and subtle influence on New Age philosophy?",
+    "answer": "Gibran Khalil Gibran/Khalil Gibran"
+  },
+  {
+    "id": "advqa_11",
+    "question": "What was the new feature installed in 1899 on the building of a New York restaurant for the first time ever?",
+    "answer": "Revolving Door"
+  },
+  {
+    "id": "advqa_12",
+    "question": "What phrase is common to the title of novel featuring a fictional Nat King Cole recording, a Gene Autry film and song, and an I-95 attraction between the Carolinas?",
+    "answer": "South of the Border"
+  },
+  {
+    "id": "advqa_13",
+    "question": "What meme that features a man sitting in a chair next to an unlit cigar and in front of a fireplace came from the Last Dance?",
+    "answer": "and I took that personally"
+  },
+  {
+    "id": "advqa_14",
+    "question": "This Calculus theorem requires continuity on a closed interval between two points, a and b, as well as differentiability. What theorem, which requires the functional values of a and b to match, produces that a point between the open interval has a derivative of zero?",
+    "answer": "[\"Rolle's Theorem\"]"
+  },
+  {
+    "id": "advqa_15",
+    "question": "This book was created by a known author who creates children's books, one of which has a creature who \"speaks for the trees\" Name the book by the same author whose title consists of a type of aquatic creature, two colors of the rainbow, and numbers.",
+    "answer": "One Fish, Two Fish, Red Fish, Blue Fish"
+  },
+  {
+    "id": "advqa_16",
+    "question": "This cheerful duo sings in a musical which repeats a phrase about the lack of trouble, in an East African language, while on the protagonist's journey home. What is the name of this duo?",
+    "answer": "Timon and Pumbaa"
+  },
+  {
+    "id": "advqa_17",
+    "question": "In which novel, written by an author who was originally a botanist and born in Cuba, features a fictitious conversation between a merchant who travelled a road that was known by a smooth natural material and an emperor who loved to write Chinese poetry, both of which are actual people in history?",
+    "answer": "Invisible Cities"
+  },
+  {
+    "id": "advqa_18",
+    "question": "Which American alternative pop singer, who rose to popularity in 2012 after appearing on The Voice, shares her name with a song written by Toto in 1999?",
+    "answer": "Melanie Martinez"
+  },
+  {
+    "id": "advqa_19",
+    "question": "Who was the woman soccer player known to have the third most international goals scored on the United States national team as of 2017?",
+    "answer": "Mia Hamm"
+  },
+  {
+    "id": "advqa_20",
+    "question": "What is the name of the first mosque in the world that was built by Prophet Muhammed (s.a.w) during his hijrah from Mecca to Medina?",
+    "answer": "Quba Masjid"
+  },
+  {
+    "id": "advqa_21",
+    "question": "What song refers to this popular singer's breakup with her ex-partner, who called her 23 times and then proceeded to marry a model two months after they broke up?",
+    "answer": "Ring"
+  },
+  {
+    "id": "advqa_22",
+    "question": "A large portion of the sequence for the reference genome for the International Human Genome Sequencing Consortium in the human genome project came from a man from which US city?",
+    "answer": "Buffalo, New York"
+  },
+  {
+    "id": "advqa_23",
+    "question": "What U.S. criminal and world champion of his sport violated a United Nations sanction in 1992 and proceeded to live in Asia and Europe?",
+    "answer": "Bobby Fischer or Robert James Fischer"
+  },
+  {
+    "id": "advqa_24",
+    "question": "Who raised a bird in the Shawshank Redemption",
+    "answer": "Brooks Hatlen"
+  },
+  {
+    "id": "advqa_25",
+    "question": "What is awarded to the opposing team after a player scores in their own goal during a kickoff in soccer?",
+    "answer": "Corner Kick"
+  },
+  {
+    "id": "advqa_26",
+    "question": "What cardinal direction on a compass can not be found in the name of a US state?",
+    "answer": "East"
+  },
+  {
+    "id": "advqa_27",
+    "question": "This country is the first country to develop the voicemail technology and is home to the largest known dog cemetery of the ancient world.",
+    "answer": "Israel"
+  },
+  {
+    "id": "advqa_28",
+    "question": "Name the country whose capital is named after the American president who introduced his namesake doctrine regarding the independence of Latin America.",
+    "answer": "Liberia"
+  },
+  {
+    "id": "advqa_29",
+    "question": "For 10 points, name the title character of the 2022 Best Picture nominee about a fictional conductor who was mentored by Leonard Bernstein.",
+    "answer": "Lydia Tar"
+  },
+  {
+    "id": "advqa_30",
+    "question": "This city was once named after a man born Ioseb Besarionis dze Jughashvili",
+    "answer": "Volgograd"
+  },
+  {
+    "id": "advqa_31",
+    "question": "This company was co-founded in 1977 by the man who in May 2016 donated 200 million to the University of Southern California for establishing a cancer research center",
+    "answer": "Oracle Corporation"
+  },
+  {
+    "id": "advqa_32",
+    "question": "This is the most common medication used to treat the disease that killed Vasco da Game, Pope Urban VII, and Oliver Cromwell",
+    "answer": "Quinine"
+  },
+  {
+    "id": "advqa_33",
+    "question": "This player's famous nickname came about when he threw with such velocity that a nearly fence looked as if it had been hit by a large air mass that rotates around a strong center of low atmospheric pressure, counterclockwise in the Northern Hemisphere",
+    "answer": "Cy Young"
+  },
+  {
+    "id": "advqa_34",
+    "question": "This man is credited with coining the terms Cubism, Orphism, and Surrealism",
+    "answer": "Guillaume Apollinaire"
+  },
+  {
+    "id": "advqa_35",
+    "question": "This character has a version of Andy's Warhol's Shot Marilyn's hanging in his bedroom. This version features horseshoes.",
+    "answer": "BoJack Horseman"
+  },
+  {
+    "id": "advqa_36",
+    "question": "This university, founded by a railroad tycoon in 1885, has a tree as its unofficial mascot",
+    "answer": "Stanford University"
+  },
+  {
+    "id": "advqa_37",
+    "question": "This athlete returned to his primary sport after playing baseball with a two word press release that read \"I'm back\"",
+    "answer": "Michael Jordan"
+  },
+  {
+    "id": "advqa_38",
+    "question": "This country's name means \"equator\" in Spanish",
+    "answer": "Ecuador"
+  },
+  {
+    "id": "advqa_39",
+    "question": "According to a famous holiday song by Adam Sandler, OJ Simpson is not a believer in this world religion",
+    "answer": "Judaism"
+  },
+  {
+    "id": "advqa_40",
+    "question": "This actor is known for hitting another famous person after the other person made a joke about his wife's lack of hair at the Oscars in 2022",
+    "answer": "Will Smith"
+  },
+  {
+    "id": "advqa_41",
+    "question": "A person with this title used the topayauri (scepter), ushno (golden throne), and suntur p\u00e1ucar (feathered pike).",
+    "answer": "Sapa Inca"
+  },
+  {
+    "id": "advqa_42",
+    "question": "Who wrote a novel featuring Mugo, an introverted villager of Thabai",
+    "answer": "[\"Ng\u0169g\u0129 wa Thiong'o\"]"
+  },
+  {
+    "id": "advqa_43",
+    "question": "This city is the birthplace of a candidate whose opponent called him \"Sleepy Joe\"",
+    "answer": "Scranton, Pennsylvania"
+  },
+  {
+    "id": "advqa_44",
+    "question": "Several of this author's curious books have onomatopoeia in the title. Perhaps if the onomatopoeia were in the author's name instead of the title, you'd find the word \"Scuttle\" or \"Hiss\" on the cover instead. What is the author's name?",
+    "answer": "Mary Roach"
+  },
+  {
+    "id": "advqa_45",
+    "question": "Chemists know that these organic compounds feature four rings with a variety of bonds. \n  Baseball fans associate this class of organic compounds with Barry Bonds, who has no rings.",
+    "answer": "Steroid"
+  },
+  {
+    "id": "advqa_46",
+    "question": "The seven actors in this film have 6 Oscars, 6 Tonys, and 13 Golden Globes between them; nobody could claim that \"the leads are weak\". Despite all of that star power and a Pulitzer-winning script, though, the film adaptation couldn't close the deal, and won only a minor award at Venice.",
+    "answer": "Glengarry Glen Ross"
+  },
+  {
+    "id": "advqa_47",
+    "question": "Over 100 years before \"random forest\" was trademarked, and long before the invention of the transistor or digital computer, this bare-bones numerical approach was invented to help identify which variables in a high-dimensional data set are the most relevant. It is used in digital signal processing, mechanical engineering, predictive modeling, and data cleaning for machine learning.",
+    "answer": "Principal component analysis"
+  },
+  {
+    "id": "advqa_48",
+    "question": "This American group's now-iconic name was factually inaccurate when it was first applied to the group, in the early 1980s: not because any of the members were wild animals, but because the drummer at the time was a woman.",
+    "answer": "Beastie Boys"
+  },
+  {
+    "id": "advqa_49",
+    "question": "This NFL team did not have a starting quarterback in 1998, nor any players at the nose tackle or defensive end position, or in fact, any players or roster at all. Their fans once famously deployed a large three-piece banner in the end zone which read \"GPODAWUND\", because two sections of the sign had gotten swapped.",
+    "answer": "Cleveland Browns"
+  },
+  {
+    "id": "advqa_50",
+    "question": "This semi-mythical American trickster figure, merry prankster, and sledgehammer juggler was not much of an author or poet himself. Nonetheless he became the inspiration for characters in Ken Kesey and Jack Kerouac's books, and he shows up by name in songs by Tom Waits, the Grateful Dead, and Death Cab for Cutie.",
+    "answer": "Neal Cassady"
+  },
+  {
+    "id": "advqa_51",
+    "question": "If a librarian were making a list of Wikipedia articles which are not self-referential, it's a good bet that an article about this puzzling discovery in set theory would not make the list. On the other hand, after some reflection, you might decide that it must go on the list. Or perhaps you'd then feel compelled to remove it.",
+    "answer": "[\"Russell's paradox\"]"
+  },
+  {
+    "id": "advqa_52",
+    "question": "Some experts object to all versions of this grammatical construct, but others are more flexible. Hopefully, you'll be able to identify it from these examples. It should be easier than shooting an elephant in your pajamas.",
+    "answer": "Dangling modifier"
+  },
+  {
+    "id": "advqa_53",
+    "question": "The 1973 Thomas Rockwell novel for children, about a school boy who loses a gross dare, was written in America. However, a similarly-titled religious edict published in 1521 hails from this old European city of about 80,000.",
+    "answer": "Worms, Germany"
+  },
+  {
+    "id": "advqa_54",
+    "question": "Elementary students learn the spelling of this not-so-peaceful body of water with the mnemonic \"Pa, See if I see.\"",
+    "answer": "Pacific Ocean"
+  },
+  {
+    "id": "advqa_55",
+    "question": "This island once exported chunks of semi-precious silicate stone used as currency throughout the region almost 4,000 years ago. While its primary currency is much less ubiquitous today, its modern silicon exports are still semi-precious to all its trading partners.",
+    "answer": "Taiwan"
+  },
+  {
+    "id": "advqa_56",
+    "question": "If you found yourself on an island where two different one-peso coins circulated, and laid one of each of them side by side, they'd nearly be as large as the smallest bird you could find on that same island. Those two pesos are drastically different in value though, at a ratio of almost 25 to 1. Where is the island?",
+    "answer": "Cuba"
+  },
+  {
+    "id": "advqa_57",
+    "question": "This famous Roman heavenly twin is technically the Alpha, but is outshone by his brother the Beta, possibly because the latter had Zeus for a father.",
+    "answer": "Castor (star)"
+  },
+  {
+    "id": "advqa_58",
+    "question": "Despite its association with a wall begun in 122 by a Roman Emperor, a 1237 treaty fixed what geo-political concept to be a river that enters the Sea at Berwick?",
+    "answer": "Scottish-English Border"
+  },
+  {
+    "id": "advqa_59",
+    "question": "What short-lived government (in contrast, its successor lasted nearly 300 years with a brief interruption) has a name that literally means \"to follow\" and built a large waterway that connected two of its country's major bodies of water?",
+    "answer": "Sui Dynasty"
+  },
+  {
+    "id": "advqa_60",
+    "question": "Whose face is on the bill worth 400 nickels?",
+    "answer": "Andrew Jackson"
+  },
+  {
+    "id": "advqa_61",
+    "question": "What astronomical object's pronunciation is controversial for potty-humor related reasons?",
+    "answer": "Uranus"
+  },
+  {
+    "id": "advqa_62",
+    "question": "What lake gives its name to an entity that also borders 4 lakes to its west?",
+    "answer": "Lake Ontario"
+  },
+  {
+    "id": "advqa_63",
+    "question": "Ian Smith's country's national anthem replaced a poem by what man with new lyrics?",
+    "answer": "Friedrich Schiller"
+  },
+  {
+    "id": "advqa_64",
+    "question": "What city's MLB team sounds like the name of a female horse?",
+    "answer": "Philadelphia"
+  },
+  {
+    "id": "advqa_65",
+    "question": "Take away four from a group including Barnard and Smith, and you get what play?",
+    "answer": "Three Sisters (play)"
+  },
+  {
+    "id": "advqa_66",
+    "question": "What place provides a rhyme for the title in the Rogers and Hart song Manhattan?",
+    "answer": "Staten Island"
+  },
+  {
+    "id": "advqa_67",
+    "question": "Christopher Paolini's first fantasy novel is a homophone of what Iberian region?",
+    "answer": "Aragon"
+  },
+  {
+    "id": "advqa_68",
+    "question": "A character named for what general often wears a campaign shirt for Pedro?",
+    "answer": "Napoleon"
+  },
+  {
+    "id": "advqa_69",
+    "question": "The national capital closest to the South Pole is named for what man?",
+    "answer": "Arthur Wellesley, 1st Duke of Wellington"
+  },
+  {
+    "id": "advqa_70",
+    "question": "On The Colbert Report a host from what channel is nicknamed Papa Bear?",
+    "answer": "Fox News"
+  },
+  {
+    "id": "advqa_71",
+    "question": "Who was president when the original Star Wars came out?",
+    "answer": "Jimmy Carter"
+  },
+  {
+    "id": "advqa_72",
+    "question": "Ice Cube compared his crime record to what man whose machinations left Roman Polanski a widower?",
+    "answer": "Charles Manson"
+  },
+  {
+    "id": "advqa_73",
+    "question": "Batman's first name was inspired by what important medieval figure?",
+    "answer": "Robert the Bruce"
+  },
+  {
+    "id": "advqa_74",
+    "question": "Which musician made fun of Ronald Reagan for misinterpreting the message of one of his songs as patriotic?",
+    "answer": "Bruce Springsteen"
+  },
+  {
+    "id": "advqa_75",
+    "question": "The name of what African country is one letter different than the name of the capital of the Maldives?",
+    "answer": "Mali"
+  },
+  {
+    "id": "advqa_76",
+    "question": "A German admiral sailing for Russia named what islands for an English captain and not for the librettist of the HMS Pinafore nor for the announcer of Jeopardy!",
+    "answer": "Gilbert Islands"
+  },
+  {
+    "id": "advqa_77",
+    "question": "What ceremonial phrase started with an impatient mayor in September 1950 and does not date back to the origins of an annual festival 200 years ago? Either the English translation, the standard foreign form, or the local southern foreign dialect is fine.",
+    "answer": "O zapft is, It's tapped, Es ist angezapft"
+  },
+  {
+    "id": "advqa_78",
+    "question": "\"None of them knew the color of the sky\" is the opening sentence of a story by what author, who shares his last name with a type of long-necked bird?",
+    "answer": "Stephen Crane"
+  },
+  {
+    "id": "advqa_79",
+    "question": "What 2022 movie is based on the adolescence of the director of Jurassic Park and Schindler's List?",
+    "answer": "The Fabelmans"
+  },
+  {
+    "id": "advqa_80",
+    "question": "What type of animal is the mascot of the university that was attended by running back Ron Dayne?",
+    "answer": "Badger"
+  },
+  {
+    "id": "advqa_81",
+    "question": "What position is currently held by a former prime minister of Portugal, and has previously been held by a Swedish man who died in a 1961 plane crash?",
+    "answer": "Secretary-General of the United Nations"
+  },
+  {
+    "id": "advqa_82",
+    "question": "What Arabic number (e.g. 9 or 99) can be written as the sum of the Roman numerals CI and XVI?",
+    "answer": "117 (number)"
+  },
+  {
+    "id": "advqa_83",
+    "question": "Which presidential election occurred 220 years after the one in which Thomas Jefferson defeated the incumbent, John Adams?",
+    "answer": "2020 United States presidential election"
+  },
+  {
+    "id": "advqa_84",
+    "question": "What war is named for a length of time equal to 84 months?",
+    "answer": "Seven Years' War"
+  },
+  {
+    "id": "advqa_85",
+    "question": "What type of bond in chemistry shares its name with a number that is sometimes approximated as 22/7?",
+    "answer": "Pi bond"
+  },
+  {
+    "id": "advqa_86",
+    "question": "What 19th century philosopher, whose first and middle name is reminiscent of the host of The Daily Show before Trevor Noah, has a last name that rhymes with bill?",
+    "answer": "John Stuart Mill"
+  },
+  {
+    "id": "advqa_87",
+    "question": "What author wrote an 1881 novel whose four-word title is the same as the title of a T. S. Eliot poem, and a 1903 novel whose two-word title is the same as the title of a Hans Holbein painting?",
+    "answer": "Henry James"
+  },
+  {
+    "id": "advqa_88",
+    "question": "A university, a culinary dish, and an airport code are the notable remaining users of what older form a city's name that officially starts with a \"B\"?",
+    "answer": "Peking"
+  },
+  {
+    "id": "advqa_89",
+    "question": "Vincenzo from the drama of the same name, sits down with Hong Yu Chan to enjoy what libration whose name literally means \"to carelessly strain\"",
+    "answer": "makgeolli"
+  },
+  {
+    "id": "advqa_90",
+    "question": "What country shares a language with its more populous northern neighbor but in its written form omits a letter that looks like a Greek beta, writing the sound instead by doubling another letter? That character appears in that language's words for foot, big, outside, and street.",
+    "answer": "Swiss German"
+  },
+  {
+    "id": "advqa_91",
+    "question": "If during weightlifting you load up your bar with two 20kg plates on each side and the standard olympic bar itself weighs the same as one of those plates, how much total weight would one lift?",
+    "answer": "100kg / 220 pounds"
+  },
+  {
+    "id": "advqa_92",
+    "question": "What 2000 film features the actors who played Batman from 2008's \"The Dark Night\", the Joker from 2016's \"Suicide Squad\", and the Green Goblin from 2002's Spiderman and was the directed by the same director as 2005's \"The Notorious Betty Paige\"?",
+    "answer": "American Psycho"
+  },
+  {
+    "id": "advqa_93",
+    "question": "What country won the most recent world cup?",
+    "answer": "Argentina"
+  },
+  {
+    "id": "advqa_94",
+    "question": "Herodotus claims that the Persians used what animal against their foes at the battle of Pelusium?",
+    "answer": "cats"
+  },
+  {
+    "id": "advqa_95",
+    "question": "In 2011, education minister Armen Ashotyan announced that what board game as a required subject in his nation's schools?",
+    "answer": "chess"
+  },
+  {
+    "id": "advqa_96",
+    "question": "Bayer was the first company to combine what organic material with the contents of its Asprin bottles, which functions both as a dessecant and to prevent pills from breaking?",
+    "answer": "cotton balls (or rayon)"
+  },
+  {
+    "id": "advqa_97",
+    "question": "In his memoirs, Fran\u00e7ois Adrien Henri Dieudonn\u00e9 Thi\u00e9bault described what man being attacked by a swarm of bunnies after a celibration of the Treaty of Tilsit?",
+    "answer": "Napoleon"
+  },
+  {
+    "id": "advqa_98",
+    "question": "What country ceased to be the largest nation on its continent in 2011?",
+    "answer": "Sudan"
+  },
+  {
+    "id": "advqa_99",
+    "question": "What pair who own 2000 bitcoin are portrayed as antagonists in the Social Network?",
+    "answer": "Winklevoss twins"
+  },
+  {
+    "id": "protobowl_0",
+    "question": "One of this city's most famous attractions features Tritons leading hippocampi and the shell chariot of the central figure, Oceanus. Ostia was the ancient port of this city, which was built in part on the Palatine and Quirinal Hills. Attractions in this city include the Spanish Steps, the Trevi Fountain, and the Colosseum. For 10 points, name this city on the Tiber, the capital of Italy.",
+    "answer": "Roma,"
+  },
+  {
+    "id": "protobowl_1",
+    "question": "n one episode of this show, Parasprites invade the central location. Another episode sees a dragon threaten the health of the town with smoke from its snoring. In another episode, Spike mocks a certain purple unicorn's inability to assist during Winter Wrap-Up. For 10 points, name this show featuring equine characters like Princess Celestia and Twilight Sparkle, a fourth-generation reboot of a girls' show.",
+    "answer": "My Little Pony: Friendship is Magic"
+  },
+  {
+    "id": "protobowl_2",
+    "question": "A White House memo released on the day of this event cited \"the battle of the laboratories\" and urged immediate acceptance of the Potsdam Declaration. A bestselling book about this was written by John Hersey. Paul Tibbets commanded the sortie that executed this action, which was carried out using the device \"Little Boy\" from the (*) B-29 Enola Gay. For 10 points, identify this first use of an atomic weapon in war.",
+    "answer": "grammatical variants"
+  },
+  {
+    "id": "protobowl_3",
+    "question": "n this state's capital, the Lane Avenue Bridge crosses the Olentangy River. Another of its cities contains historic Italian architecture in its Over-the-Rhine neighborhood, while another city, at the mouth of the Cuyahoga River, contains Case Western Reserve University. Much of its northern border is at Lake (*) Erie, and it is separated from Kentucky by its namesake river. For 10 points, name this state containing Cincinnati, Cleveland, and Columbus.",
+    "answer": "Ohio"
+  },
+  {
+    "id": "protobowl_4",
+    "question": "This character becomes his team's leader after defeating Spitz in a final fight. After being sold to Mercedes, Hal, and Charles, he is rescued by John Thornton. His devotion to Thornton is total; he saves Thornton's life from a drunken miner and from river rapids. (*) For 10 points, what dog stolen from California becomes a Yukon sled dog in Jack London's The Call of the Wild?",
+    "answer": "Buck"
+  },
+  {
+    "id": "protobowl_5",
+    "question": "One of these entities \"of variation\" equals the standard deviation divided by the mean. Spearman and Pearson name two of these entities that measure correlation. \"Binomial\" ones give the number of ways k unordered outcomes can be chosen from n possible and are given by Pascal's Triangle. For 10 points, give this term for numbers that multiply a variable in a mathematical expression.",
+    "answer": "coefficients"
+  },
+  {
+    "id": "protobowl_6",
+    "question": "Factors of 1 plus this value all to the nth power appear in both the numerator and denominator of the amortization formula. Dividing a final value by the nth power of one plus this quantity yields present value. Factors of one plus this quantity to the nth power and one plus n times this quantity, when multiplied by a (*) principal value, represent its compound and simple types. For 10 points, name this quantity that represents the cost of borrowing money.",
+    "answer": "interest"
+  },
+  {
+    "id": "protobowl_7",
+    "question": "This man elucidated Heron's formula before Heron proved it. He supposedly created a death ray out of mirrors in order to defeat an invading Roman army. A task given to him by Hiero (\"HIGH\"-er-oh) of Syracuse led to his discovery that the buoyancy of an object is equal to the fluid displaced. For 10 points, who supposedly ran into the streets shouting \"Eureka!\" after discovering how to test whether Hiero's crown was made of pure gold?",
+    "answer": "Archimedes of Syracuse"
+  },
+  {
+    "id": "protobowl_8",
+    "question": "An early invention used to make art works in this medium was the daguerreotype [duh-gayr-\"row\"-\"type\"]. Eadweard [\"edward\"] Muybridge created works in this medium which clarified the method by which horses gallop. The Steerage and Migrant Mother are specific examples of these types of art works. Works in this medium showing Yosemite National Park were created by (*) Ansel Adams. For 10 points, name these objects which can be instantly produced by Polaroids.",
+    "answer": "photographs"
+  },
+  {
+    "id": "protobowl_9",
+    "question": "A Sanskrit group of these writings is found in the Panchatantra (PAHN-chah-THAN-trah). Marianne Moore translated a collection of these writings by Jean de la Fontaine. The Perry Index catalogs ones written by a Greek slave; those include stories about the \"Tortoise and the Hare\" and \"Fox and the Grapes Out of Reach.\" For 10 points, name these stories that often contain animals and a moral lesson, many of which were written by Aesop.",
+    "answer": "fables"
+  },
+  {
+    "id": "protobowl_10",
+    "question": "Ajax the Greater went mad after this man received the armor of Achilles. Hermes gave this man the herb moly to protect him from the magic of the witch Circe, who then told him about the dangers of (*) Scylla and Charybdis. He was trapped by the nymph Calypso for seven years, during which his son Telemachus searched for him. For 10 points, name this Greek figure who spent ten years at sea trying to return to his wife Penelope.",
+    "answer": "Odysseus"
+  },
+  {
+    "id": "protobowl_11",
+    "question": "Two liquids are said to be immiscible if they cannot combine to form this type of mixture. In the most common form of this mixture, solid particles are small enough to completely dissolve in a liquid. For 10 points, name this type of mixture that is not a colloid or suspension, an example of which is sugar dissolved in water.",
+    "answer": "solution"
+  },
+  {
+    "id": "protobowl_12",
+    "question": "Lewis defined these substances as acceptors of electron pairs. The presence of the hydronium ion is necessary in the Arrhenius definition. Strong examples of these substances include nitric and sulfuric, which fit the Bronsted-Lowry model as donors of hydrogen ions and turn blue litmus paper red. For 10 points, name these substances with pH lower than 7 that neutralize bases.",
+    "answer": "acids"
+  },
+  {
+    "id": "protobowl_13",
+    "question": "This state was the site of an indecisive battle between Henry Clinton and George Washington at Monmouth Courthouse. The Pine Barrens are found in the south-central part of this state, whose beach destinations include Cape May, Wildwood, and Atlantic City. The Delaware River forms this state's western border with Pennsylvania. For 10 points, what mid-Atlantic state has its capital at Trenton?",
+    "answer": "New Jersey"
+  },
+  {
+    "id": "protobowl_14",
+    "question": "In this author's first Pulitzer Prize-winning work, the Generalissimo orders the execution of Corporal Zsettslani (\u201cSET-slah-nee\u201d). His second Pulitzer-winning novel revolves around Lucius Priest, a resident of Yoknapatawpha (\u201cYOCK-NAH-puh-TAH-fuh\u201d) County. This author wrote novels about Thomas Sutpen and about the death of Addie Bundren. For 10 points, name this American author of Absalom! Absalom!, As I Lay Dying, and The Sound and the Fury.",
+    "answer": "Faulkner"
+  },
+  {
+    "id": "protobowl_15",
+    "question": "This man's reign began with the Streltsy (SHTRELT-zee) Revolt instigated by his half-sister, Sophia. He passed a law which required all men to either cut their beards or pay a tax. This leader created the Table of Ranks to organize the government and limit the power of the Boyars (boh-YAHRS). He defeated Charles XII of Sweden in the Great Northern War. For 10 points, name this tsar who established Russia as a dominant European power.",
+    "answer": "Peter the Great"
+  },
+  {
+    "id": "protobowl_16",
+    "question": "In 1948 Nathuram Godse (\u201cnuh-THOO-ram GOD-see\u201d) shot this man, whose major work, Hind Swaraj (\u201cHINNED SWAR-ahzh\u201d), was published in South Africa before World War I. His protest against the salt tax was part of his campaign of satyagraha (\u201cSOT-yuh-GRAH-hah\u201d), which sought to undermine British rule through non-cooperation. For 10 points, what nonviolent leader of India's independence movement was known as the Mahatma?",
+    "answer": "Mohandas (Karamchand) Gandhi"
+  },
+  {
+    "id": "protobowl_17",
+    "question": "In one of this author's novels, Andrew Bolkonski is wounded at Austerlitz and Helene Kuragina's lover is nearly killed in a duel by her husband, Pierre Bezukhov (bezh-oo-KOV). In Another of his works ends with the title lover of Count Vronsky (VRON-skee) throwing herself under a train. For 10 points, name this Russian author who depicted Napoleon's invasion of Russia in War and Peace and wrote Anna Karenina (care-IN-in-ah).",
+    "answer": "Leo Tolstoy"
+  },
+  {
+    "id": "protobowl_18",
+    "question": "One movement with this name involved painters like Aaron Douglas and Jacob Lawrence, who were influenced by African folk art. In addition to that \"Harlem\" movement, another period by this name flourished in the fifteenth and sixteenth centuries and was based on humanism and classical influences. Raphael and Leonardo da Vinci were part of, for 10 points, what period of art whose name is French for \"rebirth\"?",
+    "answer": "Renaissance\""
+  },
+  {
+    "id": "protobowl_19",
+    "question": "One copy of this document was sent to the Cinque [sink] ports. It notably banned the use of fish-weir traps, and Innocent III tried to make it void after one of its signers repented to him. This agreement created a council of 25 barons, who fought a war after the loser of the Battle of Bouvines failed to follow it. (*) For 10 points, name this document which established habeas corpus, a charter signed at Runnymede by John of England.",
+    "answer": "Great Charter"
+  },
+  {
+    "id": "protobowl_20",
+    "question": "Most stories hold that this deity, not Athena, blinded the prophet Tiresias (TYE-ree-see-uhs). She cursed the nymph Echo to repeat only what others had said. This figure gave birth to Hephaestus (heh- FESS-tuss) and later threw him out of Olympus because of his ugliness. After her husband impregnated Leto (LEE-toh), she refused to let Leto give birth on land. For 10 points, name this Greek goddess and wife of Zeus.",
+    "answer": "Hera"
+  },
+  {
+    "id": "protobowl_21",
+    "question": "Franz Schubert's three symphonies in this key are nicknamed Tragic, Little, and Great. Mozart's Jupiter Symphony and Bach's first Prelude from The Well Tempered Clavier are in this major key, whose relative minor is A minor. Instruments pitched in this key include the bassoon, oboe, and flute. A scale in this key played on piano only hits (*) white keys. For 10 points, name this musical key that contains no sharps or flats.",
+    "answer": "C major"
+  },
+  {
+    "id": "protobowl_22",
+    "question": "Two brothers of this surname discovered piezoelectricity and a namesake point at which ferromagnetic materials become paramagnetic. One of those brothers explored the properties of the ore pitchblende with his wife. That wife later won a second Nobel Prize for her work isolating radium, and named the element polonium after her native country. For 10 points, give the last name of physicist Pierre and his wife Marie.",
+    "answer": "(Paul-) Jacques Curie"
+  },
+  {
+    "id": "protobowl_23",
+    "question": "Fatty acids contain long chains of hydrogen and this element. Methane consists of four hydrogens bonded to this element. One form of this element in a cylindrical structure is the strongest known material, and is known as a namesake nanotube. Organic chemistry is the study of molecules containing this element. Its allotropes include diamond and graphite. For 10 points, name this element that makes up all living things.",
+    "answer": "carbon nanotubes"
+  },
+  {
+    "id": "protobowl_24",
+    "question": "One of these creatures named Ladon guarded the golden apples of the Hesperides [hes-PEER-uh-dees]. A Babylonian one of these creatures known as Tiamat was slain by Marduk [MAHR-dook]. One in Norse mythology was named Fafnir and was slain for his gold. (*) Puff is a \"magic\" example of, for 10 points, what kind of legendeary reptile that breathed fire and was allegedly slain by Saint George?",
+    "answer": "Dragons"
+  },
+  {
+    "id": "protobowl_25",
+    "question": "This author wrote about a country at war with Blefuscu; he also created the land of Glubbdrubdrib and a flying island, Laputa. One of his characters goes to a land with 72-feet-tall men. This author also suggested that the rich should eat poor Irish children in \"A Modest Proposal.\" For 10 points, identify this British author who wrote of the title character's journey to Lilliput in Gulliver's Travels.",
+    "answer": "Jonathan Swift"
+  },
+  {
+    "id": "protobowl_26",
+    "question": "The line \"Such is my love, to thee I so belong\" comes from one of these works written to a \"Fair Youth.\" Hundreds of these works dedicated to Laura are contained in Il Canzoniere by Petrarch, while a \"Dark Lady\" is the subject of 26 of this type of (*) poem. \"Shall I compare thee to a summer's day?\" was one of 154 written by William Shakespeare. For 10 points, name this 14-line poetic form.",
+    "answer": "sonnet"
+  },
+  {
+    "id": "protobowl_27",
+    "question": "This instrument descended from the chalumeau (\u201cSHAL-oo-mow\u201d). An improvised solo by one of these instruments opens George Gershwin's Rhapsody In Blue. Famously played by Benny Goodman, this instrument also comes in bass and contrabass varieties, and high notes on this instrument require the register key. For 10 points, name this woodwind instrument tuned in B flat, which plays lower notes than the flute.",
+    "answer": "clarinet"
+  },
+  {
+    "id": "protobowl_28",
+    "question": "In one of his paintings, this man included a self-portrait as the flayed skin held by St. Bartholomew; the nudity in that painting was censored by the Catholic Church. This man sculpted a horned Moses and worked on the tomb of Pope (*) Julius II. This artist showed the end of times in his mural titled The Last Judgment. For 10 points, identify this Renaissance artist who painted the ceiling of the Sistine Chapel.",
+    "answer": "Michelangelo (di Lodovico) Buonarroti (Simoni)"
+  },
+  {
+    "id": "protobowl_29",
+    "question": "This man found that nothing would grow in nutrient broth unless it was exposed to the air, thereby rejecting the theory of spontaneous generation and providing evidence for germ theory. He generalized Edward Jenner's work with smallpox immunity to develop vaccines for anthrax and rabies. For 10 points, name this French scientist who engineered a namesake process to destroy microorganisms in milk and other food products.",
+    "answer": "word forms after \"process\""
+  },
+  {
+    "id": "protobowl_30",
+    "question": "The late Senator Robert Byrd once held the rank of Exalted Cyclops in this organization, whose first major leader was Nathan Bedford Forrest. The Civil Rights Act of 1871 was also named for this group. D.W. Griffith's film The Birth of a Nation glorifies this group, which was sued for (*) lynching Michael Donald. For 10 points, name this white supremacist group that burns crosses and wears white clothing.",
+    "answer": "Ku Klux Klan"
+  },
+  {
+    "id": "protobowl_31",
+    "question": "This poet delivered \"The Gift Outright\" at President John F. Kennedy's inauguration. One of his poems observes that \"good fences make good neighbors\" and is called \"Mending Wall.\" His poem \"Nothing Gold Can Stay\" notes that \"Nature's first green is gold.\" For 10 points, name this poet who stated in his most famous poem that he took \"the road less traveled by, and that has made all the difference.\"",
+    "answer": "Robert Lee Frost"
+  },
+  {
+    "id": "protobowl_32",
+    "question": "One work by this composer opens with a flute solo descending and ascending chromatically, followed by a prolonged pause. This composer's most famous composition is the third movement of his Suite Bergamasque (bair-gah-\"MASK\"). He also depicted \"Golliwog's Cakewalk\" in the Children's Corner suite and composed Prelude to the Afternoon of a Faun. For 10 points, name this impressionist French composer of \"Clair de Lune.\"",
+    "answer": "Claude-Achille Debussy"
+  },
+  {
+    "id": "protobowl_33",
+    "question": "The \u201cstraw\u201d form of this practice is unscientific and the \u201cpush\u201d form of this is really just a campaign tactic designed to attack an opponent in disguise. Most important to politicians in the midst of a campaign are the \u201cexit\u201d form and \u201ctracking\u201d forms. They require some form of a random sample and carefully worded questions in order to be accurate. For 10 points, what is a survey used to measure public opinion called?",
+    "answer": "polling"
+  },
+  {
+    "id": "protobowl_34",
+    "question": "This unit has gram and kilogram types depending on the amount of water used to define it. Its name is based on the Latin word for \"heat\". The gram type is a little over four joules, a unit that has in many contexts become a more common unit of (*) energy than this one. For 10 points, name this unit whose kilogram type is also known as the dietary type and is still used to measure the energy content of food.",
+    "answer": "calorie"
+  },
+  {
+    "id": "protobowl_35",
+    "question": "One of these creatures named Ladon guarded the golden apples of the Hesperides [hes-PEER-uh-dees]. A Babylonian one of these creatures known as Tiamat was slain by Marduk [MAHR-dook]. One in Norse mythology was named Fafnir and was slain for his gold. (*) Puff is a \"magic\" example of, for 10 points, what kind of legendeary reptile that breathed fire and was allegedly slain by Saint George?",
+    "answer": "Dragons"
+  },
+  {
+    "id": "protobowl_36",
+    "question": "During the eighteenth century, this nation was partitioned three times by its neighbors. Its first elected president was a former shipyard electrician and leader of the Solidarity movement, Lech Walesa (\u201cvaw- WESS-uh\u201d), and it was the home country of Pope John Paul II. For 10 points, Germany's September 1939 invasion of what nation prompted Britain and France to enter World War II after the bombing of Warsaw?",
+    "answer": "Poland"
+  },
+  {
+    "id": "protobowl_37",
+    "question": "At the beginning of this novel, the explorer Robert Walton watches a huge figure ride a sledge pulled by dogs across the Arctic Circle. The protagonist's brother William, friend Henry Clerval and wife Elizabeth Lavenza are all strangled to death by a creature that protagonist vows to destroy. For 10 points, name this Mary Shelley novel about the mad scientist Victor and the monster he creates.",
+    "answer": "Frankenstein"
+  },
+  {
+    "id": "protobowl_38",
+    "question": "This politician objected to the Mexican War by giving his Spot Resolutions. This leader gave the \"House Divided\" speech, and he engaged in a series of debates with Stephen (*) Douglas during the 1858 Senate election. The Emancipation Proclamation was signed by this president, who was shot in Ford's Theatre by John Wilkes Booth. For 10 points, name this president who served during the Civil War.",
+    "answer": "Abraham Lincoln"
+  },
+  {
+    "id": "protobowl_39",
+    "question": "This owner of a stuffed elephant named Ella Funt plays a black-nosed sheep in a Christmas play and dresses up as \"the baddest witch in the world.\" She has a cat named Picky-Picky until it dies, and she also sees herself in an infinite mirror. This best friend of Howie Kemp lives on the same street as Henry Higgins. For 10 points, name this little sister of Beezus, the main character of a series of books by Beverly Cleary.",
+    "answer": "Ramona"
+  },
+  {
+    "id": "protobowl_40",
+    "question": "This work was based on a real life location in Greenwich Village. It depicts a red-headed woman and two men in hats seated at a bar while being waited on by a man in a white hat. Above the well lit diner in this painting is a sign saying Phillies Cigars: Only 5 cents. For 10 points, name this iconic American painting by Edward Hopper.",
+    "answer": "Nighthawks"
+  },
+  {
+    "id": "protobowl_41",
+    "question": "This city, home to the War Memorial Opera House, has such suburbs as Daly City. In it can be found Russian Hill and Lake Merced as well as Nob Hill. This city's district of Haight-Ashbury was a center of hippie culture. Its namesake body of water contains Treasure Island and Angel Island; across that bay lies Oakland. For 10 points, name this city at the south end of the Golden Gate Bridge.",
+    "answer": "San Francisco,"
+  },
+  {
+    "id": "protobowl_42",
+    "question": "This man sent the Great White Fleet on a tour of the world to impress Japan, and ended a conflict between Japan and Russia with the Treaty of Portsmouth. He recruited several college buddies to serve together as the Rough Riders unit during the Spanish-American War. He began \"trustbusting\" with the Standard Oil Case. For 10 points, name this president from 1901 to 1909, whose nickname provided the name for a toy bear.",
+    "answer": "Teddy Roosevelt"
+  },
+  {
+    "id": "protobowl_43",
+    "question": "This unit has gram and kilogram types depending on the amount of water used to define it. Its name is based on the Latin word for \"heat\". The gram type is a little over four joules, a unit that has in many contexts become a more common unit of (*) energy than this one. For 10 points, name this unit whose kilogram type is also known as the dietary type and is still used to measure the energy content of food.",
+    "answer": "calorie"
+  },
+  {
+    "id": "protobowl_44",
+    "question": "This method of execution was used to kill both Charlotte Corday and Maximilian Robespierre. England's Henry VIII executed his wives Catherine Howard and Anne Boleyn using this method. During the French Revolution, Louis XVI and Marie Antoinette were both executed by this method. For 10 points, name this method of execution that separates someone from an essential body part.",
+    "answer": "accept guillotine"
+  },
+  {
+    "id": "protobowl_45",
+    "question": "The energy of electromagnetic waves is obtained by multiplying Planck's constant \"h\" by this quantity. When an object such as a bridge vibrates at the natural state of this quantity, resonance occurs. For rotating devices, it is symbolized by omega and expressed in revolutions per second. For 10 points, name this property referring to the number of occurrences of a repeating event per unit time, which is measured in Hertz.",
+    "answer": "frequency"
+  },
+  {
+    "id": "protobowl_46",
+    "question": "In one part of this work, Madame de Villefort (veel-FOR) goes on a poisoning spree for her son's inheritance, and the title character saves Valentine by building her resistance. In another part, Abb\u00e9 (AHbay) Faria gives lessons to the title character in the Ch\u00e2teau d'If (shah-TOE DEEF). For 10 points, Mondego (mahn-DAY-go) and Danglars (dahn-GLAHR) conspire to imprison the title character, Edmond Dantes (DAN-tayss), in what Alexandre Dumas (doo-MAH) novel about a self-made nobleman?",
+    "answer": "The Count of Monte Cristo"
+  },
+  {
+    "id": "protobowl_47",
+    "question": "The IBM Model M is a particularly highly regarded example of this type of device. They sometimes use the Dvorak layout, but the most popular arrangement for them was designed by Christopher Sholes and is deliberately inefficient to avoid (*) jamming. For 10 points, name these devices that often use the QWERTY [KWUR-tee] layout, and are used to enter numbers and letters into a computer.",
+    "answer": "(computer"
+  },
+  {
+    "id": "protobowl_48",
+    "question": "The D double prime layer lies in the lowest part of this region. The upper part of this region mainly consists of magnesium-iron silicates such as pyroxene (\u201cpie-ROX-een\u201d) and olivine (\u201colive een\u201d). This layer extends to a depth of 2890 kilometers and contains more than half the Earth's mass. For 10 points, name this molten layer of the Earth that is found between the crust and the core.",
+    "answer": "mantle"
+  },
+  {
+    "id": "protobowl_49",
+    "question": "In this novel, Bonnie Blue dies while trying to jump a fence with her horse. Its protagonist stays in love with the owner of the Twelve Oaks plantation, Ashley Wilkes, even while she is married to the Confederate blockade runner Rhett Butler. It largely takes place on the plantation Tara. For 10 points, name this Margaret Mitchell novel about the Southern beauty Scarlett O'Hara.",
+    "answer": "Gone With the Wind"
+  },
+  {
+    "id": "protobowl_50",
+    "question": "Most Semitic, Germanic, and Romance languages have a preterite (\u201cPREH-tur-it\u201d) form of this tense. In Spanish, the \u201cimperfect\u201d form of this tense conjugates \u2013ar (\u201cA-R\u201d) verbs to include the stem \u2013aba (\u201cA- B-A\u201d). In French, the \u201ccompound\u201d version requires an auxiliary verb, either avoir (\u201cah-VOIR\u201d) or \u00eatre (\u201cET-ruh\u201d). In English, this tense is typically indicated by adding \u2013ed (\u201cE-D\u201d) to the end of verbs. For 10 points, name this tense that indicates an action done before the present.",
+    "answer": "past"
+  },
+  {
+    "id": "protobowl_51",
+    "question": "During the Civil War, this city was defended by Fort St. Philip and controversially occupied by Union general Benjamin Butler. The Sieur de Bienville led a group of French settlers here in 1718. This city's suburb of Metairie contains the southern end of the Lake (*) Pontchartrain Causeway. Its Lower Ninth Ward was damaged when levees were weakened by a 2005 storm. For 10 points, what Louisiana city was devastated by Hurricane Katrina?",
+    "answer": "New Orleans, Louisiana"
+  },
+  {
+    "id": "protobowl_52",
+    "question": "One law named for this scientist is due to the conservation of angular momentum, and states that a line drawn from a planet to the center of its orbit will sweep out equal areas in equal times. This writer of Astronomia nova and Mysterium cosmographicum analyzed data collected by (*) Tycho Brahe [TEE-koh BRAH] to develop that statement as well as to determine that planets' orbits are ellipses. For 10 points, name this German astronomer who published three laws of planetary motion.",
+    "answer": "Johannes Kepler"
+  },
+  {
+    "id": "protobowl_53",
+    "question": "In one story by this author, General Lasalle's army saves the narrator from the Inquisition. Another narrator describes a sound like \"a watch makes when enveloped in cotton.\" In a poem by this author, the title creature is perched on a \"pallid bust of Pallas.\" For 10 points, name this author of \"The Pit and the Pendulum\" and \"The Tell-Tale Heart\" who told of a bird crying \"Nevermore\" in \"The Raven.\"",
+    "answer": "Poe"
+  },
+  {
+    "id": "protobowl_54",
+    "question": "This franchise's 1934 World Series-winning team was known as the \"Gas House Gang.\" It won the 1944 World Series over the Browns, with whom it used to share Sportsman's Park. Its 1968 championship team featured Lou Brock and Bob Gibson. In February 2011 this team signed former center fielder Jim Edmonds to a minor league deal. For 10 points, name this NL Central team whose lineup includes Matt Holliday and Albert Pujols.",
+    "answer": "St. Louis Cardinals"
+  },
+  {
+    "id": "protobowl_55",
+    "question": "This city contains the neo-gothic Votive Church, and its Karlskirche (KARLS-keer-kuh) is the largest Baroque Cathedral north of the Alps. It is the capital of a country with such states as Burgenland, Tyrol, and Styria. This city's Ring Boulevard was ordered to be restructured by Franz Joseph I, and it lies on the Danube just upriver from Bratislava, the capital of Slovakia. For 10 points, name this capital of Austria.",
+    "answer": "Wien"
+  },
+  {
+    "id": "protobowl_56",
+    "question": "The first prime minister of this country gave a speech outlining the Five Principles of Peaceful Coexistence that formed a basis for a treaty with China, and he also gave the \"Tryst with Destiny\" speech. Another prime minister was assassinated by her bodyguards in 1984 soon after approving an attack on the Golden Temple in Amritsar. (*) For 10 points name this country once headed by Jawaharlal Nehru that disputes the status of Kashmir with Pakistan.",
+    "answer": "Bh\u0101rat Ga\u1e47ar\u0101jya"
+  },
+  {
+    "id": "protobowl_57",
+    "question": "At the bottom right of this painting, a girl steps on a dog, while a nun stands next to a servant. In the back, a figure is shown pausing on the stairs and looking at the central group. The king and the queen can be seen in a mirror, and the painter himself is shown holding a paint brush. For 10 points, identify this painting of the Spanish court in which maids surround the Infant Margarita, by Diego Velazquez.",
+    "answer": "Maids Honor"
+  },
+  {
+    "id": "protobowl_58",
+    "question": "Works of this type include \"The Library of Babel\" and \"The Garden of Forking Paths,\" both by Jorge Luis Borges. A Japanese master of these works is Ryunosuke Akutagawa, a French master is Guy de Maupassant, and a Russian master is Anton Chekhov. Novellas are long examples of this type of writing, which typically focuses on a single event. For 10 points, name this concise type of fiction named for its length.",
+    "answer": "short stories by Jorge Luis Borges"
+  },
+  {
+    "id": "protobowl_59",
+    "question": "In one scene in this novel, a Sheep talks of \"crabs\" and \"feathers\" while rowing. This novel begins with the protagonist blaming the black kitten, the offspring of Dinah, for the whole thing. In this novel, the protagonist plays a massively scaled chess game with the Red Queen. For 10 points, name this sequel to Alice's Adventures in Wonderland whose title refers to the other side of a mirror.",
+    "answer": "Through the Looking"
+  },
+  {
+    "id": "protobowl_60",
+    "question": "The oldest person to hold this position was Roger Taney (TAW-nee). This office serves as Chancellor of the Smithsonian, and also presides over Presidential impeachment trials. It was held by Charles Evans Hughes, John Marshall, and Earl Warren, the latter of whom wrote an opinion that mandated the so-called \u201cMiranda Rights\u201d. For 10 points, name this position currently held by John Roberts Jr., the head of the federal judiciary.",
+    "answer": "Chief Justice"
+  },
+  {
+    "id": "protobowl_61",
+    "question": "This state of matter is the initial and final phase in regelation, and it is to the left of the triple point on phase diagrams. This starting point for sublimation is the most common state for elements at room temperature and pressure. One type of it is amorphous, though it generally is characterized by an orderly pattern on molecules. For 10 points, name this state that includes crystals, the endpoint of freezing.",
+    "answer": "solids"
+  },
+  {
+    "id": "protobowl_62",
+    "question": "In one of this man's stories, Bill and Sam kidnap the title bratty son of Ebenezer Dorset. In addition to \"The Ransom of Red Chief,\" he wrote a work in which Jim and Stella buy a comb set and a watch chain for one another but end up sacrificing the watch and the hair for which the gifts were meant. For 10 points, name this writer of the collection The Four Million, which contains his short story \"The Gift of the Magi.\"",
+    "answer": "O. Henry"
+  },
+  {
+    "id": "protobowl_63",
+    "question": "This man wrote about an animal who steals from the farmers Boggis, Bunce and Bean in The Fantastic Mister Fox. He also wrote about a girl with psychic powers who reads every book in the library and then loses her powers in Miss Honey's class in his book Matilda. A better known book by this man sees its title fruit get stuck on top of the Empire State Building. For 10 points, name this author of James and the Giant Peach.",
+    "answer": "Roald Dahl"
+  },
+  {
+    "id": "protobowl_64",
+    "question": "This city was named after the Pottawatomie (POT-ah-WAH-tah-mee) for either \"smelly onion place\" or \"skunk.\" An early road in this city crossed the \"Nine-Mile Swamp\" and Des Plaines (day PLAINS) River. Its Statistical Metropolitan Area includes Kenosha and Gary. This seat of Cook County is on the southwestern shore of Lake Michigan. For 10 points, name this third largest city in the United States known as the \"Windy City.\"",
+    "answer": "Chicago"
+  },
+  {
+    "id": "protobowl_65",
+    "question": "The protagonists of this song's music video throw magazines, clothes and an empty fishbowl out an open window. This song notes that \"maybe I was stupid for telling you goodbye\" regarding a boy who the singer supposes is sorry because \"you're (*) standing at my door.\" This song's chorus notes that \"you've got a piece of me and honestly\" before expressing the title sentiment. For 10 points, name this Kelly Clarkson song about how terrible life would be without its addressee.",
+    "answer": "My Life Would Suck Without You"
+  },
+  {
+    "id": "protobowl_66",
+    "question": "A rebellion in this state for electoral rights was led by Thomas Dorr. The HMS Gaspee was burned off its coast. Metacomet's death and the Great Swamp Fight took place in this state, and Samuel Slater established the first American textile mill in its city of Pawtucket. Home to the Narragansett tribe and founded by Roger Williams at (*) Providence, for 10 points, name this state that first declared independence from Britain.",
+    "answer": "Rhode Island Providence"
+  },
+  {
+    "id": "protobowl_67",
+    "question": "The size of these objects is given by the Schwarzschild (\u201cSHWARTZ child\u201d) radius. According to quantum mechanics, these objects emit Hawking radiation. One of them, Sagittarius A Star, sits at the center of our galaxy and has four million times the mass of our sun. For 10 points, what are these objects in outer space from which supposedly nothing, not even light, can escape?",
+    "answer": "black holes"
+  },
+  {
+    "id": "protobowl_68",
+    "question": "This man wrote about an animal who steals from the farmers Boggis, Bunce and Bean in The Fantastic Mister Fox. He also wrote about a girl with psychic powers who reads every book in the library and then loses her powers in Miss Honey's class in his book Matilda. A better known book by this man sees its title fruit get stuck on top of the Empire State Building. For 10 points, name this author of James and the Giant Peach.",
+    "answer": "Roald Dahl"
+  },
+  {
+    "id": "protobowl_69",
+    "question": "This is the major key in which both Sergei Prokofiev's \"Classical\" Symphony and J.S. Bach's Air on a G String were written. A basic guitar chord of this type does not play the fifth and sixth strings and leaves open the fourth string as the root of the chord. Johann Pachelbel (PAHK-uh-BELL) wrote a canon in this key whose relative minor is B minor. For 10 points, name this major key whose key signature has two sharps.",
+    "answer": "D"
+  },
+  {
+    "id": "protobowl_70",
+    "question": "One show on this television channel features Little Suzy and the title character's mother, named Bunny. In addition to Johnny Bravo, one of this channel's shows included such characters as Mandark and Dee-Dee, who bothered her brother. (*) For 10 points, name this television channel that aired such shows as Dexter's Laboratory and The Powerpuff Girls but is now better known for airing Regular Show and Adventure Time.",
+    "answer": "Cartoon Network"
+  },
+  {
+    "id": "protobowl_71",
+    "question": "Lieschen [lee-shen] is addicted to coffee in a cantata by this composer of the Notebook for Anna Magdalena. Gounod's [goo-noh's] Ave Maria is based on a prelude from this composer's Well-Tempered Clavier, and Mendelssohn revived his setting of the St. Matthew Passion. The Art of Fugue was composed by, for 10 points, what German Baroque composer of the Goldberg Variations and the Brandenburg Concertos?",
+    "answer": "Johann Sebastian Bach"
+  },
+  {
+    "id": "protobowl_72",
+    "question": "A self-help book by Spencer Johnson asks \u201cWho Moved?\u201d this object. The main character of the title \u201cFairly Stupid Tale\u201d in a collection by Jon Scieszka (\u201cSHEESH-kuh\u201d) is a man made of a \u201cstinky\u201d kind of this food. In \u201cThe Farmer and the Dell,\u201d it stands alone. The moon is not actually made of a green version of it. For 10 points, name this dairy product that comes in provolone and Swiss varieties.",
+    "answer": "Who Moved My Cheese?"
+  },
+  {
+    "id": "protobowl_73",
+    "question": "Variations of this orchestral instrument include the Japanese shakuhachi (SHAH-koo-HAH-chee) and Armenian sring. French models of this instrument have open holes, and this instrument represents the bird in Prokofiev's Peter and the Wolf. Unlike other woodwinds, it lacks a reed. It comes in end-blown and side-blown varieties. For 10 points, name this woodwind instrument, whose varieties include the piccolo.",
+    "answer": "flute"
+  },
+  {
+    "id": "protobowl_74",
+    "question": "These objects have only three externally verifiable properties: mass, charge, and angular momentum, according to the no-hair theorem, and their size can be determined using the Schwarzschild radius. They can be formed following a supernova, and one of them is believed to be at the (*) center of the Milky Way. For 10 points, name these astronomical entities from which light cannot escape.",
+    "answer": "black holes"
+  },
+  {
+    "id": "protobowl_75",
+    "question": "As president, this man shut down the Second Bank of the United States. This president had a group of friends and advisers called the \"kitchen cabinet.\" This victor at the Battle of New Orleans forced the removal of the Cherokee from their land by signing the Indian Removal Act. For 10 points, name this man nicknamed \"Old Hickory,\" the seventh president.",
+    "answer": "Andrew Jackson"
+  },
+  {
+    "id": "protobowl_76",
+    "question": "This man fought alongside Hirtius and Pansa at one battle, and he founded Nicopolis near where his friend Marcus Agrippa won a battle at the mouth of the Ambracian Gulf. In those battles, Mutina and Actium, this man fought a man who had joined him and Lepidus in the Second Triumvirate. Victorious over Mark Antony in a civil war, he was the adopted son of (*) Julius Caesar. For 10 points, name this first Roman Emperor.",
+    "answer": "Gaius Octavius Thurinus"
+  },
+  {
+    "id": "protobowl_77",
+    "question": "This leader has a weekly talk show, Al\u00f3 Presidente (ah-LO pre-zi-DEN-tay), which went on hiatus in June 2011 when he traveled to Cuba for cancer treatment. This leader called Barack Obama a \"clown\" and has suggested that the U.S. is responsible for numerous cases of cancer among various South American leaders. For 10 points, name this current President of Venezuela.",
+    "answer": "Hugo Chavez"
+  },
+  {
+    "id": "protobowl_78",
+    "question": "In this work, Unferth boasts about beating the protagonist in a swimming contest. As his dying action, the protagonist gives Wiglaf a royal gold collar. Partly taking place in the mead hall Heorot, this work presents Hrothgar, the king of the Danes, as helpless in battling a (*) monster who comes nightly to eat warriors. For 10 points, name this Old English epic poem in which the title hero kills Grendel and Grendel's mother.",
+    "answer": "Beowulf"
+  },
+  {
+    "id": "protobowl_79",
+    "question": "Reverend Shannon works as a tour guide in this author's Night of the Iguana. In another play, after Jim O'Connor reveals he is engaged to Laura, Tom Wingfield leaves his family. One of his characters has \"always depended on the kindness of strangers;\" that character is institutionalized by Stanley Kowalski. For 10 points, name this author of The Glass Menagerie who created Blanche DuBois (doo-BWAH) in A Streetcar Named Desire.",
+    "answer": "Night of the Iguana"
+  },
+  {
+    "id": "protobowl_80",
+    "question": "In the movie Cats & Dogs, he provided the voice for Lou the Beagle. In another movie, he and his sister, played by Reese Witherspoon, are transported to the 1950s sitcom Pleasantville. He played a Depression-era jockey who somehow finds success on an undersized horse in Seabiscuit. For 10 points, name this actor who starred as Peter Parker in the first trilogy of Spider-Man movies.",
+    "answer": "Tobey Maguire"
+  },
+  {
+    "id": "protobowl_81",
+    "question": "This man's essays include one about a policeman in Burma \"Shooting an Elephant.\" He wrote a novel in which O'Brien sends Winston Smith to Room 101 in the dystopian state of Oceania. In another novel by this man, the death of Old Major results in a power struggle between Snowball and Napoleon, who represent Trotsky and Stalin. For 10 points, name this author of 1984 and Animal Farm.",
+    "answer": "George Orwell"
+  },
+  {
+    "id": "protobowl_82",
+    "question": "Temples dedicated to this god include the Trimbakeshwar and Ramanaswathamy. Five is a sacred number to this god, which is reflected in his namesake \"Five Mantras\". His sons are Kartikeya and Ganesha. Although he's not Vishnu, this god has a number of avatars, and his wife is (*) Parvati. For 10 points, name this Hindu god which, along with Brahma and Vishnu, makes up the Hindu trimurti, a \"destroyer\" god.",
+    "answer": "Shiva the Destroyer, Shiva the Transformer"
+  },
+  {
+    "id": "protobowl_83",
+    "question": "This planet was mapped by the Magellan probe. This planet had a notable transition of the sun in 2004 and is scheduled to make another in 2012. When it appears, it is this brightest object in the night sky. Its dense, carbon dioxide dominated atmosphere results in a runaway greenhouse effect. For 10 points, name this planet named after the Roman goddess of love, the second planet from the sun.",
+    "answer": "Venus"
+  },
+  {
+    "id": "protobowl_84",
+    "question": "One story in this book involves a man who marries a daughter of Jethro; that man's mother is Jochebed (JOE-keh-bed) and his sister is Miriam. This book begins with the death of Joseph and sees a ruler declare that all newborn Jewish babies must be drowned in the Nile. In this book, Aaron and Moses ask the pharaoh to \"let my people go.\" For 10 points, the Jews' flight from Egypt is detailed in what second book of the Bible?",
+    "answer": "Shemot and Names"
+  },
+  {
+    "id": "protobowl_85",
+    "question": "This style emerged in Great Britain in the mid-1950's and was started by the Independent Group. Some examples of this style include the \"combines\" of Robert Rauschenberg and Jasper Johns's work Flag. Its most famous practitioner founded a studio known as \"The Factory\" and produced reproductions of everyday objects such as Campbell's Soup Cans. For 10 points name this type of art practiced Andy Warhol.",
+    "answer": "Pop"
+  },
+  {
+    "id": "protobowl_86",
+    "question": "The energy of electromagnetic waves is obtained by multiplying Planck's constant \"h\" by this quantity. When an object such as a bridge vibrates at the natural state of this quantity, resonance occurs. For rotating devices, it is symbolized by omega and expressed in revolutions per second. For 10 points, name this property referring to the number of occurrences of a repeating event per unit time, which is measured in Hertz.",
+    "answer": "frequency"
+  },
+  {
+    "id": "protobowl_87",
+    "question": "This singer claims \"I'd wait for you forever and a day\" and \"your world is my world\" in one song. Big Sean wonders \"I don't know if this makes sense, but you're my hallelujah\" in a song where this singer says he'll be your (*) platinum, silver and gold. In another song, this singer says \"you'll never be alone\" and \"I can be a gentleman\" if he was the title figure. For 10 points, name this singer of \"As Long As You Love Me\" and \"Boyfriend.\"",
+    "answer": "Justin Bieber"
+  },
+  {
+    "id": "protobowl_88",
+    "question": "This man defeated Caleb Boggs in a 1972 Senate election; the following month his wife and daughter were killed in an accident. In 2013, he and John Lewis led a re-enactment of the Selma civil rights march, and in 2012 he said on national television, \"With all due respect, that's a bunch of (*) malarkey.\" He now heads a Gun Violence Task Force. For 10 points, name this former Delaware Senator who is currently the Vice President.",
+    "answer": "Joseph Joe Biden"
+  },
+  {
+    "id": "protobowl_89",
+    "question": "Fatty acids contain long chains of hydrogen and this element. Methane consists of four hydrogens bonded to this element. One form of this element in a cylindrical structure is the strongest known material, and is known as a namesake nanotube. Organic chemistry is the study of molecules containing this element. Its allotropes include diamond and graphite. For 10 points, name this element that makes up all living things.",
+    "answer": "carbon nanotubes"
+  },
+  {
+    "id": "protobowl_90",
+    "question": "While president of the Estates-General (es-TAHTS zhay-nay-RAHL), this man presented the Declaration of the Rights of Man and of the Citizen to Louis XVI. He refused to become dictator after the 1830 July Revolution. Earlier, he had helped to secure French aid to the American Revolution. For 10 points, name this \"Hero of Two Worlds,\" a French general who was George Washington's aide-de-camp.",
+    "answer": "Lafayette"
+  },
+  {
+    "id": "protobowl_91",
+    "question": "This deity led Perseus to the Gray Witches so he could kill Medusa. In The Odyssey, this god gave Odysseus the herb, moly, to protect him from Circe's (SIR-see's) magic, and was later asked by Zeus to order Calypso to let Odysseus go free. As an infant, this deity stole Apollo's cattle and gave Apollo the lyre he had invented. For 10 points, identify this Greek messenger god often depicted with his winged sandals.",
+    "answer": "Hermes"
+  },
+  {
+    "id": "protobowl_92",
+    "question": "In this novel, Bob Sheldon and Randy Adderson take part in an attack on Johnny, causing Johnny to fear for his life. Johnny and his best friend meet two girls at a theater, who turn out to be their attackers' girlfriends, Marcia and Cherry. Later in this novel, Johnny tells Ponyboy to \"stay gold,\" just before he dies of injuries sustained in a fire. For 10 points, identify this novel by S.E. Hinton.",
+    "answer": "The Outsiders"
+  },
+  {
+    "id": "protobowl_93",
+    "question": "This figure met his demise when he was struck by a piece of wood from his own vessel. While in Colchis (\u201cCOAL-chiss\u201d) visiting King Aeetes (\u201cay-EE-tees\u201d), he accomplished such tasks as yoking fire- breathing oxen and dispatching a group of warriors that sprang forth after dragon teeth were sown into the ground, all to get the Golden Fleece. He was aided in these tasks by his future wife Medea. For 10 points, name this leader of the Argonauts.",
+    "answer": "Jason"
+  },
+  {
+    "id": "protobowl_94",
+    "question": "One book by this author features an adolescent girl with a Christian mother and a Jewish father who attempts a year-long independent study of people's beliefs while trying to deal with going through puberty. Another of her books features a five-year-old boy who names his myna bird Uncle Feather and constantly annoys his brother Peter. For 10 points, name this author of Are You There God, It's Me, Margaret and Superfudge.",
+    "answer": "Judy Blume"
+  },
+  {
+    "id": "protobowl_95",
+    "question": "This object was delivered not with an inflatable \"airbag\" system like its predecessors, but with a \"sky crane\" system that was untested prior to its deployment, which was called \"Seven Minutes of Terror.\" Its arrival at Gale Crater on August 6, 2012 was observed by the Odyssey orbiter. (*) For 10 points, name this semi-autonomous, car-sized rover currently conducting experiments on a certain red planet.",
+    "answer": "MSL"
+  },
+  {
+    "id": "protobowl_96",
+    "question": "The first step in this process can be further broken down into leptotene, zygotene, and pachytene phases. A common problem during this process is nondisjunction, which leads to conditions such as Klinefelter's Syndrome and Down Syndrome. This process involves two instances of prophase, metaphase, anaphase, and telophase. For 10 points, name this process used to create haploid cells, such as sperm and eggs.",
+    "answer": "meiosis"
+  },
+  {
+    "id": "protobowl_97",
+    "question": "The Bukit Timah (\u201cboo-KIT tee-MAH\u201d) Nature Reserve is the largest area of rainforest left in this city. The five star Raffles Hotel is named after the city's founder, while the island of Sentosa is home to a new Universal Studios Theme Park. Its Changi (\u201cCHANG-eye\u201d) airport is a regional hub, and the city is connected by bridge to Johor (\u201cJO-hor\u201d), in Malaysia. For 10 points, name this Southeast Asian city-state, the most densely populated country in Asia.",
+    "answer": "Republic of Singapore"
+  },
+  {
+    "id": "protobowl_98",
+    "question": "One character in this work is demoted upon releasing his female prisoner; he later returns a gold coin to its owner. That character professes his love to his ex-prisoner in the \"Flower Song, who is also serenaded in the bullfighter Escamillo's (ESS-kah-MEE-yo's) \"Toreador Song.\" The singer of the \"Habanera\" (HAH-bahn-YAY-ruh) is stabbed by Don Jos\u00e9 in, for 10 points, what opera about a Spanish gypsy girl by Georges Bizet?",
+    "answer": "Carmen"
+  },
+  {
+    "id": "protobowl_99",
+    "question": "This woman allied with Walter White to push the failed Costigan-Wagner anti-lynching bill, but the President refused to publicly endorse it. She and Wendell Wilkie were the first honorary chairpersons of Freedom House. She arranged Marian Anderson's concert at the Lincoln Memorial. As a delegate to the UN from 1945-1952, she also helped draft the Declaration of Human Rights. (*) For 10 points, name this First Lady, the wife of Franklin D. Roosevelt.",
+    "answer": "(Anna) Eleanor Roosevelt"
+  }
+]

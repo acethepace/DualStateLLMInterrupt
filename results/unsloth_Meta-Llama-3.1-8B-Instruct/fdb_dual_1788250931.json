@@ -1,0 +1,10 @@
+{
+  "accuracy": 0.9425,
+  "tp": 177,
+  "tn": 200,
+  "fp": 0,
+  "fn": 23,
+  "interruption_latency_ms": 115.72678345071394,
+  "noop_latency_ms": 0.0,
+  "dataset": "datasets/fdb_dataset_recovered.json"
+}

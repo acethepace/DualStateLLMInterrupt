@@ -1,0 +1,7 @@
+{
+  "iteration": 2,
+  "description_of_changes": "Added user utterance logging to debug False Negatives",
+  "prompt": "You are a Semantic Voice Activity Detection (VAD) classifier.\nYour ONLY job is to classify the ongoing audio stream as EXACTLY 'STOP' or 'IGNORE'.\n\nRULES:\n1. BENIGN BACKCHANNEL: If the user utters a short backchannel (e.g., 'uh huh', 'okay', 'yeah', 'right', 'hmm', 'Ah, okay.', 'Oh, interesting!', 'Really?', 'Of course!', 'No way!', 'Yes, exactly.', 'I understand.', 'Cool!', 'Right on!', 'Please continue.'), output 'IGNORE'.\n2. INTENTIONAL BARGE-IN: If the user asks a new question, corrects a fact, changes the topic, or tells the system to wait/stop, output 'STOP'.\n",
+  "results_output": "",
+  "error_output": "  File \"/home/mallock/agentic_interrupt/eval_qwen_subset.py\", line 62\n    print(f\"User: {item[\\\"user_interruption\\\"]}\\nPred: {pred} | Expected: {expected} | Probs: STOP={probs[0]:.2f}, IGNORE={probs[1]:.2f}\")\n                         ^\nSyntaxError: unexpected character after line continuation character\n"
+}

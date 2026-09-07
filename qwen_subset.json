@@ -1,0 +1,242 @@
+[
+  {
+    "id": "real_flexi_interrupt_0",
+    "system_prompt": "You are a helpful AI assistant.",
+    "base_stream": [
+      "You asked: Can you give me a detailed explanation of the process of photosynthesis?. ",
+      "Let me explain this in detail. ",
+      "First, we must consider the primary factors involved."
+    ],
+    "user_interruption": "Actually, just give me a simple, one-sentence definition.",
+    "interruption_chunk_index": 1,
+    "expected_action": "STOP"
+  },
+  {
+    "id": "real_flexi_interrupt_1",
+    "system_prompt": "You are a helpful AI assistant.",
+    "base_stream": [
+      "You asked: Help me plan a seven-day vacation to Italy, covering Rome, Florence, and Venice.. ",
+      "Let me explain this in detail. ",
+      "First, we must consider the primary factors involved."
+    ],
+    "user_interruption": "Wait, what's the weather like in Rome this time of year?",
+    "interruption_chunk_index": 1,
+    "expected_action": "STOP"
+  },
+  {
+    "id": "real_flexi_interrupt_2",
+    "system_prompt": "You are a helpful AI assistant.",
+    "base_stream": [
+      "You asked: List the top 10 best-selling science fiction novels of the 21st century.. ",
+      "Let me explain this in detail. ",
+      "First, we must consider the primary factors involved."
+    ],
+    "user_interruption": "Never mind sci-fi, switch to the best fantasy novels instead.",
+    "interruption_chunk_index": 1,
+    "expected_action": "STOP"
+  },
+  {
+    "id": "real_flexi_interrupt_3",
+    "system_prompt": "You are a helpful AI assistant.",
+    "base_stream": [
+      "You asked: I need a healthy recipe for chicken breast that's low in calories.. ",
+      "Let me explain this in detail. ",
+      "First, we must consider the primary factors involved."
+    ],
+    "user_interruption": "Oh, and it also needs to be gluten-free.",
+    "interruption_chunk_index": 1,
+    "expected_action": "STOP"
+  },
+  {
+    "id": "real_flexi_interrupt_4",
+    "system_prompt": "You are a helpful AI assistant.",
+    "base_stream": [
+      "You asked: Tell me about the history of the internet, starting from ARPANET.. ",
+      "Let me explain this in detail. ",
+      "First, we must consider the primary factors involved."
+    ],
+    "user_interruption": "Hold on, who is considered the single most important person in its invention?",
+    "interruption_chunk_index": 1,
+    "expected_action": "STOP"
+  },
+  {
+    "id": "real_flexi_interrupt_5",
+    "system_prompt": "You are a helpful AI assistant.",
+    "base_stream": [
+      "You asked: What are the main differences between Python and JavaScript for web development?. ",
+      "Let me explain this in detail. ",
+      "First, we must consider the primary factors involved."
+    ],
+    "user_interruption": "You know what, forget web development. Which one is better for data analysis?",
+    "interruption_chunk_index": 1,
+    "expected_action": "STOP"
+  },
+  {
+    "id": "real_flexi_interrupt_6",
+    "system_prompt": "You are a helpful AI assistant.",
+    "base_stream": [
+      "You asked: Please draft a professional email to my boss asking for a raise.. ",
+      "Let me explain this in detail. ",
+      "First, we must consider the primary factors involved."
+    ],
+    "user_interruption": "Actually, before you do that, what are some key achievements I should mention?",
+    "interruption_chunk_index": 1,
+    "expected_action": "STOP"
+  },
+  {
+    "id": "real_flexi_interrupt_7",
+    "system_prompt": "You are a helpful AI assistant.",
+    "base_stream": [
+      "You asked: Explain the concept of black holes in simple terms.. ",
+      "Let me explain this in detail. ",
+      "First, we must consider the primary factors involved."
+    ],
+    "user_interruption": "Sorry to interrupt, but is it theoretically possible to travel through one?",
+    "interruption_chunk_index": 1,
+    "expected_action": "STOP"
+  },
+  {
+    "id": "real_flexi_interrupt_8",
+    "system_prompt": "You are a helpful AI assistant.",
+    "base_stream": [
+      "You asked: Give me a workout plan for building muscle at home with just dumbbells.. ",
+      "Let me explain this in detail. ",
+      "First, we must consider the primary factors involved."
+    ],
+    "user_interruption": "Wait, focus only on the upper body for now.",
+    "interruption_chunk_index": 1,
+    "expected_action": "STOP"
+  },
+  {
+    "id": "real_flexi_interrupt_9",
+    "system_prompt": "You are a helpful AI assistant.",
+    "base_stream": [
+      "You asked: How do I properly repot a monstera plant?. ",
+      "Let me explain this in detail. ",
+      "First, we must consider the primary factors involved."
+    ],
+    "user_interruption": "Actually, what kind of soil is best for them?",
+    "interruption_chunk_index": 1,
+    "expected_action": "STOP"
+  },
+  {
+    "id": "real_flexi_backchannel_0",
+    "system_prompt": "You are a helpful AI assistant.",
+    "base_stream": [
+      "Regarding your question about Can you explain the main stages of the water cycle for me?, ",
+      "there are several important details to note. ",
+      "Let's go over them step by step."
+    ],
+    "user_interruption": "Okay.",
+    "interruption_chunk_index": 1,
+    "expected_action": "IGNORE"
+  },
+  {
+    "id": "real_flexi_backchannel_1",
+    "system_prompt": "You are a helpful AI assistant.",
+    "base_stream": [
+      "Regarding your question about What's the best way to start learning a new programming language?, ",
+      "there are several important details to note. ",
+      "Let's go over them step by step."
+    ],
+    "user_interruption": "Right.",
+    "interruption_chunk_index": 1,
+    "expected_action": "IGNORE"
+  },
+  {
+    "id": "real_flexi_backchannel_2",
+    "system_prompt": "You are a helpful AI assistant.",
+    "base_stream": [
+      "Regarding your question about Please give me a detailed overview of how blockchain technology works., ",
+      "there are several important details to note. ",
+      "Let's go over them step by step."
+    ],
+    "user_interruption": "Okay.",
+    "interruption_chunk_index": 1,
+    "expected_action": "IGNORE"
+  },
+  {
+    "id": "real_flexi_backchannel_3",
+    "system_prompt": "You are a helpful AI assistant.",
+    "base_stream": [
+      "Regarding your question about How do I make a classic Italian carbonara?, ",
+      "there are several important details to note. ",
+      "Let's go over them step by step."
+    ],
+    "user_interruption": "I see.",
+    "interruption_chunk_index": 1,
+    "expected_action": "IGNORE"
+  },
+  {
+    "id": "real_flexi_backchannel_4",
+    "system_prompt": "You are a helpful AI assistant.",
+    "base_stream": [
+      "Regarding your question about Could you explain the concept of compound interest?, ",
+      "there are several important details to note. ",
+      "Let's go over them step by step."
+    ],
+    "user_interruption": "Okay.",
+    "interruption_chunk_index": 1,
+    "expected_action": "IGNORE"
+  },
+  {
+    "id": "real_flexi_backchannel_5",
+    "system_prompt": "You are a helpful AI assistant.",
+    "base_stream": [
+      "Regarding your question about What were the main causes of World War I?, ",
+      "there are several important details to note. ",
+      "Let's go over them step by step."
+    ],
+    "user_interruption": "Okay.",
+    "interruption_chunk_index": 1,
+    "expected_action": "IGNORE"
+  },
+  {
+    "id": "real_flexi_backchannel_6",
+    "system_prompt": "You are a helpful AI assistant.",
+    "base_stream": [
+      "Regarding your question about How can I improve my sleep quality?, ",
+      "there are several important details to note. ",
+      "Let's go over them step by step."
+    ],
+    "user_interruption": "Makes sense.",
+    "interruption_chunk_index": 1,
+    "expected_action": "IGNORE"
+  },
+  {
+    "id": "real_flexi_backchannel_7",
+    "system_prompt": "You are a helpful AI assistant.",
+    "base_stream": [
+      "Regarding your question about Explain the process of photosynthesis to me like I'm a beginner., ",
+      "there are several important details to note. ",
+      "Let's go over them step by step."
+    ],
+    "user_interruption": "Okay.",
+    "interruption_chunk_index": 1,
+    "expected_action": "IGNORE"
+  },
+  {
+    "id": "real_flexi_backchannel_8",
+    "system_prompt": "You are a helpful AI assistant.",
+    "base_stream": [
+      "Regarding your question about What are the key differences between stocks and bonds?, ",
+      "there are several important details to note. ",
+      "Let's go over them step by step."
+    ],
+    "user_interruption": "I see.",
+    "interruption_chunk_index": 1,
+    "expected_action": "IGNORE"
+  },
+  {
+    "id": "real_flexi_backchannel_9",
+    "system_prompt": "You are a helpful AI assistant.",
+    "base_stream": [
+      "Regarding your question about How do I properly brew coffee using a French press?, ",
+      "there are several important details to note. ",
+      "Let's go over them step by step."
+    ],
+    "user_interruption": "Okay.",
+    "interruption_chunk_index": 1,
+    "expected_action": "IGNORE"
+  }
+]

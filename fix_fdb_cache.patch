@@ -1,0 +1,43 @@
+--- benchmark_runners/fdb_runner.py
++++ benchmark_runners/fdb_runner.py
+@@ -118,6 +118,22 @@
+             
+             expected_action = "STOP" if len(interruption.split()) > 3 else "CONTINUE"
+             
++            # Generate base_kv_cache with system instructions and mock base stream
++            base_context = config["user_turn_start"] + config["base_instructions"] + "\n\n" + system_prompt + "\n\n<INPUT>\n" + "".join(base_stream)
++            
++            if "gemma" not in model_name.lower():
++                input_ids = tokenizer(base_context, return_tensors="pt", add_special_tokens=False).input_ids.to(model.device)
++            else:
++                input_ids = tokenizer(text=base_context, return_tensors="pt", add_special_tokens=False).input_ids.to(model.device)
++                
++            import torch
++            with torch.no_grad():
++                base_outputs = model(input_ids=input_ids, use_cache=True)
++            base_kv_cache = base_outputs.past_key_values
++            
++            # Format the interruption correctly
++            interruption_to_process = f"\n</INPUT>\n[USER BARGE-IN]: {interruption}"
++            
+             if "gemma" in model_name.lower():
+-                chunk_ids = tokenizer(text=interruption, return_tensors="pt", add_special_tokens=False).input_ids.to(model.device)
++                chunk_ids = tokenizer(text=interruption_to_process, return_tensors="pt", add_special_tokens=False).input_ids.to(model.device)
+             else:
+-                chunk_ids = tokenizer(interruption, return_tensors="pt", add_special_tokens=False).input_ids.to(model.device)
++                chunk_ids = tokenizer(interruption_to_process, return_tensors="pt", add_special_tokens=False).input_ids.to(model.device)
+                 
+-            full_assessor_instruction = config["base_instructions"] + "\n\n" + config["assessor_prompt"]
++            full_assessor_instruction = config["assessor_prompt"]
+             
+             start_time = time.time()
+             base_kv_cache, should_stop, assessor_response = dual_state_stream_step(
+                 model=model,
+                 tokenizer=tokenizer,
+                 new_tokens=chunk_ids,
+-                base_kv_cache=None,
++                base_kv_cache=base_kv_cache,
+                 assessor_instruction=full_assessor_instruction,
+                 stop_word=config["stop_word"],
+                 max_new_tokens=config["max_new_tokens"]
+             )

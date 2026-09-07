@@ -1,0 +1,8 @@
+--- FLEXI (V1) ---
+{'TP': 200, 'TN': 194, 'FP': 6, 'FN': 0, 'Total': 400}
+--- FLEXI (V2_Prefill) ---
+{'TP': 200, 'TN': 169, 'FP': 31, 'FN': 0, 'Total': 400}
+--- FDB (V1) ---
+{'TP': 0, 'TN': 125, 'FP': 0, 'FN': 75, 'Total': 200}
+--- FDB (V2_Prefill) ---
+{'TP': 200, 'TN': 200, 'FP': 0, 'FN': 0, 'Total': 400}

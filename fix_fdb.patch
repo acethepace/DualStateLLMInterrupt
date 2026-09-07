@@ -1,0 +1,70 @@
+--- benchmark_runners/fdb_runner.py
++++ benchmark_runners/fdb_runner.py
+@@ -21,6 +21,34 @@
+     if os.path.exists(lock_file):
+         os.remove(lock_file)
+ 
++def get_templates(model_name, version):
++    is_gemma = "gemma" in model_name.lower()
++    base_v1 = "You are a Semantic VAD dialogue manager. Analyze the user's overlapping speech. If the user is making an intentional barge-in (e.g., a correction, contradiction, or new query), output exactly '{stop_word}'. If the user is making an unintentional barge-in (e.g., a backchannel acknowledgment or ambient noise), output exactly '{cont_word}'."
++    base_v2 = "You are a STRICT Semantic VAD dialogue manager. Analyze the user's overlapping speech. You must ONLY output '{stop_word}' as your VERY FIRST token if the user is making a clear, intentional barge-in (e.g., a correction, contradiction, or new query). If the user is making a benign backchannel (e.g., 'uh huh', 'okay', 'yeah') or ambient noise, DO NOT output '{stop_word}'. Instead, respond normally."
++
++    if is_gemma:
++        user_turn_start = "<bos><|turn>user\n"
++        assessor_trigger = "<turn|>\n<|turn>model\n"
++        thought_block = "<|channel>thought\n<channel|>"
++        stop_v1, cont_v1, stop_v2 = "<|Start-Listening|>", "<|Continue-Speaking|>", "STOP"
++    else:
++        user_turn_start = "<|begin_of_text|><|start_header_id|>user<|end_header_id|>\n\n"
++        assessor_trigger = "<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n\n"
++        thought_block = ""
++        stop_v1, cont_v1, stop_v2 = "STOP", "CONTINUE", "STOP"
++
++    config = {}
++    if version == "v1":
++        config["stop_word"] = stop_v1
++        config["max_new_tokens"] = 15
++        config["assessor_prompt"] = assessor_trigger
++        config["base_instructions"] = base_v1.format(stop_word=stop_v1, cont_word=cont_v1)
++        config["user_turn_start"] = user_turn_start
++    else:
++        config["stop_word"] = stop_v2
++        config["max_new_tokens"] = 1
++        config["assessor_prompt"] = assessor_trigger + (thought_block if version == "v2_prefill" else "")
++        config["base_instructions"] = base_v2.format(stop_word=stop_v2)
++        config["user_turn_start"] = user_turn_start
++    return config
++
+ def simulate_fdb_multi_agent(model_name, version, dataset_path):
+     load_dotenv(os.path.join(os.path.dirname(os.path.dirname(__file__)), ".env"))
+     client = OpenAI()
+@@ -46,6 +74,7 @@
+                 results = {"metadata": {"model_name": model_name, "version": version, "benchmark": "FDB-v2"}, "scenarios": []}
+         
+         model, tokenizer = setup_model(model_name)
++        config = get_templates(model_name, version)
+         
+         for idx, task in enumerate(tasks):
+             if task["id"] in completed_ids:
+@@ -73,6 +102,11 @@
+             else:
+                 chunk_ids = tokenizer(interruption, return_tensors="pt", add_special_tokens=False).input_ids.to(model.device)
+                 
++            # Apply the strict instruction wrappers
++            # Note: For dual_state_stream_step, the base_instructions are typically prepended to the KV cache,
++            # but in this mock, we append them to the assessor instruction to ensure the model sees them.
++            full_assessor_instruction = config["base_instructions"] + "\n\n" + config["assessor_prompt"]
++
+             start_time = time.time()
+             base_kv_cache, should_stop, assessor_response = dual_state_stream_step(
+                 model=model,
+@@ -80,9 +114,9 @@
+                 new_tokens=chunk_ids,
+                 base_kv_cache=None,
+-                assessor_instruction="Evaluate if this is an interruption.",
+-                stop_word="STOP",
+-                max_new_tokens=1 if version != "v1" else 15
++                assessor_instruction=full_assessor_instruction,
++                stop_word=config["stop_word"],
++                max_new_tokens=config["max_new_tokens"]
+             )

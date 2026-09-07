@@ -1,0 +1,20 @@
+{
+  "linear_probe": {
+    "params": 5122,
+    "latency_ms": 0.084,
+    "zero_shot_prompt_reconfigurability": "NO (Requires task-specific supervised training)",
+    "memory_overhead_mb": 0.0098
+  },
+  "mlp_probe": {
+    "params": 656130,
+    "latency_ms": 0.103,
+    "zero_shot_prompt_reconfigurability": "NO (Requires task-specific supervised training)",
+    "memory_overhead_mb": 1.2515
+  },
+  "dual_state_assessor": {
+    "params": 0,
+    "latency_ms": 91.5,
+    "zero_shot_prompt_reconfigurability": "YES (100% zero-shot, prompt & in-context adaptable)",
+    "memory_overhead_mb": 0.65
+  }
+}

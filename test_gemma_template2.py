@@ -1,0 +1,4 @@
+from transformers import AutoTokenizer
+tokenizer = AutoTokenizer.from_pretrained("unsloth/gemma-4-12b-it")
+messages = [{"role": "user", "content": "BASE"}]
+print(repr(tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=False)))

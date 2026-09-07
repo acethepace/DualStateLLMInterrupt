@@ -1,0 +1,10 @@
+{
+  "avg_stream_len": 63.38,
+  "avg_chunks": 13.065,
+  "avg_baseline_prefill": 576.155,
+  "avg_dual_context_reprefill": 0.0,
+  "avg_dual_assessor_prompts": 130.65,
+  "avg_dual_assessor_outputs": 13.065,
+  "total_baseline_tokens": 835.51,
+  "total_dual_tokens": 207.095
+}

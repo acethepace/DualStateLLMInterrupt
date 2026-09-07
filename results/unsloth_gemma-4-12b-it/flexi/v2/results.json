@@ -1,0 +1,104 @@
+{
+    "metadata": {
+        "model_name": "unsloth/gemma-4-12b-it",
+        "version": "v2",
+        "config": {
+            "stop_word": "STOP",
+            "max_new_tokens": 1,
+            "assessor_prompt": "<turn|>\n<|turn>model\n",
+            "base_instructions": "[INST] You are a Semantic VAD dialogue manager. Analyze the user's overlapping speech. If the user is making an intentional barge-in, you must output 'STOP' as your VERY FIRST token. Otherwise, respond normally. [/INST]",
+            "user_turn_start": "<bos><|turn>user\n"
+        },
+        "max_seq_length": 4096
+    },
+    "scenarios": [
+        {
+            "id": "flexi_emerg_001",
+            "expected_action": "STOP",
+            "events": [
+                {
+                    "chunk_index": 0,
+                    "input_chunk": "To perform CPR, first place the heel of your hand ",
+                    "assessor_latency_ms": 316.1587715148926,
+                    "assessor_output": "<|channel>",
+                    "triggered_stop": false
+                },
+                {
+                    "chunk_index": 1,
+                    "input_chunk": "in the center of the patient's chest. ",
+                    "assessor_latency_ms": 463.1962776184082,
+                    "assessor_output": "<|channel>",
+                    "triggered_stop": false
+                },
+                {
+                    "chunk_index": 2,
+                    "input_chunk": "Then, push hard and fast at a rate of 100 beats per minute.\n</INPUT>\n[USER BARGE-IN]: Wait! Stop! They are breathing again!",
+                    "assessor_latency_ms": 335.6513977050781,
+                    "assessor_output": "<|channel>",
+                    "triggered_stop": false
+                }
+            ],
+            "success": false
+        },
+        {
+            "id": "flexi_emerg_002",
+            "expected_action": "STOP",
+            "events": [
+                {
+                    "chunk_index": 0,
+                    "input_chunk": "Please remain calm. I am contacting the local ",
+                    "assessor_latency_ms": 341.4745330810547,
+                    "assessor_output": "<|channel>",
+                    "triggered_stop": false
+                },
+                {
+                    "chunk_index": 1,
+                    "input_chunk": "authorities to report the incident. Please stay on the line \n</INPUT>\n[USER BARGE-IN]: No, cancel it, it was just a candle! We put it out!",
+                    "assessor_latency_ms": 224.43509101867676,
+                    "assessor_output": "<|channel>",
+                    "triggered_stop": false
+                },
+                {
+                    "chunk_index": 2,
+                    "input_chunk": "Do not attempt to gather your belongings.",
+                    "assessor_latency_ms": 420.54080963134766,
+                    "assessor_output": "<|channel>",
+                    "triggered_stop": false
+                }
+            ],
+            "success": false
+        },
+        {
+            "id": "flexi_benign_003",
+            "expected_action": "CONTINUE",
+            "events": [
+                {
+                    "chunk_index": 0,
+                    "input_chunk": "Please remain calm. I am contacting the local ",
+                    "assessor_latency_ms": 376.73497200012207,
+                    "assessor_output": "<|channel>",
+                    "triggered_stop": false
+                },
+                {
+                    "chunk_index": 1,
+                    "input_chunk": "authorities to report the incident. Please stay on the line \n</INPUT>\n[USER BARGE-IN]: Okay, yeah, okay I'm listening.",
+                    "assessor_latency_ms": 280.85970878601074,
+                    "assessor_output": "<|channel>",
+                    "triggered_stop": false
+                },
+                {
+                    "chunk_index": 2,
+                    "input_chunk": "Do not attempt to gather your belongings.",
+                    "assessor_latency_ms": 408.5357189178467,
+                    "assessor_output": "<|channel>",
+                    "triggered_stop": false
+                }
+            ],
+            "success": true
+        }
+    ],
+    "summary": {
+        "accuracy": "1/3",
+        "average_latency_ms": 351.9541422526042
+    }
+}

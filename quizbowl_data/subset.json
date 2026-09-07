@@ -1,0 +1,102 @@
+[
+  {
+    "id": "advqa_0",
+    "question": "How many non-pet characters live in SpongeBob's neighborhood?",
+    "answer": "3"
+  },
+  {
+    "id": "advqa_1",
+    "question": "Which political party governs the country directly south of Botswana?",
+    "answer": "African National Congress"
+  },
+  {
+    "id": "advqa_2",
+    "question": "In the 1920s, a tiger, a kangaroo, a donkey, a pig, and a bear were bought from Harrods in London. Who was this buyer?",
+    "answer": "AA Milne"
+  },
+  {
+    "id": "advqa_3",
+    "question": "What company launched their first advertisement campaign during the 1984 Super Bowl that was inspired by George Orwell's dystopian novel \"1984\"?",
+    "answer": "Apple"
+  },
+  {
+    "id": "advqa_4",
+    "question": "What soldiers would bite during surgical procedures lacking anesthetics is also the name of what extinct NBA team?",
+    "answer": "Bullets"
+  },
+  {
+    "id": "advqa_5",
+    "question": "What vegetable did Julio Cortazar compare to \"the eye of an insect magnified a thousand times\" and the \"vegetable brain\" in his literary works?.",
+    "answer": "Cauliflower"
+  },
+  {
+    "id": "advqa_6",
+    "question": "A play by Arthur Miller accounts what series of legal proceedings that accused over 200 individuals of consorting with the Devil in late 17th century New England?",
+    "answer": "Salem Witch Trials"
+  },
+  {
+    "id": "advqa_7",
+    "question": "Suppose you have the series 4/1, minus 4/3, plus 4/5, minus 4/7 and so on (4 over odd numbers with alternating sign). What is the sum of this series?",
+    "answer": "pi (this is the Taylor expansion for arctangent multiplied by four)"
+  },
+  {
+    "id": "advqa_8",
+    "question": "Who did not win the 1969 prize for an experiment that confirmed that DNA carried genetic information?",
+    "answer": "Martha Chase (her boss, Alfred Hershey did)"
+  },
+  {
+    "id": "advqa_9",
+    "question": "Suppose you are in the Spanish town of Llivia and you start walking until you reach another country. What country would you enter?",
+    "answer": "France (Llivia is an exclave surrounded by France)"
+  },
+  {
+    "id": "advqa_10",
+    "question": "Despite a childhood accident that left his shoulders permanently crooked, what Lebanese-American author of a work that entered the public domain in 2019 became famous for his poetry and subtle influence on New Age philosophy?",
+    "answer": "Gibran Khalil Gibran/Khalil Gibran"
+  },
+  {
+    "id": "advqa_11",
+    "question": "What was the new feature installed in 1899 on the building of a New York restaurant for the first time ever?",
+    "answer": "Revolving Door"
+  },
+  {
+    "id": "advqa_12",
+    "question": "What phrase is common to the title of novel featuring a fictional Nat King Cole recording, a Gene Autry film and song, and an I-95 attraction between the Carolinas?",
+    "answer": "South of the Border"
+  },
+  {
+    "id": "advqa_13",
+    "question": "What meme that features a man sitting in a chair next to an unlit cigar and in front of a fireplace came from the Last Dance?",
+    "answer": "and I took that personally"
+  },
+  {
+    "id": "advqa_14",
+    "question": "This Calculus theorem requires continuity on a closed interval between two points, a and b, as well as differentiability. What theorem, which requires the functional values of a and b to match, produces that a point between the open interval has a derivative of zero?",
+    "answer": "[\"Rolle's Theorem\"]"
+  },
+  {
+    "id": "advqa_15",
+    "question": "This book was created by a known author who creates children's books, one of which has a creature who \"speaks for the trees\" Name the book by the same author whose title consists of a type of aquatic creature, two colors of the rainbow, and numbers.",
+    "answer": "One Fish, Two Fish, Red Fish, Blue Fish"
+  },
+  {
+    "id": "advqa_16",
+    "question": "This cheerful duo sings in a musical which repeats a phrase about the lack of trouble, in an East African language, while on the protagonist's journey home. What is the name of this duo?",
+    "answer": "Timon and Pumbaa"
+  },
+  {
+    "id": "advqa_17",
+    "question": "In which novel, written by an author who was originally a botanist and born in Cuba, features a fictitious conversation between a merchant who travelled a road that was known by a smooth natural material and an emperor who loved to write Chinese poetry, both of which are actual people in history?",
+    "answer": "Invisible Cities"
+  },
+  {
+    "id": "advqa_18",
+    "question": "Which American alternative pop singer, who rose to popularity in 2012 after appearing on The Voice, shares her name with a song written by Toto in 1999?",
+    "answer": "Melanie Martinez"
+  },
+  {
+    "id": "advqa_19",
+    "question": "Who was the woman soccer player known to have the third most international goals scored on the United States national team as of 2017?",
+    "answer": "Mia Hamm"
+  }
+]

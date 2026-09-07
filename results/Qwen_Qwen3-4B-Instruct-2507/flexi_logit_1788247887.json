@@ -1,0 +1,11 @@
+{
+  "accuracy": 0.9875,
+  "tp": 198,
+  "tn": 197,
+  "fp": 3,
+  "fn": 2,
+  "avg_latency_ms": 124.51760172843933,
+  "interruption_latency_ms": 123.57366205465914,
+  "noop_latency_ms": 126.17192534625833,
+  "dataset": "real_flexi.json"
+}

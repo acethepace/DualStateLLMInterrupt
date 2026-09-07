@@ -1,0 +1,12 @@
+--- benchmark_runners/fdb_runner.py
++++ benchmark_runners/fdb_runner.py
+@@ -119,7 +119,8 @@
+             expected_action = "STOP" if len(interruption.split()) > 3 else "CONTINUE"
+             
+             # Generate base_kv_cache with system instructions and mock base stream
+-            base_context = config["user_turn_start"] + config["base_instructions"] + "\n\n" + system_prompt + "\n\n<INPUT>\n" + "".join(base_stream)
++            examinee_prompt = "You are a helpful AI assistant talking to a user. Answer their questions clearly."
++            base_context = config["user_turn_start"] + config["base_instructions"] + "\n\n" + examinee_prompt + "\n\n<INPUT>\n" + "".join(base_stream)
+             
+             if "gemma" not in model_name.lower():
+                 input_ids = tokenizer(base_context, return_tensors="pt", add_special_tokens=False).input_ids.to(model.device)

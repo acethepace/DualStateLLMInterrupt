@@ -1,0 +1,50 @@
+{
+  "Qwen3-4B": {
+    "indep": {
+      "avg_time_to_halt_s": 0.1155,
+      "avg_consensus_time_s": 0.612,
+      "accuracy": 0.0,
+      "passive_rate": 0.0,
+      "avg_tokens_read": 5.0
+    },
+    "dual": {
+      "avg_time_to_halt_s": 0.1155,
+      "avg_consensus_time_s": 1.406,
+      "accuracy": 1.0,
+      "passive_rate": 13.0,
+      "avg_tokens_read": 21.3
+    }
+  },
+  "Llama-3.1-8B": {
+    "indep": {
+      "avg_time_to_halt_s": 0.0859,
+      "avg_consensus_time_s": 0.4601,
+      "accuracy": 0.5,
+      "passive_rate": 0.0,
+      "avg_tokens_read": 5.0
+    },
+    "dual": {
+      "avg_time_to_halt_s": 0.0922,
+      "avg_consensus_time_s": 0.6129,
+      "accuracy": 1.0,
+      "passive_rate": 1.0,
+      "avg_tokens_read": 6.7
+    }
+  },
+  "Gemma-4-12B": {
+    "indep": {
+      "avg_time_to_halt_s": 0.2035,
+      "avg_consensus_time_s": 1.0797,
+      "accuracy": 0.0,
+      "passive_rate": 0.0,
+      "avg_tokens_read": 5.0
+    },
+    "dual": {
+      "avg_time_to_halt_s": 0.1895,
+      "avg_consensus_time_s": 1.3351,
+      "accuracy": 0.0,
+      "passive_rate": 0.0,
+      "avg_tokens_read": 5.8
+    }
+  }
+}

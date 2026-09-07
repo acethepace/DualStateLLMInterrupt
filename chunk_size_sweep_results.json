@@ -1,0 +1,47 @@
+{
+  "2": {
+    "chunk_size_k": 2,
+    "checks_per_100_tokens": 50.0,
+    "avg_time_to_halt_s": 0.101,
+    "avg_consensus_time_s": 0.6344,
+    "avg_tokens_read": 10.2,
+    "avg_checks_performed": 5.1,
+    "interruption_rate": 94.0
+  },
+  "5": {
+    "chunk_size_k": 5,
+    "checks_per_100_tokens": 20.0,
+    "avg_time_to_halt_s": 0.1063,
+    "avg_consensus_time_s": 0.7059,
+    "avg_tokens_read": 20.5,
+    "avg_checks_performed": 4.2,
+    "interruption_rate": 72.0
+  },
+  "10": {
+    "chunk_size_k": 10,
+    "checks_per_100_tokens": 10.0,
+    "avg_time_to_halt_s": 0.1127,
+    "avg_consensus_time_s": 0.7173,
+    "avg_tokens_read": 28.6,
+    "avg_checks_performed": 3.2,
+    "interruption_rate": 44.0
+  },
+  "20": {
+    "chunk_size_k": 20,
+    "checks_per_100_tokens": 5.0,
+    "avg_time_to_halt_s": 0.1051,
+    "avg_consensus_time_s": 0.7526,
+    "avg_tokens_read": 31.0,
+    "avg_checks_performed": 1.9,
+    "interruption_rate": 44.0
+  },
+  "50": {
+    "chunk_size_k": 50,
+    "checks_per_100_tokens": 2.0,
+    "avg_time_to_halt_s": 0.1214,
+    "avg_consensus_time_s": 0.9182,
+    "avg_tokens_read": 32.6,
+    "avg_checks_performed": 1.1,
+    "interruption_rate": 62.0
+  }
+}

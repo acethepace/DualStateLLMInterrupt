@@ -1,0 +1,48 @@
+Results for quizbowl_results_Meta-Llama-3.1-8B-Instruct_indep.json:
+  Total Scenarios: 20
+  Passive Listening Rate (Failed to interrupt): 10.0%
+  Interruption Accuracy: 0.0%
+  Avg Time-to-Halt: 0.2600 sec
+  Avg Redundant Tokens (Compute Waste): 154.9 tokens
+  Avg Time to Consensus: 1.3000 sec
+
+Results for quizbowl_results_Meta-Llama-3.1-8B-Instruct_dual.json:
+  Total Scenarios: 20
+  Passive Listening Rate (Failed to interrupt): 5.0%
+  Interruption Accuracy: 0.0%
+  Avg Time-to-Halt: 0.1500 sec
+  Avg Redundant Tokens (Compute Waste): 0.0 tokens
+  Avg Time to Consensus: 0.7500 sec
+
+Results for quizbowl_results_gemma-4-12b-it_indep.json:
+  Total Scenarios: 200
+  Passive Listening Rate (Failed to interrupt): 1.0%
+  Interruption Accuracy: 64.6%
+  Avg Time-to-Halt: 0.2500 sec
+  Avg Redundant Tokens (Compute Waste): 1372.5 tokens
+  Avg Time to Consensus: 1.2500 sec
+
+Results for quizbowl_results_gemma-4-12b-it_dual.json:
+  Total Scenarios: 200
+  Passive Listening Rate (Failed to interrupt): 0.5%
+  Interruption Accuracy: 66.8%
+  Avg Time-to-Halt: 0.1400 sec
+  Avg Redundant Tokens (Compute Waste): 0.0 tokens
+  Avg Time to Consensus: 0.7000 sec
+
+Results for quizbowl_results_SAE-Res-Qwen3-8B-Base-W64K-L0_50_indep.json:
+  Total Scenarios: 200
+  Passive Listening Rate (Failed to interrupt): 1.0%
+  Interruption Accuracy: 44.4%
+  Avg Time-to-Halt: 0.1800 sec
+  Avg Redundant Tokens (Compute Waste): 1372.5 tokens
+  Avg Time to Consensus: 0.9000 sec
+
+Results for quizbowl_results_SAE-Res-Qwen3-8B-Base-W64K-L0_50_dual.json:
+  Total Scenarios: 200
+  Passive Listening Rate (Failed to interrupt): 0.5%
+  Interruption Accuracy: 47.7%
+  Avg Time-to-Halt: 0.1100 sec
+  Avg Redundant Tokens (Compute Waste): 0.0 tokens
+  Avg Time to Consensus: 0.5500 sec
+
