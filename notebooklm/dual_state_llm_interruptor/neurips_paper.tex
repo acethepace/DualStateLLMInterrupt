@@ -219,10 +219,10 @@ We evaluate classification accuracy on two authoritative benchmarks:
 \textbf{Metric} & \textbf{Independent (Baseline)} & \textbf{Independent (Logit Gating)} & \textbf{Dual-LLM (Proposed)} \\ \midrule
 \textbf{FLEXI Accuracy} & 97.50\% (TP:198, TN:192, FP:8, FN:2) & 98.75\% (TP:198, TN:197, FP:3, FN:2) & \textbf{99.00\%} (TP:198, TN:198, FP:2, FN:2) \\
 \textbf{FDB Accuracy} & \textbf{99.75\%} (TP:199, TN:200, FP:0, FN:1) & \textbf{99.75\%} (TP:199, TN:200, FP:0, FN:1) & 99.50\% (TP:198, TN:200, FP:0, FN:2) \\ \midrule
-\textbf{Avg FLEXI Latency} & 221.54\,ms & 124.52\,ms & \textbf{66.97\,ms (Blended)} \\
-\textbf{Avg FDB Latency} & 189.64\,ms & 122.35\,ms & \textbf{69.23\,ms (Blended)} \\ \midrule
-\textbf{Interruption Latency (FLEXI TP)} & 261.13\,ms & \textbf{123.57\,ms} & 133.94\,ms \\
-\textbf{Interruption Latency (FDB TP)} & 191.19\,ms & \textbf{122.63\,ms} & 138.45\,ms \\ \bottomrule
+\textbf{Avg FLEXI Latency} & 221.54\,ms & 124.52\,ms & \textbf{43.82\,ms (Blended)} \\
+\textbf{Avg FDB Latency} & 189.64\,ms & 122.35\,ms & \textbf{42.42\,ms (Blended)} \\ \midrule
+\textbf{Interruption Latency (FLEXI TP)} & 261.13\,ms & 123.57\,ms & \textbf{88.52\,ms} \\
+\textbf{Interruption Latency (FDB TP)} & 191.19\,ms & 122.63\,ms & \textbf{85.70\,ms} \\ \bottomrule
 \end{tabular}%
 }
 \end{table}
@@ -241,7 +241,7 @@ Evaluating interruption latency requires decomposing system delay into two disti
 
 \subsection{Time-to-Halt (Interruption Latency on True Positives)}
 Time-to-Halt measures the physical wall-clock duration from the arrival of the critical token indicating an intentional barge-in to the moment the speaker receives the network command to halt. 
-On \textbf{Llama 3.1 8B} (Table~\ref{tab:llama_ablation}), the Independent Baseline requires \textbf{555.19\,ms} (FLEXI) and \textbf{518.45\,ms} (FDB). The Dual-LLM architecture slashes this to \textbf{78.91\,ms} on FLEXI ($\sim$85\% reduction) and \textbf{115.73\,ms} on FDB. On \textbf{Gemma 4 12B} (Table~\ref{tab:gemma_ablation}), Time-to-Halt drops from \textbf{1,131.24\,ms} down to \textbf{190.46\,ms}.
+On \textbf{Llama 3.1 8B} (Table~\ref{tab:llama_ablation}), the Independent Baseline requires \textbf{555.19\,ms} (FLEXI) and \textbf{518.45\,ms} (FDB). The Dual-LLM architecture slashes this to \textbf{78.91\,ms} on FLEXI ($\sim$85\% reduction) and \textbf{115.73\,ms} on FDB. On \textbf{Gemma 4 12B} (Table~\ref{tab:gemma_ablation}), Time-to-Halt drops from \textbf{1,131.24\,ms} down to \textbf{190.46\,ms}. Similarly, on \textbf{Qwen 3 4B} (Table~\ref{tab:qwen_ablation}), Time-to-Halt drops from \textbf{261.13\,ms} (Independent Baseline) down to \textbf{88.52\,ms} (FLEXI) and \textbf{85.70\,ms} (FDB), delivering a \textbf{28.4\%--30.1\% latency reduction} over even the 1-token independent decider.
 
 \subsection{True No-Op Latency: TTFT Benchmark on Warmed KV Cache}
 When an incoming utterance concludes without interruption (No-Op), the listener agent must generate its first response token. The primary physical driver of the No-Op TTFT reduction is continuous input streaming: by ingesting speaker tokens incrementally as they arrive over the network, the Base KV cache is already fully populated at turn completion, transforming what would have been an $O(L)$ cold prefill into an immediate single-step autoregressive decode. Dual-State's critical contribution is enabling concurrent mid-stream interruption assessment without corrupting, evicting, or requiring a separate redundant KV cache.
