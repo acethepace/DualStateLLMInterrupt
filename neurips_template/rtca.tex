@@ -123,7 +123,7 @@ The framework decomposes stream comprehension into two decoupled execution state
 
 \textbf{Setup.} All experiments run on physical hardware (NVIDIA RTX~4070~Ti, 4-bit precision) with Gemma~4~12B~\citep{gemmateam2026gemma4}, Llama~3.1~8B~\citep{grattafiori2024llama3}, and Qwen~3~4B~\citep{yang2025qwen3}. We compare four architectures: \textbf{(A) Independent Decider}, a stateless LLM called on every chunk with the full accumulated context, generating free-form reasoning (15--35 tokens) before deciding; \textbf{(B) Thought Bypass}, variant of A injecting closed-thought blocks to skip internal reasoning (Gemma only; Appendix~\ref{app:full_tables}); \textbf{(C) Independent + Logit Gating}, stateless full-context re-prefill with a 1-token gated decision, isolating the pure re-prefill penalty; \textbf{(D) Dual-State (ours)}, forked streaming cache with a 1-token gated decision.
 
-\textbf{Benchmarks.} (i) \textbf{FLEXI}: 400 human dialogue transcripts (200 intentional barge-ins, 200 benign backchannels); (ii) \textbf{Full-Duplex-Bench (FDB)}~\citep{lin2025fdbench}: 400 dynamic multi-agent roleplay scenarios with semantic ground truth; (iii) \textbf{progressive-clue floor control} (Section~\ref{sec:handraiser}).
+\textbf{Benchmarks.} (i) \textbf{FLEXI}~\citep{ge2025flexi}: 400 human dialogue transcripts (200 intentional barge-ins, 200 benign backchannels); (ii) \textbf{Full-Duplex-Bench (FDB)}~\citep{lin2025fdbench}: 400 dynamic multi-agent roleplay scenarios with semantic ground truth; (iii) \textbf{progressive-clue floor control} (Section~\ref{sec:handraiser}).
 
 \subsection{Interruption Accuracy and Latency}
 \label{sec:accuracy}
@@ -132,7 +132,7 @@ Table~\ref{tab:main_results} summarizes accuracy and latency (full per-model abl
 
 \begin{table}[t]
 \centering
-\caption{\textbf{Interruption accuracy and physical latency.} Avg.\ latency is mean per-check decision latency on FDB; Time-to-Halt is measured on true positives. Full tables with confusion matrices and FLEXI latencies in Appendix~\ref{app:full_tables}.}
+\caption{\textbf{Interruption accuracy and latency.} Mean decision latency on FDB; Time-to-Halt on true positives. Full tables with confusion matrices and FLEXI latencies in Appendix~\ref{app:full_tables}.}
 \label{tab:main_results}
 \renewcommand{\arraystretch}{0.88}
 \resizebox{\textwidth}{!}{%
@@ -154,7 +154,7 @@ Table~\ref{tab:main_results} summarizes accuracy and latency (full per-model abl
 
 \textbf{Accuracy is preserved without reasoning tokens.} The reasoning independent decider is accurate (99.75\% FLEXI on Gemma) but unusable in real time: its average per-check latency on FDB reaches \textbf{2{,}452\,ms}. Gated 1-token decisions retain 90.5--100\% accuracy across all models, and Dual-State matches or exceeds the gated independent decider (100.0\% vs.\ 90.75\% FDB on Gemma).
 
-\textbf{Time-to-Halt.} Measured from the arrival of the critical token to the halt command, Dual-State cuts Time-to-Halt from 518\,ms to \textbf{116\,ms} on Llama ($\sim$78\%), 1{,}118\,ms to \textbf{181\,ms} on Gemma, and 191\,ms to \textbf{86\,ms} on Qwen---28--30\% below even the 1-token gated independent decider, purely from eliminating re-prefill.
+\textbf{Time-to-Halt.} Measured from the arrival of the critical token to the halt command, Dual-State cuts Time-to-Halt from 518\,ms to \textbf{116\,ms} on Llama ($\sim$78\%), 1{,}118\,ms to \textbf{181\,ms} on Gemma, and 191\,ms to \textbf{86\,ms} on Qwen---28--30\% below even the 1-token gated independent decider, purely from eliminating re-prefill. This trade-off directly mirrors the Average Penalty Time (APT) objective of semantic interruption detection~\citep{xia2026sidbench}.
 
 \textbf{No-op TTFT.} When the stream completes without interruption, the preserved cache turns response TTFT into a single decode step: at $L{=}1024$, TTFT drops by \textbf{65.0\%} on Llama (234.65\,ms $\to$ 82.18\,ms), \textbf{48.7\%} on Gemma, and \textbf{36.0\%} on Qwen (full sweep in Appendix~\ref{app:ttft}). Fork overhead never exceeds 0.06\,ms.
 
@@ -165,7 +165,7 @@ To evaluate end-to-end floor control, we adapt incremental QA~\citep{rodriguez20
 
 \begin{table}[t]
 \centering
-\caption{\textbf{\textsc{Handraiser} continuous multi-attempt floor control (200 scenarios, $k{=}5$).} Context re-prefill is cumulative redundant prefix tokens across all attempts per scenario (single-pass baseline is 576.2 tok; Appendix~\ref{app:tokens}).}
+\caption{\textbf{\textsc{Handraiser} multi-attempt floor control (200 scenarios, $k{=}5$).} Cumulative redundant context re-prefill tokens per scenario (single-pass baseline: 576.2 tok; Appendix~\ref{app:tokens}).}
 \label{tab:handraiser_results}
 \renewcommand{\arraystretch}{0.88}
 \resizebox{\textwidth}{!}{%
@@ -195,7 +195,7 @@ To evaluate end-to-end floor control, we adapt incremental QA~\citep{rodriguez20
 
 \textbf{Conclusion.} Dual-State KV-Forking turns a passive streaming listener into an active conversational participant: one persistent cache ingests the stream once; ephemeral forks decide when to take the floor---a reusable building block for real-time full-duplex agent systems.
 
-\begin{thebibliography}{22}
+\begin{thebibliography}{24}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -216,6 +216,11 @@ Alexandre D{\'e}fossez, Laurent Mazar{\'e}, Manu Orsini, Am{\'e}lie Royer, Patri
 {Gemma Team}.
 \newblock {Gemma} 4 technical report.
 \newblock \emph{arXiv preprint arXiv:2607.02770}, 2026.
+
+\bibitem[Ge et~al.(2025)Ge, Chen, Xiao, Liu, Xiao, Xiang, et~al.]{ge2025flexi}
+Yuan Ge, Saihan Chen, Jingqi Xiao, Xiaoqian Liu, Tong Xiao, Yan Xiang, et~al.
+\newblock {FLEXI}: Benchmarking full-duplex human-{LLM} speech interaction.
+\newblock \emph{arXiv preprint arXiv:2509.22243}, 2025.
 
 \bibitem[Gim et~al.(2024)Gim, Chen, Lee, Sarda, Khandelwal, and Zhong]{gim2024promptcache}
 In~Gim, Guojun Chen, Seung-seob Lee, Nikhil Sarda, Anurag Khandelwal, and Lin Zhong.
@@ -281,6 +286,11 @@ Eric Wallace, Pedro Rodriguez, Shi Feng, Ikuya Yamada, and Jordan Boyd-Graber.
 Qingyun Wu, Gagan Bansal, Jieyu Zhang, Yiran Wu, Beibin Li, Erkang Zhu, Li~Jiang, Xiaoyun Zhang, Shaokun Zhang, Jiale Liu, Ahmed~Hassan Awadallah, Ryen~W. White, Doug Burger, and Chi Wang.
 \newblock {Auto{G}en}: Enabling next-gen {LLM} applications via multi-agent conversation.
 \newblock \emph{arXiv preprint arXiv:2308.08155}, 2023.
+
+\bibitem[Xia et~al.(2026)Xia, Mu, Shi, Xu, and Xie]{xia2026sidbench}
+Kangxiang Xia, Bingshen Mu, Xian Shi, Jin Xu, and Lei Xie.
+\newblock Semantic-aware interruption detection in spoken dialogue systems: Benchmark, metric, and model.
+\newblock \emph{arXiv preprint arXiv:2603.24144}, 2026.
 
 \bibitem[Xiao et~al.(2024)Xiao, Tian, Chen, Han, and Lewis]{xiao2023streamingllm}
 Guangxuan Xiao, Yuandong Tian, Beidi Chen, Song Han, and Mike Lewis.
