@@ -191,7 +191,7 @@ To evaluate end-to-end floor control, we adapt incremental QA~\citep{rodriguez20
 
 \textbf{Serving integration \& memory.} The fork is a copy-on-write leaf on the RadixAttention~\citep{zheng2023sglang} trunk, or block-table sharing in PagedAttention~\citep{kwon2023vllm}. Aliasing rather than duplicating the trunk cuts per-stream assessor KV overhead from 90.9\,MB to 0.88\,MB ($\sim$49.5\% at batch 64; Appendix~\ref{app:serving}).
 
-\textbf{Limitations.} (i) Our baseline is \emph{stateless}, reflecting decider-as-a-service deployments; a stateful variant would avoid re-prefill at the cost of duplicated ingestion compute and KV memory. (ii) Each assessment attends over the full cached history. (iii) Multi-party arbitration, spoken full-duplex integration~\citep{defossez2024moshi}, and human perceptual studies remain open.
+\textbf{Limitations.} (i) Our baseline is \emph{stateless}, reflecting decider-as-a-service deployments; a stateful variant would avoid re-prefill at the cost of duplicated ingestion compute and KV memory, and a head-to-head comparison is future work. (ii) Each assessment attends over the full cached history. (iii) Multi-party arbitration, spoken full-duplex integration~\citep{defossez2024moshi}, and human perceptual studies remain open.
 
 \textbf{Conclusion.} Dual-State KV-Forking turns a passive streaming listener into an active conversational participant: one persistent cache ingests the stream once; ephemeral forks decide when to take the floor---a reusable building block for real-time full-duplex agent systems.
 
