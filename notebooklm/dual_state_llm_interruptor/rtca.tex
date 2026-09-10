@@ -99,7 +99,7 @@ Our contributions are: \textbf{(i)} a dual-state execution scheme adding active,
 \section{Related Work}
 \label{sec:related}
 
-\textbf{Full-duplex spoken dialogue.} Turn-taking, overlap, and backchannels are foundational in conversation analysis~\citep{sacks1974turntaking, yngve1970} and long engineered into spoken dialogue systems~\citep{skantze2021review, lin2022duplex}. Neural full-duplex models jointly listen and speak---dGSLM~\citep{nguyen2023dgslm}, Moshi~\citep{defossez2024moshi}, Mini-Omni2~\citep{xie2024miniomni2}, duplex-tuned LLMs~\citep{zhang2024duplexmodels}---while Full-Duplex-Bench~\citep{lin2025fdbench, lin2025fdbenchv2} and SID-Bench~\citep{xia2026sidbench} standardize evaluation of pause handling, backchanneling, turn-taking, and semantic interruption detection. These works target the speech interface of a \emph{single} agent facing a human; we target the complementary problem of \emph{agent-to-agent} floor control in text-token streams with a frozen LLM listener.
+\textbf{Full-duplex spoken dialogue.} Turn-taking, overlap, and backchannels are foundational in conversation analysis~\citep{sacks1974turntaking, yngve1970} and long engineered into spoken dialogue systems~\citep{skantze2021review, lin2022duplex}. Neural full-duplex models jointly listen and speak---dGSLM~\citep{nguyen2023dgslm}, Moshi~\citep{defossez2024moshi}, duplex-tuned LLMs~\citep{zhang2024duplexmodels}---and Full-Duplex-Bench~\citep{lin2025fdbench} standardizes evaluation of pause handling, backchanneling, turn-taking, and interruptions. These works target the speech interface of a \emph{single} agent facing a human; we target the complementary problem of \emph{agent-to-agent} floor control in text-token streams with a frozen LLM listener.
 
 \textbf{Streaming ingestion and KV reuse.} Chunked prefill~\citep{agrawal2023sarathi}, attention sinks~\citep{xiao2023streamingllm}, continuous batching~\citep{yu2022orca}, paged KV memory~\citep{kwon2023vllm}, radix-tree prefix sharing~\citep{zheng2023sglang}, prompt caching~\citep{gim2024promptcache}, and speculative decoding~\citep{leviathan2023speculative} all reuse or cheaply extend computed state to cut latency and memory. Our contribution is not a new cache mechanism but a \emph{dual-state execution pattern} over these primitives---a persistent streaming trunk plus ephemeral copy-on-write assessment branches---applied to real-time interruption; it maps natively onto RadixAttention/PagedAttention (Appendix~\ref{app:serving}).
 
@@ -154,7 +154,7 @@ Table~\ref{tab:main_results} summarizes accuracy and latency (full per-model abl
 
 \textbf{Accuracy is preserved without reasoning tokens.} The reasoning independent decider is accurate (99.75\% FLEXI on Gemma) but unusable in real time: its average per-check latency on FDB reaches \textbf{2{,}452\,ms}. Gated 1-token decisions retain 90.5--100\% accuracy across all models, and Dual-State matches or exceeds the gated independent decider (100.0\% vs.\ 90.75\% FDB on Gemma).
 
-\textbf{Time-to-Halt.} Measured from the arrival of the critical token to the halt command, Dual-State cuts Time-to-Halt from 518\,ms to \textbf{116\,ms} on Llama ($\sim$78\%), 1{,}118\,ms to \textbf{181\,ms} on Gemma, and 191\,ms to \textbf{86\,ms} on Qwen---28--30\% below even the 1-token gated independent decider on Qwen and Gemma, and matching the memory-bandwidth floor on Llama FDB (115.7\,ms vs 117.7\,ms), purely from eliminating re-prefill. This responsiveness--stability trade-off directly mirrors the Average Penalty Time (APT) objective of semantic interruption detection~\citep{xia2026sidbench}.
+\textbf{Time-to-Halt.} Measured from the arrival of the critical token to the halt command, Dual-State cuts Time-to-Halt from 518\,ms to \textbf{116\,ms} on Llama ($\sim$78\%), 1{,}118\,ms to \textbf{181\,ms} on Gemma, and 191\,ms to \textbf{86\,ms} on Qwen---28--30\% below even the 1-token gated independent decider, purely from eliminating re-prefill.
 
 \textbf{No-op TTFT.} When the stream completes without interruption, the preserved cache turns response TTFT into a single decode step: at $L{=}1024$, TTFT drops by \textbf{65.0\%} on Llama (234.65\,ms $\to$ 82.18\,ms), \textbf{48.7\%} on Gemma, and \textbf{36.0\%} on Qwen (full sweep in Appendix~\ref{app:ttft}). Fork overhead never exceeds 0.06\,ms.
 
@@ -182,16 +182,20 @@ To evaluate end-to-end floor control, we adapt incremental QA~\citep{rodriguez20
 }
 \end{table}
 
-\textbf{Results} (Table~\ref{tab:handraiser_results}). Under concurrent full-duplex streaming, Dual-State (i) eliminates redundant context re-prefill entirely (the stateless baseline wastes 2{,}661--3{,}187 cumulative prefix tokens per scenario); (ii) cuts Time-to-Halt by up to 49.1\%; (iii) accelerates consensus by up to 19.1\% on Llama (while on Qwen, earlier non-fatal buzzes permit additional clue intake, trading consensus duration for higher resolution accuracy); and (iv) attains strictly higher resolution accuracy and game scores across all three families. In total accounting (Appendix~\ref{app:tokens}), the stateless decider consumes 966.3 tokens per 63.4-token scenario ($+1424\%$ overage) versus \textbf{207.2} for Dual-State ($+227\%$)---a \textbf{78.6\%} net reduction. A chunk-stride sweep ($k \in \{2, 5, 10, 20, 50\}$) shows strides $k \in [5, 10]$ achieve an optimal responsiveness--compute Pareto frontier; trained linear/MLP probes are faster (0.08--0.10\,ms) but require task-specific retraining, whereas Dual-State is fully zero-shot (Appendix~\ref{app:probes}).
+\textbf{Results} (Table~\ref{tab:handraiser_results}). Under concurrent full-duplex streaming, Dual-State (i) eliminates redundant context re-prefill entirely (the stateless baseline wastes 2{,}661--3{,}187 cumulative prefix tokens per scenario); (ii) cuts Time-to-Halt by up to 49.1\%; (iii) accelerates consensus by up to 19.1\% on Llama (while on Qwen, earlier non-fatal buzzes permit additional clue intake, trading consensus duration for higher resolution accuracy); and (iv) attains strictly higher resolution accuracy and game scores across all three families. In total accounting (Appendix~\ref{app:tokens}), the stateless decider consumes 966.3 tokens per 63.4-token scenario ($+1424\%$ overage) versus \textbf{207.2} for Dual-State ($+227\%$)---a \textbf{78.6\%} net reduction.
+
+\textbf{Ablations.} A chunk-stride sweep ($k \in \{2, 5, 10, 20, 50\}$) exposes a responsiveness--compute Pareto frontier with $k \in [5, 10]$ optimal; trained linear/MLP probes are faster (0.08--0.10\,ms) but need task-specific supervision, whereas the prompt-guided Assessor is zero-shot (Appendix~\ref{app:probes}).
 
 \section{Discussion, Limitations, and Conclusion}
 \label{sec:discussion}
 
 \textbf{Serving integration \& memory.} The fork is a copy-on-write leaf on the RadixAttention~\citep{zheng2023sglang} trunk, or block-table sharing in PagedAttention~\citep{kwon2023vllm}. Aliasing rather than duplicating the trunk cuts per-stream assessor KV overhead from 90.9\,MB to 0.88\,MB ($\sim$49.5\% at batch 64; Appendix~\ref{app:serving}).
+
 \textbf{Limitations.} (i) Our baseline is \emph{stateless}, reflecting decider-as-a-service deployments; a stateful variant would avoid re-prefill at the cost of duplicated ingestion compute and KV memory. (ii) Each assessment attends over the full cached history. (iii) Multi-party arbitration, spoken full-duplex integration~\citep{defossez2024moshi}, and human perceptual studies remain open.
+
 \textbf{Conclusion.} Dual-State KV-Forking turns a passive streaming listener into an active conversational participant: one persistent cache ingests the stream once; ephemeral forks decide when to take the floor---a reusable building block for real-time full-duplex agent systems.
 
-\begin{thebibliography}{25}
+\begin{thebibliography}{22}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -243,15 +247,10 @@ Ting-En Lin, Yuchuan Wu, Fei Huang, Luo Si, Jian Sun, and Yongbin Li.
 \newblock Duplex conversation: Towards human-like interaction in spoken dialogue systems.
 \newblock In \emph{Proceedings of the 28th ACM SIGKDD Conference on Knowledge Discovery and Data Mining (KDD '22)}, pages 3438--3447, 2022.
 
-\bibitem[Lin et~al.(2025{\natexlab{a}})Lin, Lian, Li, Wang, Anumanchipalli, Liu, and Lee]{lin2025fdbench}
+\bibitem[Lin et~al.(2025)Lin, Lian, Li, Wang, Anumanchipalli, Liu, and Lee]{lin2025fdbench}
 Guan-Ting Lin, Jiachen Lian, Tingle Li, Qirui Wang, Gopala Anumanchipalli, Alexander~H. Liu, and Hung-yi Lee.
 \newblock {Full-Duplex-Bench}: A benchmark to evaluate full-duplex spoken dialogue models on turn-taking capabilities.
-\newblock In \emph{Proc.\ IEEE ASRU}, 2025{\natexlab{a}}. arXiv:2503.04721.
-
-\bibitem[Lin et~al.(2025{\natexlab{b}})Lin, Lian, Li, Wang, Liu, and Lee]{lin2025fdbenchv2}
-Guan-Ting Lin, Jiachen Lian, Tingle Li, Qirui Wang, Alexander~H. Liu, and Hung-yi Lee.
-\newblock {Full-Duplex-Bench-v2}: A multi-turn evaluation framework for duplex dialogue systems with an automated examiner.
-\newblock \emph{arXiv preprint arXiv:2507.03157}, 2025{\natexlab{b}}.
+\newblock In \emph{Proc.\ IEEE ASRU}, 2025. arXiv:2503.04721.
 
 \bibitem[Nguyen et~al.(2023)Nguyen, Kharitonov, Copet, Adi, Hsu, Elkahky, Tomasello, Algayres, Sagot, Mohamed, and Dupoux]{nguyen2023dgslm}
 Tu~Anh Nguyen, Eugene Kharitonov, Jade Copet, Yossi Adi, Wei-Ning Hsu, Ali Elkahky, Paden Tomasello, Robin Algayres, Beno{\^\i}t Sagot, Abdelrahman Mohamed, and Emmanuel Dupoux.
@@ -283,20 +282,10 @@ Qingyun Wu, Gagan Bansal, Jieyu Zhang, Yiran Wu, Beibin Li, Erkang Zhu, Li~Jiang
 \newblock {Auto{G}en}: Enabling next-gen {LLM} applications via multi-agent conversation.
 \newblock \emph{arXiv preprint arXiv:2308.08155}, 2023.
 
-\bibitem[Xia et~al.(2026)Xia, Mu, Shi, Xu, and Xie]{xia2026sidbench}
-Kangxiang Xia, Bingshen Mu, Xian Shi, Jin Xu, and Lei Xie.
-\newblock Semantic-aware interruption detection in spoken dialogue systems: Benchmark, metric, and model.
-\newblock \emph{arXiv preprint arXiv:2603.24144}, 2026.
-
 \bibitem[Xiao et~al.(2024)Xiao, Tian, Chen, Han, and Lewis]{xiao2023streamingllm}
 Guangxuan Xiao, Yuandong Tian, Beidi Chen, Song Han, and Mike Lewis.
 \newblock Efficient streaming language models with attention sinks.
 \newblock In \emph{International Conference on Learning Representations (ICLR)}, 2024.
-
-\bibitem[Xie and Wu(2024)]{xie2024miniomni2}
-Zhifei Xie and Changqiao Wu.
-\newblock {Mini-Omni2}: Towards open-source {GPT-4o} with vision, speech and duplex capabilities.
-\newblock \emph{arXiv preprint arXiv:2410.11190}, 2024.
 
 \bibitem[Yang et~al.(2025)Yang et~al.]{yang2025qwen3}
 An~Yang et~al.
