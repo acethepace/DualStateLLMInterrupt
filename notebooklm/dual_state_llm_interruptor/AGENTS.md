@@ -120,5 +120,20 @@ To formally prove that the Dual-State architecture's latency advantages are a un
 - **Figure 1 Asset Extraction**: Resolved missing image dependency by extracting high-resolution (4465x1180) `figures/dual_state_arch.png` from the compiled PDF and integrating into `neurips_template/figures/` and all `notebooklm/` repositories.
 - **Strict 4-Page Workshop Limit Compliance**: Re-verified layout with `pypdf`. Sections 1--5 terminate strictly on Page 4, References begin on Page 5, and Appendices span Pages 6--10 (with unscaled Table 5 and formatted Tables 8--9). Zero compilation errors or overfull `\hbox` warnings.
 
+## Learnings (Camera-Ready Acceptance Revisions & Reviewer Feedback)
+- **Acceptance Decision**: Officially accepted as Poster at NeurIPS 2026 Workshop on Real-Time Conversational Agents (RTCA) (Review scores: 8 / 6 / 4).
+- **PC Directives Addressed**:
+  1. *Calibrated Accuracy Claims*: Clarified in abstract, introduction, and Section 4.1 that Dual-State matches or exceeds logit-gated independent deciders across all models, matches reasoning-based deciders on Qwen and Gemma, and trails the reasoning decider on Llama by 2.75–3.0% (90.5% vs 93.5% on FLEXI, 94.25% vs 97.0% on FDB) as an explicit tradeoff for a 77.7% Time-to-Halt reduction and 78.6% token reduction.
+  2. *Surfaced Qwen Consensus-Time Regression*: Explicitly tagged the `+31.7%` consensus time increase in Table 2 (`4.0542 (+31.7%)`) and contextualized it in Section 4.2 and Appendix C as an intentional floor-control tradeoff where earlier non-fatal buzzes permit subsequent clue intake, raising final resolution accuracy from 43.0% to 44.0%.
+  3. *Matched Cached-Decider Comparison*: Added a detailed architectural comparison in Appendix F and Section 5 contrasting Dual-State with a persistent cached decider (which avoids $O(N^2)$ re-prefill but requires $+100\%$ duplicate KV memory and duplicate chunk ingestion).
+  4. *Serving & Safety Projections*: Framed multi-stream batch 64 memory scaling as an analytical projection (49.5% reduction, $181.8 \to 91.78$\,MB) with explicit arithmetic, and reframed emergency trajectory overrides as prospective runtime safety supervision.
+- **Reviewer Inquiries & Technical Clarifications Resolved**:
+  - *Pointer Aliasing Overhead*: Clarified in Section 3 and Appendix F that 0.01–0.06\,ms reflects CPU/driver-side tensor metadata cloning in PyTorch, translating to true zero-copy block-table pointer assignment in production engines like PagedAttention.
+  - *Decision Calibration*: Formally clarified that argmax between STOP and CONTINUE corresponds to the canonical decision threshold $\tau = 0.5$, which is stable across $\tau \in [0.1, 0.8]$.
+  - *Token Accounting Reconciliation*: Fully reconciled Table 7's single-turn per-scenario accounting ($-78.6\%$) with Table 2's cumulative multi-attempt context re-prefill savings (eliminating 2,661–3,187 redundant tokens across continuous dialogue).
+  - *Gemma Logit Gating Anomaly Explained*: Documented in Appendix A that independent logit gating without CoT yields 90.75% on FDB due to unconditioned logits allocating probability mass to polite backchannel punctuation, which is completely cured by Dual-State's thought-bypass injection (100.0%).
+  - *Bibliographic Audit*: Verified all 24 citations with `hallucinator-cli` v0.2.4 (0 hallucinated citations).
+- **Strict 4-Page Workshop Constraint Maintained**: Verified via `pypdf` that Sections 1–5 terminate strictly on Page 4, References begin cleanly on Page 5, and Appendices span Pages 6–10 with zero compilation errors or overfull `\hbox` warnings.
+
 
 
