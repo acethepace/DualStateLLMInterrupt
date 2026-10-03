@@ -53,45 +53,11 @@ The naive solution---invoking an independent LLM decider on every streaming chun
 
 We introduce the \textbf{Dual-State KV-Forking} architecture (Figure~\ref{fig:dual_state_arch}). A \emph{Base state} ingests the stream once, chunk by chunk, into a persistent KV cache. At each chunk boundary, the cache is forked---via shallow tensor cloning, measured at 0.01--0.06\,ms---into an ephemeral \emph{Assessor state} that appends a short decider prompt and emits a single token constrained by logit gating to $\{\texttt{STOP}, \texttt{CONTINUE}\}$. The fork is discarded after the decision; the Base cache is never touched, so it remains warm for instant response generation if the speaker concludes naturally.
 
-Our contributions are: \textbf{(i)} a dual-state execution scheme adding active, prompt-configurable interruption to streaming listeners with per-check prefill cost independent of history length, zero trained parameters, and no corruption of the response-generation state; \textbf{(ii)} a three-model physical-hardware study spanning interruption accuracy on FLEXI and Full-Duplex-Bench~\citep{lin2025fdbench} and end-to-end floor control on a 200-scenario progressive-clue task built on incremental QA~\citep{rodriguez2021quizbowl, wallace2019trick}; \textbf{(iii)} accuracy on par with (or better than) a reasoning independent decider at \textbf{78.6\%} fewer total tokens, up to \textbf{49.1\%} lower Time-to-Halt, and up to \textbf{65.0\%} lower no-op TTFT via the preserved streaming cache.
+Our contributions are: \textbf{(i)} a dual-state execution scheme adding active, prompt-configurable interruption to streaming listeners with per-check prefill cost independent of history length, zero trained parameters, and no corruption of the response-generation state; \textbf{(ii)} a three-model physical-hardware study spanning interruption accuracy on FLEXI~\citep{ge2025flexi} and Full-Duplex-Bench~\citep{lin2025fdbench} and end-to-end floor control on a 200-scenario progressive-clue task built on incremental QA~\citep{rodriguez2021quizbowl, wallace2019trick}; \textbf{(iii)} accuracy on par with (or better than) a reasoning independent decider at \textbf{78.6\%} fewer total tokens, up to \textbf{49.1\%} lower Time-to-Halt, and up to \textbf{65.0\%} lower no-op TTFT via the preserved streaming cache.
 
 \begin{figure}[t]
 \centering
-\resizebox{0.72\textwidth}{!}{%
-\begin{tikzpicture}[
-    node distance=0.9cm and 1.2cm,
-    box/.style={rectangle, draw=black!70, fill=blue!5, rounded corners=3pt, text width=2.8cm, align=center, minimum height=0.9cm, font=\small},
-    statebox/.style={rectangle, draw=black!80, fill=green!10, rounded corners=3pt, text width=3.4cm, align=center, minimum height=1.0cm, font=\small},
-    forkbox/.style={rectangle, draw=black!80, fill=orange!10, rounded corners=3pt, text width=3.2cm, align=center, minimum height=1.0cm, font=\small},
-    gatebox/.style={rectangle, draw=black!80, fill=red!10, rounded corners=3pt, text width=2.6cm, align=center, minimum height=0.9cm, font=\small},
-    decision/.style={diamond, draw=black!80, fill=yellow!15, text width=1.6cm, align=center, inner sep=1pt, font=\footnotesize},
-    respbox/.style={rectangle, draw=purple!80, fill=purple!10, rounded corners=3pt, text width=3.2cm, align=center, minimum height=1.0cm, font=\small},
-    arrow/.style={-{Stealth[scale=1.0]}, thick, draw=black!80}
-]
-
-% Nodes
-\node[box] (speaker) {\textbf{Speaker Stream} \\ Chunk $C_m$ ($k=5$ tokens)};
-\node[statebox, right=of speaker] (base) {\textbf{Base State (KV Cache)} \\ Progressively Updated \\ Context: $\mathbf{K}_{0:t}, \mathbf{V}_{0:t}$};
-\node[forkbox, below=0.85cm of base] (assessor) {\textbf{Assessor State (Fork)} \\ Cloned Cache (0.02\,ms) \\ Append Decider Prompt};
-\node[gatebox, right=of assessor] (gate) {\textbf{Logit Gating Layer} \\ Binary Mask $\to$ \\ $\{\texttt{STOP}, \texttt{CONTINUE}\}$};
-\node[decision, right=of gate] (decision_node) {Decision?};
-\node[box, above=0.85cm of decision_node, fill=green!15] (continue_node) {\textbf{Continue Stream} \\ Base Stream Unblocked \\ Discard Assessor};
-\node[box, right=1.2cm of decision_node, fill=red!15] (halt_node) {\textbf{Halt Speaker} \\ Signal: $<150$\,ms \\ Floor Seized};
-\node[respbox, above=0.85cm of base] (resp_node) {\textbf{Response Generation} \\ Input Streaming Warmed Cache \\ \textbf{TTFT Latency Cut: up to 65.0\%}};
-
-% Edges
-\draw[arrow] (speaker) -- node[above, font=\footnotesize] {Stream Chunk} (base);
-\draw[arrow] (base) -- node[right, font=\footnotesize] {Fork KV at chunk boundary} (assessor);
-\draw[arrow] (assessor) -- node[above, font=\footnotesize] {1-Token Pass} (gate);
-\draw[arrow] (gate) -- (decision_node);
-\draw[arrow] (decision_node) -- node[right, font=\footnotesize] {\texttt{CONTINUE}} (continue_node);
-\draw[arrow] (decision_node) -- node[above, font=\footnotesize] {\texttt{STOP}} (halt_node);
-\draw[arrow, dashed] (continue_node) -- ++(-4.5,0) -- (base);
-\draw[arrow, dashed] (halt_node) |- ++(0,1.4) -| node[pos=0.25, above, font=\footnotesize] {Interrupt Signal} (speaker);
-\draw[arrow, thick, color=purple!80] (base) -- node[left, font=\footnotesize] {Speaker EOS (No-Op)} (resp_node);
-
-\end{tikzpicture}%
-}
+\includegraphics[width=\linewidth]{figures/dual_state_arch.png}
 \caption{\textbf{Dual-State KV-Forking.} Speaker chunks update the Base cache ($O(k)$/chunk). At each boundary the cache is forked ($\le$0.06\,ms) into an Assessor emitting one gated \texttt{STOP}/\texttt{CONTINUE} token. \texttt{CONTINUE} discards the fork; \texttt{STOP} halts the speaker in sub-150\,ms; on natural completion the warm cache generates the response immediately.}
 \label{fig:dual_state_arch}
 \end{figure}
@@ -205,7 +171,7 @@ To evaluate end-to-end floor control, we adapt incremental QA~\citep{rodriguez20
 \bibitem[Agrawal et~al.(2024)Agrawal, Kedia, Panwar, Mohan, Kwatra, Gulavani, Tumanov, and Ramjee]{agrawal2023sarathi}
 Amey Agrawal, Nitin Kedia, Ashish Panwar, Jayashree Mohan, Nipun Kwatra, Bhargav~S. Gulavani, Alexey Tumanov, and Ramachandran Ramjee.
 \newblock Taming throughput-latency tradeoff in {LLM} inference with {Sarathi-Serve}.
-\newblock In \emph{Proceedings of the 18th USENIX Symposium on Operating Systems Design and Implementation (OSDI '24)}, pages 1127--1143, 2024.
+\newblock In \emph{Proceedings of the 18th USENIX Symposium on Operating Systems Design and Implementation (OSDI '24)}, pages 117--134, 2024.
 
 \bibitem[D{\'e}fossez et~al.(2024)D{\'e}fossez, Mazar{\'e}, Orsini, Royer, P{\'e}rez, J{\'e}gou, Grave, and Zeghidour]{defossez2024moshi}
 Alexandre D{\'e}fossez, Laurent Mazar{\'e}, Manu Orsini, Am{\'e}lie Royer, Patrick P{\'e}rez, Herv{\'e} J{\'e}gou, Edouard Grave, and Neil Zeghidour.
@@ -217,17 +183,17 @@ Alexandre D{\'e}fossez, Laurent Mazar{\'e}, Manu Orsini, Am{\'e}lie Royer, Patri
 \newblock {Gemma} 4 technical report.
 \newblock \emph{arXiv preprint arXiv:2607.02770}, 2026.
 
-\bibitem[Ge et~al.(2025)Ge, Chen, Xiao, Liu, Xiao, Xiang, et~al.]{ge2025flexi}
-Yuan Ge, Saihan Chen, Jingqi Xiao, Xiaoqian Liu, Tong Xiao, Yan Xiang, et~al.
+\bibitem[Ge et~al.(2025)Ge, Chen, Xiao, Liu, Xiao, Xiang, Yu, and Zhu]{ge2025flexi}
+Yuan Ge, Saihan Chen, Jingqi Xiao, Xiaoqian Liu, Tong Xiao, Yan Xiang, Zhengtao Yu, and Jingbo Zhu.
 \newblock {FLEXI}: Benchmarking full-duplex human-{LLM} speech interaction.
 \newblock \emph{arXiv preprint arXiv:2509.22243}, 2025.
 
 \bibitem[Gim et~al.(2024)Gim, Chen, Lee, Sarda, Khandelwal, and Zhong]{gim2024promptcache}
 In~Gim, Guojun Chen, Seung-seob Lee, Nikhil Sarda, Anurag Khandelwal, and Lin Zhong.
 \newblock {Prompt Cache}: Modular attention reuse for low-latency inference.
-\newblock In \emph{Proceedings of Machine Learning and Systems (MLSys)}, volume~6, pages 341--353, 2024.
+\newblock In \emph{Proceedings of Machine Learning and Systems (MLSys)}, volume~6, 2024.
 
-\bibitem[Grattafiori et~al.(2024)Grattafiori et~al.]{grattafiori2024llama3}
+\bibitem[Grattafiori et~al.(2024)]{grattafiori2024llama3}
 Aaron Grattafiori et~al.
 \newblock The {Llama} 3 herd of models.
 \newblock \emph{arXiv preprint arXiv:2407.21783}, 2024.
@@ -245,12 +211,13 @@ Yaniv Leviathan, Matan Kalman, and Yossi Matias.
 \bibitem[Li et~al.(2023)Li, Hammoud, Itani, Khizbullin, and Ghanem]{li2023camel}
 Guohao Li, Hasan~Abed Al~Kader Hammoud, Hani Itani, Dmitrii Khizbullin, and Bernard Ghanem.
 \newblock {CAMEL}: Communicative agents for ``mind'' exploration of large language model society.
-\newblock In \emph{Advances in Neural Information Processing Systems (NeurIPS)}, volume~36, pages 51991--52008, 2023.
+\newblock In \emph{Advances in Neural Information Processing Systems (NeurIPS)}, volume~36, 2023.
 
 \bibitem[Lin et~al.(2022)Lin, Wu, Huang, Si, Sun, and Li]{lin2022duplex}
 Ting-En Lin, Yuchuan Wu, Fei Huang, Luo Si, Jian Sun, and Yongbin Li.
 \newblock Duplex conversation: Towards human-like interaction in spoken dialogue systems.
 \newblock In \emph{Proceedings of the 28th ACM SIGKDD Conference on Knowledge Discovery and Data Mining (KDD '22)}, pages 3438--3447, 2022.
+\newblock \doi{10.1145/3534678.3539209}.
 
 \bibitem[Lin et~al.(2025)Lin, Lian, Li, Wang, Anumanchipalli, Liu, and Lee]{lin2025fdbench}
 Guan-Ting Lin, Jiachen Lian, Tingle Li, Qirui Wang, Gopala Anumanchipalli, Alexander~H. Liu, and Hung-yi Lee.
@@ -290,14 +257,14 @@ Qingyun Wu, Gagan Bansal, Jieyu Zhang, Yiran Wu, Beibin Li, Erkang Zhu, Li~Jiang
 \bibitem[Xia et~al.(2026)Xia, Mu, Shi, Xu, and Xie]{xia2026sidbench}
 Kangxiang Xia, Bingshen Mu, Xian Shi, Jin Xu, and Lei Xie.
 \newblock Semantic-aware interruption detection in spoken dialogue systems: Benchmark, metric, and model.
-\newblock \emph{arXiv preprint arXiv:2603.24144}, 2026.
+\newblock In \emph{Proceedings of the IEEE International Conference on Multimedia and Expo (ICME '26)}, 2026.
 
 \bibitem[Xiao et~al.(2024)Xiao, Tian, Chen, Han, and Lewis]{xiao2023streamingllm}
 Guangxuan Xiao, Yuandong Tian, Beidi Chen, Song Han, and Mike Lewis.
 \newblock Efficient streaming language models with attention sinks.
 \newblock In \emph{International Conference on Learning Representations (ICLR)}, 2024.
 
-\bibitem[Yang et~al.(2025)Yang et~al.]{yang2025qwen3}
+\bibitem[Yang et~al.(2025)]{yang2025qwen3}
 An~Yang et~al.
 \newblock {Qwen3} technical report.
 \newblock \emph{arXiv preprint arXiv:2505.09388}, 2025.
@@ -374,7 +341,6 @@ Time-to-Halt (FDB TP, ms) & 518.45 & 117.67 & \textbf{115.73} \\ \bottomrule
 \caption{\textbf{Architecture ablation: Qwen 3 4B Instruct} (4-bit quantization).}
 \label{tab:qwen_ablation}
 \renewcommand{\arraystretch}{1.0}
-\resizebox{\columnwidth}{!}{%
 \begin{tabular}{@{}lccc@{}}
 \toprule
 \thead{Metric} & \thead{Independent \\ (Baseline)} & \thead{Independent \\ (Logit Gating)} & \thead{Dual-State \\ (Proposed)} \\ \midrule
@@ -384,8 +350,7 @@ Avg.\ FLEXI decision latency (ms) & 221.54 & 124.52 & \textbf{43.82} \\
 Avg.\ FDB decision latency (ms) & 189.64 & 122.35 & \textbf{42.42} \\ \midrule
 Time-to-Halt (FLEXI TP, ms) & 261.13 & 123.57 & \textbf{88.52} \\
 Time-to-Halt (FDB TP, ms) & 191.19 & 122.63 & \textbf{85.70} \\ \bottomrule
-\end{tabular}%
-}
+\end{tabular}
 \end{table}
 
 \section{No-Op TTFT Benchmark Across Context Lengths}
@@ -474,17 +439,16 @@ Decider / Output Tokens & 196.0 tokens (Reasoning) & \textbf{13.1 tokens} (1-Tok
 \label{tab:chunk_sweep}
 \renewcommand{\arraystretch}{0.88}
 \vspace{0.05cm}
-\resizebox{\columnwidth}{!}{%
+\setlength{\tabcolsep}{4pt}
 \begin{tabular}{@{}cccccc@{}}
 \toprule
-\textbf{Chunk Stride ($k$)} & \textbf{Checks / 100 Tokens} & \textbf{Time-to-Halt (s)} & \textbf{Consensus Time (s)} & \textbf{Avg Tokens Read} & \textbf{Interruption Rate (\%)} \\ \midrule
+\textbf{\makecell{Chunk\\Stride ($k$)}} & \textbf{\makecell{Checks /\\100 Tokens}} & \textbf{\makecell{Time-to-\\Halt (s)}} & \textbf{\makecell{Consensus\\Time (s)}} & \textbf{\makecell{Avg Tokens\\Read}} & \textbf{\makecell{Interruption\\Rate (\%)}} \\ \midrule
 $k=2$  & 50.0 & 0.1010 & \textbf{0.6344} & 10.2 & 94.0\% \\
 $k=5$  & 20.0 & 0.1063 & 0.7059 & 20.5 & 72.0\% \\
 $k=10$ & 10.0 & 0.1127 & 0.7173 & 28.6 & 44.0\% \\
 $k=20$ & 5.0  & 0.1051 & 0.7526 & 31.0 & 44.0\% \\
 $k=50$ & 2.0  & 0.1214 & 0.9182 & 32.6 & 62.0\% \\ \bottomrule
-\end{tabular}%
-}
+\end{tabular}
 \end{table}
 
 \textbf{Auxiliary lightweight probing.} A natural alternative to a full assessor pass is to classify interruption from the Base model's hidden state $h_t \in \mathbb{R}^d$ via a linear probe or 2-layer MLP head. Table~\ref{tab:probe_comparison} compares physical execution on GPU. While an MLP head executes in 0.103\,ms (vs.\ 91.50\,ms for the full-model assessor pass), auxiliary heads have a decisive limitation for agentic deployments: \textbf{zero prompt reconfigurability}. A head is statically trained on fixed offline data; if system instructions, conversational constraints, or few-shot examples change at runtime, the probe requires supervised retraining. Dual-State leverages the foundation model's general reasoning, enabling fully zero-shot, prompt-guided runtime adaptation with zero additional trained parameters.
@@ -495,15 +459,14 @@ $k=50$ & 2.0  & 0.1214 & 0.9182 & 32.6 & 62.0\% \\ \bottomrule
 \label{tab:probe_comparison}
 \renewcommand{\arraystretch}{0.88}
 \vspace{0.05cm}
-\resizebox{\columnwidth}{!}{%
-\begin{tabular}{@{}lcccc@{}}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lccp{3.0cm}c@{}}
 \toprule
-\textbf{Architecture} & \textbf{Trainable Params} & \textbf{Latency (ms)} & \textbf{Zero-Shot Prompt Reconfigurability} & \textbf{Suffix Memory Overhead} \\ \midrule
-Linear Probe & 5,122 & \textbf{0.084} & No (Requires task supervised training) & \textbf{0.01 MB} \\
-2-Layer MLP Head & 656,130 & 0.103 & No (Requires task supervised training) & 1.25 MB \\
+\textbf{Architecture} & \textbf{\makecell{Trainable\\Params}} & \textbf{\makecell{Latency\\(ms)}} & \textbf{\makecell{Zero-Shot Prompt\\Reconfigurability}} & \textbf{\makecell{Suffix Memory\\Overhead}} \\ \midrule
+Linear Probe & 5,122 & \textbf{0.084} & No (requires task supervised training) & \textbf{0.01 MB} \\
+2-Layer MLP Head & 656,130 & 0.103 & No (requires task supervised training) & 1.25 MB \\
 \textbf{Dual-State Assessor (Ours)} & \textbf{0 (Shared)} & 91.50 & \textbf{Yes (100\% zero-shot, prompt-guided)} & 0.65 MB ($L_p = 10$) \\ \bottomrule
-\end{tabular}%
-}
+\end{tabular}
 \end{table}
 
 \section{Serving-Engine Mapping, Concurrency, and Safety}

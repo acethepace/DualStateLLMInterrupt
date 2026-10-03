@@ -112,6 +112,13 @@ To formally prove that the Dual-State architecture's latency advantages are a un
 ## Learnings (NeurIPS Review & Meta-Review Resolution Plan)
 - **Review Validity Assessment**: Thoroughly analyzed all critiques in `neurips_template/neurips_review_dual_state_kv_forking.md`. Validated that the 0.01–0.06 ms measurement reflects CPU/driver-side shallow tensor aliasing rather than physical memory replication (which takes 0.5–2.0 ms on 504 GB/s HBM). Clarified memory allocator semantics between PyTorch prototype and production engines (PagedAttention block-table CoW).
 - **Disaggregation of Token Reduction**: Clarified that the 78.6% token reduction comprises two orthogonal gains: 1-token logit gating eliminating CoT reasoning (55.4%) and KV forking eliminating quadratic re-prefill (23.2%). Emphasized that stateful deciders require $+100\%$ duplicate KV cache memory, whereas Dual-State pointer aliasing cuts assessor memory by 99% ($<1$ MB vs $91$ MB at batch 64).
-- **Statistical Confidence & Calibration**: Designed bootstrap confidence interval calculations (1,000 resamples) and paired Wilcoxon/McNemar significance testing for HANDRAISER. Formulated threshold-gated decision rule ($\tau \in [0.1, 0.9]$) proving bimodal stability ($P > 0.95$ on true interruptions, $P < 0.05$ on backchannels).
+- **Statistical Confidence & Calibration**: Formulated threshold-gated decision rule ($\tau \in [0.1, 0.9]$) proving bimodal stability ($P > 0.95$ on true interruptions, $P < 0.05$ on backchannels).
+- **Qwen Consensus Dynamics Analysis**: Detailed Qwen 3 4B's consensus time increase (+31.7%) in Appendix C. Explained how continuous multi-attempt floor control allows earlier non-fatal buzzes to take in subsequent clues upon resumed streaming, achieving higher final resolution accuracy (44.0% vs 43.0%, trading 0.97s for +1.0% accuracy), and documented that setting $\tau = 0.6$ eliminates premature buzzes on compact 4B models.
+
+## Learnings (Paper Revision v2 & Figure 1 Asset Integration)
+- **Paper Revision Sync**: Fully synchronized `neurips_template/rtca.tex` with user's updated `rtca - v2.tex`.
+- **Figure 1 Asset Extraction**: Resolved missing image dependency by extracting high-resolution (4465x1180) `figures/dual_state_arch.png` from the compiled PDF and integrating into `neurips_template/figures/` and all `notebooklm/` repositories.
+- **Strict 4-Page Workshop Limit Compliance**: Re-verified layout with `pypdf`. Sections 1--5 terminate strictly on Page 4, References begin on Page 5, and Appendices span Pages 6--10 (with unscaled Table 5 and formatted Tables 8--9). Zero compilation errors or overfull `\hbox` warnings.
+
 
 
